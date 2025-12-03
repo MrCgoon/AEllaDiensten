@@ -21,16 +21,20 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section id="home" className="relative min-h-[95vh] flex items-center pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden bg-transparent text-white">
+    <section id="home" className="relative min-h-[95vh] flex items-center pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden bg-transparent">
       
       {/* Parallax Layers */}
       <div 
         className="absolute inset-0 z-0 pointer-events-none will-change-transform"
         style={{ transform: `translateY(${offset * 0.4}px)` }}
       >
-        {/* Local Gradient Accents */}
-        <div className="absolute top-[-20%] right-[-10%] w-[1000px] h-[1000px] bg-brand-900/30 rounded-full blur-[150px] animate-aurora mix-blend-screen"></div>
-        <div className="absolute bottom-[0%] left-[-10%] w-[800px] h-[800px] bg-indigo-900/30 rounded-full blur-[120px] animate-pulse-slow mix-blend-screen"></div>
+        {/* Dark Mode Gradient Accents */}
+        <div className="hidden dark:block absolute top-[-20%] right-[-10%] w-[1000px] h-[1000px] bg-brand-900/30 rounded-full blur-[150px] animate-aurora mix-blend-screen"></div>
+        <div className="hidden dark:block absolute bottom-[0%] left-[-10%] w-[800px] h-[800px] bg-indigo-900/30 rounded-full blur-[120px] animate-pulse-slow mix-blend-screen"></div>
+
+        {/* Light Mode Gradient Accents */}
+        <div className="dark:hidden absolute top-[-10%] right-[-10%] w-[800px] h-[800px] bg-brand-100/60 rounded-full blur-[100px] animate-aurora mix-blend-multiply"></div>
+        <div className="dark:hidden absolute bottom-[10%] left-[10%] w-[600px] h-[600px] bg-indigo-100/60 rounded-full blur-[100px] mix-blend-multiply"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
@@ -40,7 +44,7 @@ const Hero: React.FC = () => {
           <div className="text-center lg:text-left relative z-20">
             
             {/* Premium Glass Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-brand-300 text-xs font-bold tracking-wider uppercase mb-8 shadow-[0_0_20px_rgba(244,63,94,0.15)] backdrop-blur-md hover:border-brand-500/50 transition-colors cursor-default">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/60 dark:bg-white/5 border border-brand-100 dark:border-white/10 text-brand-600 dark:text-brand-300 text-xs font-bold tracking-wider uppercase mb-8 shadow-sm dark:shadow-[0_0_20px_rgba(244,63,94,0.15)] backdrop-blur-md cursor-default">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
@@ -48,7 +52,7 @@ const Hero: React.FC = () => {
               Remote Secretariële Support
             </div>
             
-            <h1 className="text-4xl md:text-5xl lg:text-7xl font-heading font-extrabold text-white leading-[1.1] mb-6 tracking-tight drop-shadow-lg">
+            <h1 className="text-4xl md:text-5xl lg:text-7xl font-heading font-extrabold text-neutral-900 dark:text-white leading-[1.1] mb-6 tracking-tight drop-shadow-sm dark:drop-shadow-lg transition-colors">
               Jouw administratie <br/>
               <span className="text-gradient-shine animate-shine relative inline-block">
                 strak geregeld
@@ -56,44 +60,43 @@ const Hero: React.FC = () => {
               terwijl u doorwerkt.
             </h1>
             
-            <p className="text-lg md:text-xl text-neutral-300 leading-relaxed mb-10 max-w-2xl mx-auto lg:mx-0 font-light drop-shadow-md">
+            <p className="text-lg md:text-xl text-neutral-600 dark:text-neutral-300 leading-relaxed mb-10 max-w-2xl mx-auto lg:mx-0 font-light transition-colors">
               Ella ondersteunt ondernemers met data entry, mutaties en secretariële taken. 
-              <span className="text-white font-medium"> Accuraat, resultaatgericht</span> en altijd volgens afspraak.
+              <span className="text-neutral-900 dark:text-white font-medium"> Accuraat, resultaatgericht</span> en altijd volgens afspraak.
             </p>
             
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
               <a 
                 href="#contact" 
-                className="group relative inline-flex items-center justify-center px-8 py-4 bg-brand-600 text-white font-semibold rounded-xl overflow-hidden transition-all duration-300 hover:bg-brand-500 hover:scale-[1.02] shadow-[0_0_30px_-5px_rgba(225,29,72,0.6)] ring-1 ring-brand-400/50"
+                className="group relative inline-flex items-center justify-center px-8 py-4 bg-brand-600 text-white font-semibold rounded-xl overflow-hidden transition-all duration-300 hover:bg-brand-500 hover:scale-[1.02] shadow-[0_4px_20px_rgba(225,29,72,0.4)] dark:shadow-[0_0_30px_-5px_rgba(225,29,72,0.6)]"
               >
                 <span className="relative z-10 flex items-center">
                   Vraag direct een offerte aan
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </span>
-                <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent z-0"></div>
               </a>
               <a 
                 href="#process" 
-                className="inline-flex items-center justify-center px-8 py-4 bg-white/5 text-white font-semibold rounded-xl border border-white/10 hover:border-white/30 hover:bg-white/10 transition-all duration-300 backdrop-blur-sm shadow-lg"
+                className="inline-flex items-center justify-center px-8 py-4 bg-white/60 dark:bg-white/5 text-neutral-700 dark:text-white font-semibold rounded-xl border border-neutral-200 dark:border-white/10 hover:bg-white dark:hover:bg-white/10 transition-all duration-300 backdrop-blur-sm shadow-sm hover:shadow-md"
               >
                 Plan een kennismaking
               </a>
             </div>
             
             {/* Trust Indicators */}
-            <div className="mt-12 flex flex-wrap items-center justify-center lg:justify-start gap-x-8 gap-y-4 text-sm font-medium text-neutral-400">
+            <div className="mt-12 flex flex-wrap items-center justify-center lg:justify-start gap-x-8 gap-y-4 text-sm font-medium text-neutral-500 dark:text-neutral-400">
               <div className="flex items-center gap-2 group cursor-default">
-                <CheckCircle2 className="w-5 h-5 text-brand-500 group-hover:scale-110 transition-transform drop-shadow-[0_0_8px_rgba(244,63,94,0.5)]" />
-                <span className="group-hover:text-white transition-colors">Accuraat</span>
+                <CheckCircle2 className="w-5 h-5 text-brand-500 group-hover:scale-110 transition-transform dark:drop-shadow-[0_0_8px_rgba(244,63,94,0.5)]" />
+                <span className="group-hover:text-neutral-900 dark:group-hover:text-white transition-colors">Accuraat</span>
               </div>
               <div className="flex items-center gap-2 group cursor-default">
-                <CheckCircle2 className="w-5 h-5 text-brand-500 group-hover:scale-110 transition-transform drop-shadow-[0_0_8px_rgba(244,63,94,0.5)]" />
-                <span className="group-hover:text-white transition-colors">Flexibel</span>
+                <CheckCircle2 className="w-5 h-5 text-brand-500 group-hover:scale-110 transition-transform dark:drop-shadow-[0_0_8px_rgba(244,63,94,0.5)]" />
+                <span className="group-hover:text-neutral-900 dark:group-hover:text-white transition-colors">Flexibel</span>
               </div>
               <div className="flex items-center gap-2 group cursor-default">
-                <CheckCircle2 className="w-5 h-5 text-brand-500 group-hover:scale-110 transition-transform drop-shadow-[0_0_8px_rgba(244,63,94,0.5)]" />
-                <span className="group-hover:text-white transition-colors">Betrouwbaar</span>
+                <CheckCircle2 className="w-5 h-5 text-brand-500 group-hover:scale-110 transition-transform dark:drop-shadow-[0_0_8px_rgba(244,63,94,0.5)]" />
+                <span className="group-hover:text-neutral-900 dark:group-hover:text-white transition-colors">Betrouwbaar</span>
               </div>
             </div>
           </div>
@@ -107,7 +110,7 @@ const Hero: React.FC = () => {
                style={{ transform: `translateY(${offset * -0.12}px)` }}
              >
                 {/* 4K Abstract Visual */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-cover bg-no-repeat bg-center opacity-60 pointer-events-none mix-blend-lighten"
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-cover bg-no-repeat bg-center opacity-80 dark:opacity-60 pointer-events-none mix-blend-multiply dark:mix-blend-lighten transition-all duration-500"
                      style={{ 
                        backgroundImage: 'url("https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=3840&auto=format&fit=crop")',
                        maskImage: 'radial-gradient(circle, black 30%, transparent 70%)',
@@ -116,37 +119,37 @@ const Hero: React.FC = () => {
                 </div>
 
                 {/* Floating Glass Card 1 */}
-                <div className="absolute top-10 left-[-20px] glass-dark p-4 rounded-2xl animate-float-delayed w-60 z-0 hover:scale-105 transition-transform duration-500 border border-white/10 shadow-[0_0_30px_rgba(0,0,0,0.5)] backdrop-blur-xl">
+                <div className="absolute top-10 left-[-20px] bg-white/90 dark:glass-dark p-4 rounded-2xl animate-float-delayed w-60 z-0 hover:scale-105 transition-all duration-500 border border-neutral-200 dark:border-white/10 shadow-xl dark:shadow-[0_0_30px_rgba(0,0,0,0.5)] backdrop-blur-xl">
                    <div className="flex items-center gap-3 mb-3">
-                     <div className="p-2.5 bg-neutral-900/80 rounded-lg text-blue-400 shadow-inner ring-1 ring-white/10">
+                     <div className="p-2.5 bg-blue-50 dark:bg-neutral-900/80 rounded-lg text-blue-500 dark:text-blue-400 shadow-inner ring-1 ring-blue-100 dark:ring-white/10">
                         <Database size={20} />
                      </div>
                      <div>
-                       <span className="block text-xs text-neutral-400 font-medium">System Update</span>
-                       <span className="text-sm font-bold text-neutral-100">Data Entry</span>
+                       <span className="block text-xs text-neutral-500 dark:text-neutral-400 font-medium">System Update</span>
+                       <span className="text-sm font-bold text-neutral-800 dark:text-neutral-100">Data Entry</span>
                      </div>
                    </div>
                    <div className="space-y-2.5">
-                      <div className="h-1.5 w-full bg-neutral-800 rounded-full overflow-hidden">
-                        <div className="h-full bg-blue-500 w-[92%] rounded-full relative overflow-hidden shadow-[0_0_10px_rgba(59,130,246,0.5)]">
+                      <div className="h-1.5 w-full bg-neutral-100 dark:bg-neutral-800 rounded-full overflow-hidden">
+                        <div className="h-full bg-blue-500 w-[92%] rounded-full relative overflow-hidden dark:shadow-[0_0_10px_rgba(59,130,246,0.5)]">
                           <div className="absolute inset-0 bg-white/20 animate-[shine_2s_infinite]"></div>
                         </div>
                       </div>
-                      <div className="flex justify-between text-[10px] text-neutral-400 font-medium">
+                      <div className="flex justify-between text-[10px] text-neutral-500 dark:text-neutral-400 font-medium">
                         <span>Verwerken...</span>
-                        <span className="text-blue-400">92%</span>
+                        <span className="text-blue-500 dark:text-blue-400">92%</span>
                       </div>
                    </div>
                 </div>
 
                 {/* Floating Glass Card 2 */}
-                <div className="absolute bottom-24 right-[-10px] glass-dark p-4 rounded-2xl animate-float w-60 z-0 hover:scale-105 transition-transform duration-500 border border-white/10 shadow-[0_0_30px_rgba(0,0,0,0.5)] backdrop-blur-xl">
+                <div className="absolute bottom-24 right-[-10px] bg-white/90 dark:glass-dark p-4 rounded-2xl animate-float w-60 z-0 hover:scale-105 transition-all duration-500 border border-neutral-200 dark:border-white/10 shadow-xl dark:shadow-[0_0_30px_rgba(0,0,0,0.5)] backdrop-blur-xl">
                    <div className="flex items-center justify-between mb-4">
                      <div className="flex items-center gap-3">
-                       <div className="p-2 bg-neutral-900/80 rounded-lg text-emerald-400 shadow-inner ring-1 ring-white/10">
+                       <div className="p-2 bg-emerald-50 dark:bg-neutral-900/80 rounded-lg text-emerald-500 dark:text-emerald-400 shadow-inner ring-1 ring-emerald-100 dark:ring-white/10">
                           <FileSpreadsheet size={18} />
                        </div>
-                       <span className="text-sm font-bold text-neutral-100">Mutaties</span>
+                       <span className="text-sm font-bold text-neutral-800 dark:text-neutral-100">Mutaties</span>
                      </div>
                      <span className="flex h-2 w-2 relative">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -154,9 +157,9 @@ const Hero: React.FC = () => {
                      </span>
                    </div>
                    <div className="space-y-2">
-                      <div className="flex items-center justify-between p-2 bg-neutral-900/50 rounded-lg border border-white/5">
-                        <span className="text-[10px] text-neutral-400">Rij 1420</span>
-                        <span className="text-[10px] text-emerald-400 font-mono font-bold">Done</span>
+                      <div className="flex items-center justify-between p-2 bg-neutral-50 dark:bg-neutral-900/50 rounded-lg border border-neutral-100 dark:border-white/5">
+                        <span className="text-[10px] text-neutral-500 dark:text-neutral-400">Rij 1420</span>
+                        <span className="text-[10px] text-emerald-500 dark:text-emerald-400 font-mono font-bold">Done</span>
                       </div>
                    </div>
                 </div>
@@ -168,7 +171,7 @@ const Hero: React.FC = () => {
                style={{ transform: `translate(-50%, calc(-50% - ${offset * 0.25}px))` }}
              >
                 {/* Widget Card - High Contrast White */}
-                <div className="bg-white/95 backdrop-blur-sm rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8)] border border-white/20 p-8 animate-float-subtle relative overflow-hidden transition-all duration-300 hover:shadow-brand-900/20 group">
+                <div className="bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl shadow-neutral-200/50 dark:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8)] border border-white/50 dark:border-white/20 p-8 animate-float-subtle relative overflow-hidden transition-all duration-300 hover:shadow-brand-900/10 group">
                   
                   {/* Decorative Top Border */}
                   <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-600 via-brand-400 to-brand-600"></div>

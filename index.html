@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="nl" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
+        darkMode: 'class',
         theme: {
           extend: {
             fontFamily: {
@@ -20,7 +21,7 @@
               brand: {
                 50: '#fff1f2',
                 100: '#ffe4e6',
-                500: '#f43f5e', // Rose-Red for a modern touch
+                500: '#f43f5e', // Rose-Red
                 600: '#e11d48',
                 700: '#be123c',
                 900: '#881337',
@@ -57,9 +58,6 @@
       }
     </script>
     <style>
-      html {
-        scroll-behavior: smooth;
-      }
       .glass {
         background: rgba(255, 255, 255, 0.9);
         backdrop-filter: blur(10px);

@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  theme: 'light' | 'dark';
+  toggleTheme: () => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -22,18 +27,31 @@ const Navbar: React.FC = () => {
     { name: 'Contact', href: '#contact' },
   ];
 
-  // Dynamic colors based on scroll state (Dark Hero support)
-  const textColor = isScrolled ? 'text-neutral-600' : 'text-neutral-300';
-  const hoverColor = isScrolled ? 'hover:text-brand-600' : 'hover:text-white';
-  const logoText = isScrolled ? 'text-neutral-900' : 'text-white';
-  const logoAccent = 'text-brand-600'; // Brand color stays consistent or could be lighter on dark
+  // Dynamic styles
+  const isDark = theme === 'dark';
   
-  const buttonStyles = isScrolled 
-    ? 'bg-neutral-900 text-white hover:bg-brand-600 shadow-brand-500/20' 
-    : 'bg-white text-neutral-900 hover:bg-neutral-100 shadow-white/10';
+  // Scrolled state vs Top state logic for colors
+  // Light Mode Scrolled: White BG, Dark Text
+  // Light Mode Top: Transparent (on Hero), depends on Hero bg. 
+  // NOTE: Hero in light mode will be light, so Navbar needs dark text at top in Light Mode.
+  
+  const navBackground = isScrolled 
+    ? 'glass shadow-sm py-3 border-neutral-200 dark:border-neutral-800 dark:bg-neutral-900/80' 
+    : 'bg-transparent py-6';
+
+  const textColor = isScrolled || !isDark
+    ? 'text-neutral-700 dark:text-neutral-300' // Dark text on white scrolled, Light text on dark scrolled
+    : 'text-neutral-200'; // Light text on dark hero (unscrolled dark mode)
+
+  const hoverColor = 'hover:text-brand-600 dark:hover:text-brand-400';
+  
+  const logoText = isScrolled || !isDark ? 'text-neutral-900 dark:text-white' : 'text-white';
+  const logoAccent = 'text-brand-600';
+
+  const buttonStyles = 'bg-brand-600 text-white hover:bg-brand-500 shadow-lg shadow-brand-500/30';
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-500 border-b border-transparent ${isScrolled ? 'glass shadow-sm py-3 border-neutral-100' : 'bg-transparent py-6'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-500 border-b border-transparent ${navBackground}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <div className="flex-shrink-0 flex items-center group cursor-pointer">
@@ -53,19 +71,35 @@ const Navbar: React.FC = () => {
                 {link.name}
               </a>
             ))}
+            
+            <button
+              onClick={toggleTheme}
+              className={`p-2 rounded-full transition-colors ${isScrolled || !isDark ? 'text-neutral-600 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800' : 'text-neutral-300 hover:bg-white/10'}`}
+              aria-label="Toggle theme"
+            >
+              {isDark ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
+
             <a 
               href="#contact" 
-              className={`ml-4 px-5 py-2.5 rounded-full font-medium text-sm transition-all shadow-lg ${buttonStyles}`}
+              className={`ml-4 px-5 py-2.5 rounded-full font-medium text-sm transition-all ${buttonStyles}`}
             >
               Offerte aanvragen
             </a>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center gap-4">
+             <button
+              onClick={toggleTheme}
+              className={`p-2 rounded-full transition-colors ${isScrolled || !isDark ? 'text-neutral-600 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800' : 'text-neutral-300 hover:bg-white/10'}`}
+            >
+              {isDark ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
+            
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`${isScrolled ? 'text-neutral-800' : 'text-white'} hover:text-brand-600 focus:outline-none p-2 transition-colors`}
+              className={`${isScrolled || !isDark ? 'text-neutral-800 dark:text-white' : 'text-white'} hover:text-brand-600 focus:outline-none p-2 transition-colors`}
             >
               {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
@@ -75,14 +109,14 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu Dropdown */}
       {isOpen && (
-        <div className="md:hidden bg-white shadow-2xl absolute w-full left-0 top-full border-t border-neutral-100 animate-in slide-in-from-top-5 duration-300">
+        <div className="md:hidden bg-white dark:bg-neutral-900 shadow-2xl absolute w-full left-0 top-full border-t border-neutral-100 dark:border-neutral-800 animate-in slide-in-from-top-5 duration-300">
           <div className="px-4 pt-2 pb-6 space-y-2">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="block px-3 py-4 text-base font-medium text-neutral-800 hover:text-brand-600 hover:bg-neutral-50 rounded-lg transition-colors border-b border-neutral-50 last:border-0"
+                className="block px-3 py-4 text-base font-medium text-neutral-800 dark:text-neutral-200 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-neutral-50 dark:hover:bg-neutral-800 rounded-lg transition-colors border-b border-neutral-50 dark:border-neutral-800 last:border-0"
               >
                 {link.name}
               </a>
@@ -90,7 +124,7 @@ const Navbar: React.FC = () => {
             <a 
               href="#contact"
               onClick={() => setIsOpen(false)}
-              className="block mt-4 px-3 py-4 text-center text-base font-bold text-white bg-brand-600 rounded-lg shadow-md"
+              className="block mt-4 px-3 py-4 text-center text-base font-bold text-white bg-brand-600 rounded-lg shadow-md hover:bg-brand-500"
             >
               Offerte aanvragen
             </a>
