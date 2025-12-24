@@ -15,11 +15,10 @@ const Pricing: React.FC = () => {
             Tarieven
           </span>
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-neutral-900 dark:text-white mb-6 drop-shadow-sm dark:drop-shadow-lg transition-colors">
-            Investeren in <span className="text-gradient-shine">rust en overzicht</span>
+            Pakketten & <span className="text-gradient-shine">tarieven</span>
           </h2>
           <p className="text-neutral-600 dark:text-neutral-300 max-w-2xl mx-auto transition-colors text-lg font-light">
-            Kies het pakket dat past bij de omvang van uw administratie. 
-            <br className="hidden md:block" /> Hoe meer u uitbesteedt, hoe scherper het tarief.
+            Kies het pakket dat past bij de hoeveelheid ondersteuning die u nodig heeft. Voor elk pakket geldt een vast uurtarief op basis van een minimaal aantal uren per maand.
           </p>
         </div>
 
@@ -33,13 +32,13 @@ const Pricing: React.FC = () => {
               </div>
               <h3 className="text-2xl font-heading font-bold text-neutral-900 dark:text-white">Basis</h3>
               <p className="text-sm text-neutral-500 dark:text-neutral-400 mt-2 min-h-[40px]">
-                Kleine mutaties en flexibele ondersteuning.
+                Kleine mutaties en lichte administratieve ondersteuning, ideaal als u af en toe extra handen nodig heeft.
               </p>
             </div>
             
             <div className="mb-8 p-4 bg-neutral-50 dark:bg-white/5 rounded-2xl border border-neutral-100 dark:border-white/5">
               <div className="flex items-baseline gap-1">
-                <span className="text-4xl font-bold text-neutral-900 dark:text-white">€ 60</span>
+                <span className="text-4xl font-bold text-neutral-900 dark:text-white">€ 55</span>
                 <span className="text-neutral-500 dark:text-neutral-400 font-medium">/ uur</span>
               </div>
               <div className="mt-2 text-xs font-bold text-brand-600 dark:text-brand-400 uppercase tracking-wide">
@@ -84,13 +83,13 @@ const Pricing: React.FC = () => {
               </div>
               <h3 className="text-2xl font-heading font-bold text-white">Standaard</h3>
               <p className="text-sm text-neutral-400 mt-2 min-h-[40px]">
-                Structurele ondersteuning voor uw onderneming.
+                Structurele mutaties en doorlopende ondersteuning. Geschikt als u regelmatig terugkerende taken wilt uitbesteden.
               </p>
             </div>
             
             <div className="mb-8 p-4 bg-white/5 rounded-2xl border border-white/10 relative z-10">
               <div className="flex items-baseline gap-1">
-                <span className="text-5xl font-bold text-white">€ 55</span>
+                <span className="text-5xl font-bold text-white">€ 50</span>
                 <span className="text-neutral-400 font-medium">/ uur</span>
               </div>
               <div className="mt-2 text-xs font-bold text-brand-400 uppercase tracking-wide">
@@ -138,13 +137,13 @@ const Pricing: React.FC = () => {
               </div>
               <h3 className="text-2xl font-heading font-bold text-neutral-900 dark:text-white">Intensief</h3>
               <p className="text-sm text-neutral-500 dark:text-neutral-400 mt-2 min-h-[40px]">
-                Grote volumes en complexere mutaties.
+                Grote volumes en complexere mutaties, voor organisaties die veel data- en administratief werk willen overdragen.
               </p>
             </div>
             
             <div className="mb-8 p-4 bg-neutral-50 dark:bg-white/5 rounded-2xl border border-neutral-100 dark:border-white/5">
               <div className="flex items-baseline gap-1">
-                <span className="text-4xl font-bold text-neutral-900 dark:text-white">€ 50</span>
+                <span className="text-4xl font-bold text-neutral-900 dark:text-white">€ 45</span>
                 <span className="text-neutral-500 dark:text-neutral-400 font-medium">/ uur</span>
               </div>
               <div className="mt-2 text-xs font-bold text-brand-600 dark:text-brand-400 uppercase tracking-wide">
@@ -176,18 +175,19 @@ const Pricing: React.FC = () => {
 
         {/* Customization & Disclaimer */}
         <div className="mt-16 text-center space-y-4">
-           <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-white/50 dark:bg-white/5 border border-neutral-200 dark:border-white/10 backdrop-blur-sm">
-              <span className="relative flex h-2 w-2">
+           <div className="inline-flex flex-col sm:flex-row items-center gap-3 px-6 py-3 rounded-2xl bg-white/50 dark:bg-white/5 border border-neutral-200 dark:border-white/10 backdrop-blur-sm">
+              <span className="relative flex h-2 w-2 flex-shrink-0">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
               </span>
-              <p className="text-sm font-semibold text-neutral-700 dark:text-neutral-200">
-                Andere wensen? <span className="text-brand-600 dark:text-brand-400">Maatwerk is altijd mogelijk.</span>
+              <p className="text-sm font-medium text-neutral-700 dark:text-neutral-200 text-center sm:text-left">
+                <span className="font-bold block sm:inline">Incidentele ondersteuning? </span>
+                Voor eenmalige of kortdurende opdrachten is dit mogelijk zonder pakket. Tarief: <span className="text-brand-600 dark:text-brand-400 font-bold">€ 60,- per uur</span>
               </p>
            </div>
            
            <p className="text-neutral-400 dark:text-neutral-500 text-xs">
-            Alle genoemde tarieven zijn exclusief btw. Facturatie vindt plaats per maand.
+            Alle tarieven zijn exclusief btw. Maatwerk is altijd mogelijk; neem gerust contact op om uw situatie te bespreken.
           </p>
         </div>
       </div>

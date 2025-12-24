@@ -61,7 +61,7 @@ const App: React.FC = () => {
         <Hero />
         
         {/* Main Content Sections wrapped in unified glass container */}
-        <div className="relative z-20 mt-[-3rem] sm:mt-[-5rem] pt-16 pb-12 rounded-t-[2.5rem] sm:rounded-t-[3.5rem] bg-white/80 dark:bg-black/40 backdrop-blur-3xl border-t border-white/40 dark:border-white/10 shadow-[0_-20px_60px_-15px_rgba(0,0,0,0.1)] dark:shadow-[0_-20px_60px_-15px_rgba(0,0,0,0.9)] overflow-hidden transition-all duration-500">
+        <div className="relative z-20 mt-[-2rem] sm:mt-[-5rem] pt-12 sm:pt-16 pb-12 rounded-t-[2rem] sm:rounded-t-[3.5rem] bg-white/80 dark:bg-black/40 backdrop-blur-3xl border-t border-white/40 dark:border-white/10 shadow-[0_-20px_60px_-15px_rgba(0,0,0,0.1)] dark:shadow-[0_-20px_60px_-15px_rgba(0,0,0,0.9)] overflow-hidden transition-all duration-500">
           
           {/* Aesthetic Top Highlight */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-[2px] bg-gradient-to-r from-transparent via-white/50 dark:via-white/20 to-transparent"></div>

@@ -10,7 +10,7 @@ const Services: React.FC = () => {
       title: "Data Entry & Mutaties",
       short: "Nauwkeurig bijwerken van CRM-systemen, Excel-overzichten en klantgegevens. Zo blijft uw data altijd actueel, compleet en betrouwbaar.",
       long: (
-        <div className="space-y-6 text-base md:text-lg leading-relaxed md:leading-loose text-neutral-600 dark:text-neutral-300">
+        <div className="space-y-5 md:space-y-6 text-base md:text-lg leading-relaxed md:leading-loose text-neutral-600 dark:text-neutral-300">
           <p className="font-medium text-neutral-900 dark:text-white text-lg md:text-xl leading-relaxed">
             Data Entry & Mutaties omvat het zorgvuldig invoeren, bijwerken en beheren van digitale gegevens. Dit kan gaan om klantinformatie, productgegevens, adressenbestanden, contractgegevens of andere administratieve data.
           </p>
@@ -18,7 +18,7 @@ const Services: React.FC = () => {
             <p className="mb-3 font-bold text-neutral-900 dark:text-white">
               Ik ondersteun organisaties bij onder andere:
             </p>
-            <ul className="list-disc pl-5 space-y-3 marker:text-brand-500">
+            <ul className="list-disc pl-5 space-y-2 md:space-y-3 marker:text-brand-500">
               <li>Het invoeren van nieuwe gegevens</li>
               <li>Het verwerken van wijzigingen (mutaties)</li>
               <li>Het corrigeren en opschonen van bestaande data</li>
@@ -37,7 +37,7 @@ const Services: React.FC = () => {
       title: "Rapportages",
       short: "Heldere overzichten in Excel of PDF. Ik zet ruwe data om in duidelijke inzichten, zodat u in één oogopslag ziet wat belangrijk is.",
       long: (
-        <div className="space-y-6 text-base md:text-lg leading-relaxed md:leading-loose text-neutral-600 dark:text-neutral-300">
+        <div className="space-y-5 md:space-y-6 text-base md:text-lg leading-relaxed md:leading-loose text-neutral-600 dark:text-neutral-300">
           <p className="font-medium text-neutral-900 dark:text-white text-lg md:text-xl leading-relaxed">
             Rapportages geven inzicht in prestaties, trends en resultaten. Ik help bij het verzamelen, structureren en analyseren van data en vertaal deze naar overzichtelijke rapporten in Excel of PDF.
           </p>
@@ -45,7 +45,7 @@ const Services: React.FC = () => {
             <p className="mb-3 font-bold text-neutral-900 dark:text-white">
               Mijn ondersteuning bestaat onder andere uit:
             </p>
-            <ul className="list-disc pl-5 space-y-3 marker:text-brand-500">
+            <ul className="list-disc pl-5 space-y-2 md:space-y-3 marker:text-brand-500">
               <li>Het verwerken en opschonen van ruwe data</li>
               <li>Het maken van duidelijke tabellen en overzichten</li>
               <li>Het visualiseren van gegevens (grafieken, diagrammen) waar dat toegevoegde waarde heeft</li>
@@ -63,7 +63,7 @@ const Services: React.FC = () => {
       title: "Secretariële Support",
       short: "Secretariële ondersteuning die zorgt voor structuur, continuïteit en professionaliteit binnen uw organisatie. Ik neem administratieve en secretariële taken uit handen, zodat u zich kunt richten op uw kernactiviteiten.",
       long: (
-        <div className="space-y-6 text-base md:text-lg leading-relaxed md:leading-loose text-neutral-600 dark:text-neutral-300">
+        <div className="space-y-5 md:space-y-6 text-base md:text-lg leading-relaxed md:leading-loose text-neutral-600 dark:text-neutral-300">
           <p className="font-medium text-neutral-900 dark:text-white text-lg md:text-xl leading-relaxed">
             Secretariële support omvat alle ondersteunende werkzaamheden die zorgen voor structuur, continuïteit en professionaliteit binnen uw organisatie. Ik neem administratieve en secretariële taken uit handen, zodat u tijd en ruimte houdt voor uw kernactiviteiten.
           </p>
@@ -71,7 +71,7 @@ const Services: React.FC = () => {
             <p className="mb-3 font-bold text-neutral-900 dark:text-white">
               Mijn werkzaamheden kunnen onder andere bestaan uit:
             </p>
-            <ul className="list-disc pl-5 space-y-3 marker:text-brand-500">
+            <ul className="list-disc pl-5 space-y-2 md:space-y-3 marker:text-brand-500">
               <li>Het uitwerken en opmaken van offertes</li>
               <li>Het voorbereiden en beheren van contractdocumenten</li>
               <li>Het uitwerken van voice-overs, notulen en vergaderverslagen</li>
@@ -90,7 +90,7 @@ const Services: React.FC = () => {
       title: "Agenda & E-mail",
       short: "Professioneel agenda- en e-mailbeheer voor meer rust en overzicht. Ik filter wat binnenkomt, plan afspraken en zorg dat u alleen ziet wat écht belangrijk is.",
       long: (
-        <div className="space-y-6 text-base md:text-lg leading-relaxed md:leading-loose text-neutral-600 dark:text-neutral-300">
+        <div className="space-y-5 md:space-y-6 text-base md:text-lg leading-relaxed md:leading-loose text-neutral-600 dark:text-neutral-300">
           <p className="font-medium text-neutral-900 dark:text-white text-lg md:text-xl leading-relaxed">
             Agenda- en e-mailbeheer draait om structuur, overzicht en tijdsbesparing. Ik help bij het beheren van complexe agenda’s, het plannen en verzetten van afspraken en het bewaken van belangrijke deadlines.
           </p>
@@ -98,7 +98,7 @@ const Services: React.FC = () => {
             <p className="mb-3 font-bold text-neutral-900 dark:text-white">
               Daarnaast zorg ik voor een overzichtelijke inbox door:
             </p>
-            <ul className="list-disc pl-5 space-y-3 marker:text-brand-500">
+            <ul className="list-disc pl-5 space-y-2 md:space-y-3 marker:text-brand-500">
               <li>Het filteren en prioriteren van e-mails</li>
               <li>Het aanbrengen van structuur (mappen, labels, regels)</li>
               <li>Het signaleren van urgente berichten</li>
@@ -184,13 +184,13 @@ const Services: React.FC = () => {
         title={selectedService?.title || ''}
         content={selectedService ? (
           <div>
-            <div className="flex items-center gap-4 mb-8 pb-6 border-b border-neutral-100 dark:border-white/5">
-                <div className="w-16 h-16 rounded-2xl bg-brand-50 dark:bg-brand-500/10 flex items-center justify-center text-brand-600 dark:text-brand-400 shadow-sm border border-brand-100 dark:border-brand-500/20">
-                    {React.cloneElement(selectedService.icon as React.ReactElement, { className: "w-8 h-8" })}
+            <div className="flex items-center gap-4 mb-6 md:mb-8 pb-6 border-b border-neutral-100 dark:border-white/5">
+                <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-brand-50 dark:bg-brand-500/10 flex items-center justify-center text-brand-600 dark:text-brand-400 shadow-sm border border-brand-100 dark:border-brand-500/20 flex-shrink-0">
+                    {React.cloneElement(selectedService.icon as React.ReactElement, { className: "w-7 h-7 md:w-8 md:h-8" })}
                 </div>
                 <div>
-                    <h4 className="text-lg font-bold text-neutral-900 dark:text-white">Service details</h4>
-                    <p className="text-sm text-neutral-500 dark:text-neutral-400">{selectedService.tag ? selectedService.tag : "Professionele ondersteuning"}</p>
+                    <h4 className="text-base md:text-lg font-bold text-neutral-900 dark:text-white">Service details</h4>
+                    <p className="text-xs md:text-sm text-neutral-500 dark:text-neutral-400">{selectedService.tag ? selectedService.tag : "Professionele ondersteuning"}</p>
                 </div>
             </div>
             {selectedService.long}
