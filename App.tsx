@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import About from './components/About';
-import Services from './components/Services';
-import Process from './components/Process';
-import Pricing from './components/Pricing';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import WhatsAppButton from './components/WhatsAppButton';
-import SocialProof from './components/SocialProof';
+
+// Lazy load non-critical components to improve initial page load speed
+const About = lazy(() => import('./components/About'));
+const Services = lazy(() => import('./components/Services'));
+const Process = lazy(() => import('./components/Process'));
+const Pricing = lazy(() => import('./components/Pricing'));
+const Contact = lazy(() => import('./components/Contact'));
+const Footer = lazy(() => import('./components/Footer'));
+const WhatsAppButton = lazy(() => import('./components/WhatsAppButton'));
+const SocialProof = lazy(() => import('./components/SocialProof'));
 
 const App: React.FC = () => {
   const [theme, setTheme] = useState<'light' | 'dark'>('dark');
@@ -46,9 +48,9 @@ const App: React.FC = () => {
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-100/40 rounded-full blur-[100px]"></div>
       </div>
 
-      {/* Dark Mode Global Fixed Background (Nano Banana Aesthetic) */}
+      {/* Dark Mode Global Fixed Background (Nano Banana Aesthetic) - Responsive Images */}
       <div 
-        className="fixed inset-0 z-[-1] bg-[url('https://images.unsplash.com/photo-1614850523060-8da1d56ae167?q=80&w=3840&auto=format&fit=crop')] bg-cover bg-center bg-no-repeat bg-fixed hidden dark:block transition-opacity duration-500"
+        className="fixed inset-0 z-[-1] bg-[url('https://images.unsplash.com/photo-1614850523060-8da1d56ae167?q=60&w=640&auto=format&fit=crop')] md:bg-[url('https://images.unsplash.com/photo-1614850523060-8da1d56ae167?q=75&w=1920&auto=format&fit=crop')] bg-cover bg-center bg-no-repeat bg-fixed hidden dark:block transition-opacity duration-500"
         aria-hidden="true"
       ></div>
       
@@ -66,20 +68,24 @@ const App: React.FC = () => {
           {/* Aesthetic Top Highlight */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-[2px] bg-gradient-to-r from-transparent via-white/50 dark:via-white/20 to-transparent"></div>
           
-          {/* Content Wrapper */}
-          <div className="space-y-px bg-transparent">
-            <About />
-            <Services />
-            <Process />
-            <Pricing />
-            <SocialProof />
-            <Contact />
+          {/* Content Wrapper with Suspense for Lazy Loading */}
+          <div className="space-y-px bg-transparent min-h-[50vh]">
+            <Suspense fallback={<div className="py-20 flex justify-center"><div className="w-8 h-8 border-4 border-brand-500 border-t-transparent rounded-full animate-spin"></div></div>}>
+              <About />
+              <Services />
+              <Process />
+              <Pricing />
+              <SocialProof />
+              <Contact />
+            </Suspense>
           </div>
         </div>
       </main>
       
-      <Footer />
-      <WhatsAppButton />
+      <Suspense fallback={null}>
+        <Footer />
+        <WhatsAppButton />
+      </Suspense>
     </div>
   );
 };

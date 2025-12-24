@@ -12,8 +12,13 @@ const About: React.FC = () => {
           <div className="lg:col-span-5 relative order-2 lg:order-1 sticky top-32">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-neutral-200/50 dark:shadow-black/50 border border-white/20 dark:border-white/10 aspect-[4/5] group">
               <img 
-                src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=1000&auto=format&fit=crop" 
+                src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=75&w=800&auto=format&fit=crop"
+                srcSet="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=75&w=400&auto=format&fit=crop 400w,
+                        https://images.unsplash.com/photo-1573164713988-8665fc963095?q=75&w=800&auto=format&fit=crop 800w,
+                        https://images.unsplash.com/photo-1573164713988-8665fc963095?q=75&w=1200&auto=format&fit=crop 1200w"
+                sizes="(min-width: 1024px) 450px, (min-width: 768px) 50vw, 100vw"
                 alt="Ella - Modern Professional" 
+                loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-100 dark:opacity-90 dark:hover:opacity-100"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/60 via-transparent to-transparent"></div>
