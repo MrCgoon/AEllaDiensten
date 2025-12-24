@@ -10,17 +10,25 @@ const Services: React.FC = () => {
       title: "Data Entry & Mutaties",
       short: "Nauwkeurig bijwerken van CRM-systemen, Excel-overzichten en klantgegevens. Zo blijft uw data altijd actueel, compleet en betrouwbaar.",
       long: (
-        <>
-          <p className="mb-4 font-semibold text-neutral-900 dark:text-white text-lg">Data Entry & Mutaties omvat het zorgvuldig invoeren, bijwerken en beheren van digitale gegevens. Dit kan gaan om klantinformatie, productgegevens, adressenbestanden, contractgegevens of andere administratieve data.</p>
-          <p className="mb-2 font-medium text-neutral-800 dark:text-neutral-200">Ik ondersteun organisaties bij onder andere:</p>
-          <ul className="list-disc pl-5 space-y-2 mb-6 marker:text-brand-500">
-            <li>Het invoeren van nieuwe gegevens</li>
-            <li>Het verwerken van wijzigingen (mutaties)</li>
-            <li>Het corrigeren en opschonen van bestaande data</li>
-            <li>Het structureren van Excel- en CRM-bestanden</li>
-          </ul>
-          <p>Door nauwkeurig te werken en veel aandacht te hebben voor detail, voorkom ik fouten en zorg ik voor betrouwbare informatie. Correcte data is essentieel voor goede communicatie, heldere rapportages en gefundeerde besluitvorming.</p>
-        </>
+        <div className="space-y-6 text-base md:text-lg leading-relaxed md:leading-loose text-neutral-600 dark:text-neutral-300">
+          <p className="font-medium text-neutral-900 dark:text-white text-lg md:text-xl leading-relaxed">
+            Data Entry & Mutaties omvat het zorgvuldig invoeren, bijwerken en beheren van digitale gegevens. Dit kan gaan om klantinformatie, productgegevens, adressenbestanden, contractgegevens of andere administratieve data.
+          </p>
+          <div>
+            <p className="mb-3 font-bold text-neutral-900 dark:text-white">
+              Ik ondersteun organisaties bij onder andere:
+            </p>
+            <ul className="list-disc pl-5 space-y-3 marker:text-brand-500">
+              <li>Het invoeren van nieuwe gegevens</li>
+              <li>Het verwerken van wijzigingen (mutaties)</li>
+              <li>Het corrigeren en opschonen van bestaande data</li>
+              <li>Het structureren van Excel- en CRM-bestanden</li>
+            </ul>
+          </div>
+          <p>
+            Door nauwkeurig te werken en veel aandacht te hebben voor detail, voorkom ik fouten en zorg ik voor betrouwbare informatie. Correcte data is essentieel voor goede communicatie, heldere rapportages en gefundeerde besluitvorming.
+          </p>
+        </div>
       ),
       icon: <Database className="w-6 h-6 text-brand-600 dark:text-brand-400" />,
       tag: "Specialiteit"
@@ -29,17 +37,25 @@ const Services: React.FC = () => {
       title: "Rapportages",
       short: "Heldere overzichten in Excel of PDF. Ik zet ruwe data om in duidelijke inzichten, zodat u in één oogopslag ziet wat belangrijk is.",
       long: (
-        <>
-          <p className="mb-4 font-semibold text-neutral-900 dark:text-white text-lg">Rapportages geven inzicht in prestaties, trends en resultaten. Ik help bij het verzamelen, structureren en analyseren van data en vertaal deze naar overzichtelijke rapporten in Excel of PDF.</p>
-          <p className="mb-2 font-medium text-neutral-800 dark:text-neutral-200">Mijn ondersteuning bestaat onder andere uit:</p>
-          <ul className="list-disc pl-5 space-y-2 mb-6 marker:text-brand-500">
-            <li>Het verwerken en opschonen van ruwe data</li>
-            <li>Het maken van duidelijke tabellen en overzichten</li>
-            <li>Het visualiseren van gegevens (grafieken, diagrammen) waar dat toegevoegde waarde heeft</li>
-            <li>Het aanpassen van rapportages aan uw specifieke wensen en doelen</li>
-          </ul>
-          <p>Door data begrijpelijk te presenteren, ontstaat er overzicht en grip. U hoeft niet te zoeken in cijfers, maar ziet in één oogopslag wat belangrijk is om op te sturen.</p>
-        </>
+        <div className="space-y-6 text-base md:text-lg leading-relaxed md:leading-loose text-neutral-600 dark:text-neutral-300">
+          <p className="font-medium text-neutral-900 dark:text-white text-lg md:text-xl leading-relaxed">
+            Rapportages geven inzicht in prestaties, trends en resultaten. Ik help bij het verzamelen, structureren en analyseren van data en vertaal deze naar overzichtelijke rapporten in Excel of PDF.
+          </p>
+          <div>
+            <p className="mb-3 font-bold text-neutral-900 dark:text-white">
+              Mijn ondersteuning bestaat onder andere uit:
+            </p>
+            <ul className="list-disc pl-5 space-y-3 marker:text-brand-500">
+              <li>Het verwerken en opschonen van ruwe data</li>
+              <li>Het maken van duidelijke tabellen en overzichten</li>
+              <li>Het visualiseren van gegevens (grafieken, diagrammen) waar dat toegevoegde waarde heeft</li>
+              <li>Het aanpassen van rapportages aan uw specifieke wensen en doelen</li>
+            </ul>
+          </div>
+          <p>
+            Door data begrijpelijk te presenteren, ontstaat er overzicht en grip. U hoeft niet te zoeken in cijfers, maar ziet in één oogopslag wat belangrijk is om op te sturen.
+          </p>
+        </div>
       ),
       icon: <FileBarChart className="w-6 h-6 text-brand-600 dark:text-brand-400" />,
     },
@@ -47,17 +63,25 @@ const Services: React.FC = () => {
       title: "Secretariële Support",
       short: "Secretariële ondersteuning die zorgt voor structuur, continuïteit en professionaliteit binnen uw organisatie. Ik neem administratieve en secretariële taken uit handen, zodat u zich kunt richten op uw kernactiviteiten.",
       long: (
-        <>
-          <p className="mb-4 font-semibold text-neutral-900 dark:text-white text-lg">Secretariële support omvat alle ondersteunende werkzaamheden die zorgen voor structuur, continuïteit en professionaliteit binnen uw organisatie. Ik neem administratieve en secretariële taken uit handen, zodat u tijd en ruimte houdt voor uw kernactiviteiten.</p>
-          <p className="mb-2 font-medium text-neutral-800 dark:text-neutral-200">Mijn werkzaamheden kunnen onder andere bestaan uit:</p>
-          <ul className="list-disc pl-5 space-y-2 mb-6 marker:text-brand-500">
-            <li>Het uitwerken en opmaken van offertes</li>
-            <li>Het voorbereiden en beheren van contractdocumenten</li>
-            <li>Het uitwerken van voice-overs, notulen en vergaderverslagen</li>
-            <li>Diverse ondersteunende secretariaats- en kantoortaken</li>
-          </ul>
-          <p>Door nauwkeurig en gestructureerd te werken, zorg ik voor duidelijke documentatie en een professionele uitstraling naar uw klanten en relaties.</p>
-        </>
+        <div className="space-y-6 text-base md:text-lg leading-relaxed md:leading-loose text-neutral-600 dark:text-neutral-300">
+          <p className="font-medium text-neutral-900 dark:text-white text-lg md:text-xl leading-relaxed">
+            Secretariële support omvat alle ondersteunende werkzaamheden die zorgen voor structuur, continuïteit en professionaliteit binnen uw organisatie. Ik neem administratieve en secretariële taken uit handen, zodat u tijd en ruimte houdt voor uw kernactiviteiten.
+          </p>
+          <div>
+            <p className="mb-3 font-bold text-neutral-900 dark:text-white">
+              Mijn werkzaamheden kunnen onder andere bestaan uit:
+            </p>
+            <ul className="list-disc pl-5 space-y-3 marker:text-brand-500">
+              <li>Het uitwerken en opmaken van offertes</li>
+              <li>Het voorbereiden en beheren van contractdocumenten</li>
+              <li>Het uitwerken van voice-overs, notulen en vergaderverslagen</li>
+              <li>Diverse ondersteunende secretariaats- en kantoortaken</li>
+            </ul>
+          </div>
+          <p>
+            Door nauwkeurig en gestructureerd te werken, zorg ik voor duidelijke documentatie en een professionele uitstraling naar uw klanten en relaties.
+          </p>
+        </div>
       ),
       icon: <Keyboard className="w-6 h-6 text-brand-600 dark:text-brand-400" />,
       tag: "Flexibel"
@@ -66,17 +90,25 @@ const Services: React.FC = () => {
       title: "Agenda & E-mail",
       short: "Professioneel agenda- en e-mailbeheer voor meer rust en overzicht. Ik filter wat binnenkomt, plan afspraken en zorg dat u alleen ziet wat écht belangrijk is.",
       long: (
-        <>
-          <p className="mb-4 font-semibold text-neutral-900 dark:text-white text-lg">Agenda- en e-mailbeheer draait om structuur, overzicht en tijdsbesparing. Ik help bij het beheren van complexe agenda’s, het plannen en verzetten van afspraken en het bewaken van belangrijke deadlines.</p>
-          <p className="mb-2 font-medium text-neutral-800 dark:text-neutral-200">Daarnaast zorg ik voor een overzichtelijke inbox door:</p>
-          <ul className="list-disc pl-5 space-y-2 mb-6 marker:text-brand-500">
-            <li>Het filteren en prioriteren van e-mails</li>
-            <li>Het aanbrengen van structuur (mappen, labels, regels)</li>
-            <li>Het signaleren van urgente berichten</li>
-            <li>Het verminderen van onnodige e-maildruk</li>
-          </ul>
-          <p>Met professioneel agenda- en e-mailbeheer houdt u grip op uw werkdag, mist u geen belangrijke afspraken en kunt u zich volledig richten op uw kerntaken.</p>
-        </>
+        <div className="space-y-6 text-base md:text-lg leading-relaxed md:leading-loose text-neutral-600 dark:text-neutral-300">
+          <p className="font-medium text-neutral-900 dark:text-white text-lg md:text-xl leading-relaxed">
+            Agenda- en e-mailbeheer draait om structuur, overzicht en tijdsbesparing. Ik help bij het beheren van complexe agenda’s, het plannen en verzetten van afspraken en het bewaken van belangrijke deadlines.
+          </p>
+          <div>
+            <p className="mb-3 font-bold text-neutral-900 dark:text-white">
+              Daarnaast zorg ik voor een overzichtelijke inbox door:
+            </p>
+            <ul className="list-disc pl-5 space-y-3 marker:text-brand-500">
+              <li>Het filteren en prioriteren van e-mails</li>
+              <li>Het aanbrengen van structuur (mappen, labels, regels)</li>
+              <li>Het signaleren van urgente berichten</li>
+              <li>Het verminderen van onnodige e-maildruk</li>
+            </ul>
+          </div>
+          <p>
+            Met professioneel agenda- en e-mailbeheer houdt u grip op uw werkdag, mist u geen belangrijke afspraken en kunt u zich volledig richten op uw kerntaken.
+          </p>
+        </div>
       ),
       icon: <Mail className="w-6 h-6 text-brand-600 dark:text-brand-400" />,
     }
