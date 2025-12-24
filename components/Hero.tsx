@@ -21,7 +21,7 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section id="home" className="relative min-h-[95vh] flex items-center pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden bg-transparent">
+    <section id="home" className="relative min-h-[95vh] flex items-center pt-24 pb-16 lg:pt-40 lg:pb-32 overflow-hidden bg-transparent">
       
       {/* Parallax Layers */}
       <div 
@@ -29,22 +29,22 @@ const Hero: React.FC = () => {
         style={{ transform: `translateY(${offset * 0.4}px)` }}
       >
         {/* Dark Mode Gradient Accents */}
-        <div className="hidden dark:block absolute top-[-20%] right-[-10%] w-[1000px] h-[1000px] bg-brand-900/30 rounded-full blur-[150px] animate-aurora mix-blend-screen"></div>
-        <div className="hidden dark:block absolute bottom-[0%] left-[-10%] w-[800px] h-[800px] bg-indigo-900/30 rounded-full blur-[120px] animate-pulse-slow mix-blend-screen"></div>
+        <div className="hidden dark:block absolute top-[-20%] right-[-10%] w-[600px] lg:w-[1000px] h-[600px] lg:h-[1000px] bg-brand-900/30 rounded-full blur-[100px] lg:blur-[150px] animate-aurora mix-blend-screen"></div>
+        <div className="hidden dark:block absolute bottom-[0%] left-[-10%] w-[500px] lg:w-[800px] h-[500px] lg:h-[800px] bg-indigo-900/30 rounded-full blur-[80px] lg:blur-[120px] animate-pulse-slow mix-blend-screen"></div>
 
         {/* Light Mode Gradient Accents */}
-        <div className="dark:hidden absolute top-[-10%] right-[-10%] w-[800px] h-[800px] bg-brand-100/60 rounded-full blur-[100px] animate-aurora mix-blend-multiply"></div>
-        <div className="dark:hidden absolute bottom-[10%] left-[10%] w-[600px] h-[600px] bg-indigo-100/60 rounded-full blur-[100px] mix-blend-multiply"></div>
+        <div className="dark:hidden absolute top-[-10%] right-[-10%] w-[600px] lg:w-[800px] h-[600px] lg:h-[800px] bg-brand-100/60 rounded-full blur-[80px] lg:blur-[100px] animate-aurora mix-blend-multiply"></div>
+        <div className="dark:hidden absolute bottom-[10%] left-[10%] w-[400px] lg:w-[600px] h-[400px] lg:h-[600px] bg-indigo-100/60 rounded-full blur-[80px] lg:blur-[100px] mix-blend-multiply"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
           
           {/* Left Content */}
-          <div className="text-center lg:text-left relative z-20">
+          <div className="text-center lg:text-left relative z-20 pt-8 lg:pt-0">
             
             {/* Premium Glass Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/60 dark:bg-white/5 border border-brand-100 dark:border-white/10 text-brand-600 dark:text-brand-300 text-xs font-bold tracking-wider uppercase mb-8 shadow-sm dark:shadow-[0_0_20px_rgba(244,63,94,0.15)] backdrop-blur-md cursor-default">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 rounded-full bg-white/60 dark:bg-white/5 border border-brand-100 dark:border-white/10 text-brand-600 dark:text-brand-300 text-[10px] sm:text-xs font-bold tracking-wider uppercase mb-6 sm:mb-8 shadow-sm dark:shadow-[0_0_20px_rgba(244,63,94,0.15)] backdrop-blur-md cursor-default">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
@@ -52,24 +52,23 @@ const Hero: React.FC = () => {
               Remote Secretariële Support
             </div>
             
-            <h1 className="text-4xl md:text-5xl lg:text-7xl font-heading font-extrabold text-neutral-900 dark:text-white leading-[1.1] mb-6 tracking-tight drop-shadow-sm dark:drop-shadow-lg transition-colors">
-              Jouw administratie <br/>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-heading font-extrabold text-neutral-900 dark:text-white leading-[1.15] lg:leading-[1.1] mb-6 tracking-tight drop-shadow-sm dark:drop-shadow-lg transition-colors">
+              Uw administratie <br/>
               <span className="text-gradient-shine animate-shine relative inline-block">
                 strak geregeld
               </span>, <br/>
-              terwijl u doorwerkt.
+              terwijl u doorgaat met uw werk.
             </h1>
             
-            <p className="text-lg md:text-xl text-neutral-600 dark:text-neutral-300 leading-relaxed mb-10 max-w-2xl mx-auto lg:mx-0 font-light transition-colors">
-              Ella ondersteunt ondernemers met data entry, mutaties en secretariële taken. 
-              <span className="text-neutral-900 dark:text-white font-medium"> Accuraat, resultaatgericht</span> en altijd volgens afspraak.
+            <p className="text-base sm:text-lg md:text-xl text-neutral-600 dark:text-neutral-300 leading-relaxed mb-8 sm:mb-10 max-w-2xl mx-auto lg:mx-0 font-light transition-colors">
+              Ik ondersteun u met data entry, mutaties, rapportages en secretariële support – <span className="text-neutral-900 dark:text-white font-medium">nauwkeurig, gestructureerd en op tijd.</span>
             </p>
             
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
               <a 
                 href="#contact" 
-                className="group relative inline-flex items-center justify-center px-8 py-4 bg-brand-600 text-white font-semibold rounded-xl overflow-hidden transition-all duration-300 hover:bg-brand-500 hover:scale-[1.02] shadow-[0_4px_20px_rgba(225,29,72,0.4)] dark:shadow-[0_0_30px_-5px_rgba(225,29,72,0.6)]"
+                className="w-full sm:w-auto group relative inline-flex items-center justify-center px-8 py-4 bg-brand-600 text-white font-semibold rounded-xl overflow-hidden transition-all duration-300 hover:bg-brand-500 hover:scale-[1.02] shadow-[0_4px_20px_rgba(225,29,72,0.4)] dark:shadow-[0_0_30px_-5px_rgba(225,29,72,0.6)]"
               >
                 <span className="relative z-10 flex items-center">
                   Vraag direct een offerte aan
@@ -78,14 +77,14 @@ const Hero: React.FC = () => {
               </a>
               <a 
                 href="#process" 
-                className="inline-flex items-center justify-center px-8 py-4 bg-white/60 dark:bg-white/5 text-neutral-700 dark:text-white font-semibold rounded-xl border border-neutral-200 dark:border-white/10 hover:bg-white dark:hover:bg-white/10 transition-all duration-300 backdrop-blur-sm shadow-sm hover:shadow-md"
+                className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-white/60 dark:bg-white/5 text-neutral-700 dark:text-white font-semibold rounded-xl border border-neutral-200 dark:border-white/10 hover:bg-white dark:hover:bg-white/10 transition-all duration-300 backdrop-blur-sm shadow-sm hover:shadow-md"
               >
                 Plan een kennismaking
               </a>
             </div>
             
             {/* Trust Indicators */}
-            <div className="mt-12 flex flex-wrap items-center justify-center lg:justify-start gap-x-8 gap-y-4 text-sm font-medium text-neutral-500 dark:text-neutral-400">
+            <div className="mt-8 sm:mt-12 flex flex-wrap items-center justify-center lg:justify-start gap-x-6 sm:gap-x-8 gap-y-4 text-sm font-medium text-neutral-500 dark:text-neutral-400">
               <div className="flex items-center gap-2 group cursor-default">
                 <CheckCircle2 className="w-5 h-5 text-brand-500 group-hover:scale-110 transition-transform dark:drop-shadow-[0_0_8px_rgba(244,63,94,0.5)]" />
                 <span className="group-hover:text-neutral-900 dark:group-hover:text-white transition-colors">Accuraat</span>
@@ -102,7 +101,7 @@ const Hero: React.FC = () => {
           </div>
 
           {/* Right Content - Parallax Visual & Widget */}
-          <div className="relative h-[600px] w-full hidden lg:block perspective-1000">
+          <div className="relative h-[400px] lg:h-[600px] w-full hidden lg:block perspective-1000">
              
              {/* Middle Layer: Floating Elements */}
              <div 
@@ -227,7 +226,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Scroll Down Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 animate-bounce opacity-50 hover:opacity-100 transition-opacity cursor-pointer z-20">
+      <div className="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-3 animate-bounce opacity-50 hover:opacity-100 transition-opacity cursor-pointer z-20">
         <span className="text-[10px] uppercase tracking-[0.2em] text-neutral-400 font-medium">Scroll</span>
         <div className="w-[1px] h-8 bg-gradient-to-b from-brand-500 to-transparent"></div>
       </div>
