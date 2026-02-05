@@ -1,13 +1,13 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
   
-  # Force HTTPS
-  # Zorgt ervoor dat bezoekers altijd via de beveiligde verbinding komen
+  # 1. Forceer HTTPS
+  # Zorgt voor een veilig slotje in de browser. Essentieel voor YouHosting/Plesk.
   RewriteCond %{HTTPS} off
   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-  # React Router / Single Page App Rewrite
-  # Stuurt alle verzoeken die geen bestand zijn door naar index.html
+  # 2. Single Page Application (React) Routing
+  # Dit lost het probleem op dat je een 404 krijgt als je pagina ververst
   RewriteBase /
   RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
@@ -16,7 +16,23 @@
   RewriteRule . /index.html [L]
 </IfModule>
 
-# Browser Caching optimalisatie voor snellere laadtijden
+# 3. Beveiliging & Preventie
+# Voorkomt dat mensen mappen kunnen bekijken waar geen index bestand staat
+Options -Indexes
+# Voorkomt conflicten met automatische content onderhandeling
+Options -MultiViews
+
+# 4. Security Headers
+<IfModule mod_headers.c>
+  # Bescherming tegen clickjacking en XSS aanvallen
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-XSS-Protection "1; mode=block"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# 5. Browser Caching
+# Maakt de site sneller voor terugkerende bezoekers
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresByType image/jpg "access plus 1 year"
@@ -26,8 +42,8 @@
   ExpiresByType image/webp "access plus 1 year"
   ExpiresByType text/css "access plus 1 month"
   ExpiresByType application/pdf "access plus 1 month"
-  ExpiresByType text/x-javascript "access plus 1 month"
-  ExpiresByType application/x-shockwave-flash "access plus 1 month"
+  ExpiresByType text/javascript "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
   ExpiresByType image/x-icon "access plus 1 year"
   ExpiresDefault "access plus 2 days"
 </IfModule>

@@ -12,7 +12,8 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      // Trigger effect after scrolling down a bit (e.g. 50px)
+      setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -30,18 +31,28 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
   // Dynamic styles
   const isDark = theme === 'dark';
   
-  // Scrolled state vs Top state logic for colors
-  // Light Mode Scrolled: White BG, Dark Text
-  // Light Mode Top: Transparent (on Hero), depends on Hero bg. 
-  // NOTE: Hero in light mode will be light, so Navbar needs dark text at top in Light Mode.
-  
-  const navBackground = isScrolled 
-    ? 'glass shadow-sm py-3 border-neutral-200 dark:border-neutral-800 dark:bg-neutral-900/80' 
-    : 'bg-transparent py-6';
+  // Navbar Container Styles
+  // - Fixed position to stick to top
+  // - Transition for smooth height/color change
+  // - Conditional background (transparent vs glass)
+  // - Conditional padding (shrink effect)
+  const navClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out border-b ${
+    isScrolled 
+      ? 'bg-white/90 dark:bg-neutral-900/90 backdrop-blur-md shadow-sm py-3 border-neutral-200 dark:border-white/10' 
+      : 'bg-transparent py-6 border-transparent'
+  }`;
 
+  // Text Color Logic
+  // At top (transparent): 
+  // - Dark Mode: Text White (on dark hero)
+  // - Light Mode: Text Dark (on light hero)
+  // Scrolled (Glass):
+  // - Dark Mode: Text Light (on dark bar)
+  // - Light Mode: Text Dark (on light bar)
+  
   const textColor = isScrolled || !isDark
-    ? 'text-neutral-700 dark:text-neutral-300' // Dark text on white scrolled, Light text on dark scrolled
-    : 'text-neutral-200'; // Light text on dark hero (unscrolled dark mode)
+    ? 'text-neutral-700 dark:text-neutral-200' 
+    : 'text-white';
 
   const hoverColor = 'hover:text-brand-600 dark:hover:text-brand-400';
   
@@ -51,10 +62,12 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
   const buttonStyles = 'bg-brand-600 text-white hover:bg-brand-500 shadow-lg shadow-brand-500/30';
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-500 border-b border-transparent ${navBackground}`}>
+    <nav className={navClasses}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <div className="flex-shrink-0 flex items-center group cursor-pointer">
+          
+          {/* Logo with scale transition for shrink effect */}
+          <div className={`flex-shrink-0 flex items-center group cursor-pointer transition-transform duration-300 ${isScrolled ? 'scale-95' : 'scale-100'}`}>
             <a href="#home" className={`text-2xl font-heading font-bold tracking-tight group-hover:opacity-80 transition-opacity ${logoText}`}>
               Ellas<span className={logoAccent}>Diensten</span>
             </a>
@@ -74,7 +87,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
             
             <button
               onClick={toggleTheme}
-              className={`p-2 rounded-full transition-colors ${isScrolled || !isDark ? 'text-neutral-600 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800' : 'text-neutral-300 hover:bg-white/10'}`}
+              className={`p-2 rounded-full transition-colors ${isScrolled || !isDark ? 'text-neutral-600 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800' : 'text-white/80 hover:bg-white/10'}`}
               aria-label="Toggle theme"
             >
               {isDark ? <Sun size={20} /> : <Moon size={20} />}
@@ -82,7 +95,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
 
             <a 
               href="#contact" 
-              className={`ml-4 px-5 py-2.5 rounded-full font-medium text-sm transition-all ${buttonStyles}`}
+              className={`ml-4 px-5 rounded-full font-medium text-sm transition-all flex items-center justify-center ${buttonStyles} ${isScrolled ? 'py-2' : 'py-2.5'}`}
             >
               Offerte aanvragen
             </a>
@@ -92,7 +105,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
           <div className="md:hidden flex items-center gap-4">
              <button
               onClick={toggleTheme}
-              className={`p-2 rounded-full transition-colors ${isScrolled || !isDark ? 'text-neutral-600 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800' : 'text-neutral-300 hover:bg-white/10'}`}
+              className={`p-2 rounded-full transition-colors ${isScrolled || !isDark ? 'text-neutral-600 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800' : 'text-white/80 hover:bg-white/10'}`}
             >
               {isDark ? <Sun size={20} /> : <Moon size={20} />}
             </button>
@@ -109,7 +122,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
 
       {/* Mobile Menu Dropdown */}
       {isOpen && (
-        <div className="md:hidden bg-white dark:bg-neutral-900 shadow-2xl absolute w-full left-0 top-full border-t border-neutral-100 dark:border-neutral-800 animate-in slide-in-from-top-5 duration-300">
+        <div className="md:hidden bg-white/95 dark:bg-neutral-900/95 backdrop-blur-xl shadow-2xl absolute w-full left-0 top-full border-t border-neutral-100 dark:border-neutral-800 animate-in slide-in-from-top-5 duration-300">
           <div className="px-4 pt-2 pb-6 space-y-2">
             {navLinks.map((link) => (
               <a
