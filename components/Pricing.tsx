@@ -1,7 +1,26 @@
 import React from 'react';
-import { Check, Sparkles, Zap, BarChart3, ArrowRight } from 'lucide-react';
+import { Check, Sparkles, Zap, BarChart3, ArrowRight, CreditCard } from 'lucide-react';
+
+// INSTRUCTIE: Plak hieronder tussen de aanhalingstekens je Stripe Payment Links
+// Deze maak je aan in het Stripe Dashboard > Producten > Betaallink aanmaken
+const STRIPE_LINKS = {
+  basis: "", // Bv: "https://buy.stripe.com/test_..."
+  standaard: "", 
+  intensief: ""
+};
 
 const Pricing: React.FC = () => {
+
+  const handlePurchase = (tier: keyof typeof STRIPE_LINKS) => {
+    const link = STRIPE_LINKS[tier];
+    if (link && link.length > 0) {
+      window.location.href = link;
+    } else {
+      // Fallback if no link is configured yet
+      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="pricing" className="py-24 bg-neutral-50 dark:bg-black/40 backdrop-blur-md border-t border-neutral-200 dark:border-white/5 relative overflow-hidden transition-colors duration-500">
       
@@ -20,6 +39,10 @@ const Pricing: React.FC = () => {
           <p className="text-neutral-600 dark:text-neutral-300 max-w-2xl mx-auto transition-colors text-lg font-light">
             Kies het pakket dat past bij de hoeveelheid ondersteuning die u nodig heeft. Voor elk pakket geldt een vast uurtarief op basis van een minimaal aantal uren per maand.
           </p>
+          <div className="mt-4 flex items-center justify-center gap-2 text-xs text-neutral-500 dark:text-neutral-400">
+             <CreditCard size={14} />
+             <span>Veilig betalen via Stripe</span>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
@@ -61,9 +84,12 @@ const Pricing: React.FC = () => {
                </li>
             </ul>
             
-            <a href="#contact" className="w-full py-3.5 px-4 bg-neutral-100 dark:bg-white/10 hover:bg-neutral-200 dark:hover:bg-white/20 text-neutral-900 dark:text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2 group-hover:bg-brand-600 group-hover:text-white dark:group-hover:bg-brand-600">
+            <button 
+              onClick={() => handlePurchase('basis')}
+              className="w-full py-3.5 px-4 bg-neutral-100 dark:bg-white/10 hover:bg-neutral-200 dark:hover:bg-white/20 text-neutral-900 dark:text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2 group-hover:bg-brand-600 group-hover:text-white dark:group-hover:bg-brand-600"
+            >
               Kies Basis
-            </a>
+            </button>
           </div>
 
           {/* Package 2: Standaard (Highlighted) */}
@@ -124,9 +150,12 @@ const Pricing: React.FC = () => {
                </li>
             </ul>
             
-            <a href="#contact" className="relative z-10 w-full py-4 px-4 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-xl transition-all shadow-[0_4px_14px_0_rgba(244,63,94,0.39)] hover:shadow-[0_6px_20px_rgba(244,63,94,0.23)] flex items-center justify-center gap-2 group-hover:scale-[1.02]">
+            <button 
+              onClick={() => handlePurchase('standaard')}
+              className="relative z-10 w-full py-4 px-4 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-xl transition-all shadow-[0_4px_14px_0_rgba(244,63,94,0.39)] hover:shadow-[0_6px_20px_rgba(244,63,94,0.23)] flex items-center justify-center gap-2 group-hover:scale-[1.02]"
+            >
               Kies Standaard <ArrowRight size={18} />
-            </a>
+            </button>
           </div>
 
           {/* Package 3: Intensief */}
@@ -166,9 +195,12 @@ const Pricing: React.FC = () => {
                </li>
             </ul>
             
-            <a href="#contact" className="w-full py-3.5 px-4 bg-neutral-100 dark:bg-white/10 hover:bg-neutral-200 dark:hover:bg-white/20 text-neutral-900 dark:text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2 group-hover:bg-brand-600 group-hover:text-white dark:group-hover:bg-brand-600">
+            <button 
+              onClick={() => handlePurchase('intensief')}
+              className="w-full py-3.5 px-4 bg-neutral-100 dark:bg-white/10 hover:bg-neutral-200 dark:hover:bg-white/20 text-neutral-900 dark:text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2 group-hover:bg-brand-600 group-hover:text-white dark:group-hover:bg-brand-600"
+            >
               Kies Intensief
-            </a>
+            </button>
           </div>
 
         </div>

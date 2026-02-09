@@ -2,15 +2,38 @@ import React, { useState } from 'react';
 import { Mail, Phone, Clock, Send, MapPin, CheckCircle2, Loader2, ArrowRight } from 'lucide-react';
 
 const Contact: React.FC = () => {
-  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
+  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormStatus('submitting');
-    // Simulate network request
-    setTimeout(() => {
-      setFormStatus('success');
-    }, 2000);
+    
+    const formData = new FormData(e.target as HTMLFormElement);
+    
+    // Add configuration for FormSubmit
+    formData.append("_subject", `Nieuwe aanvraag via website: ${formData.get('name')}`);
+    formData.append("_template", "table");
+    formData.append("_captcha", "false");
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/contact@ellasdiensten.nl", {
+        method: "POST",
+        body: formData,
+        headers: { 
+            'Accept': 'application/json'
+        }
+      });
+      
+      if (response.ok) {
+        setFormStatus('success');
+      } else {
+        console.error("Form submission failed");
+        setFormStatus('error');
+      }
+    } catch (error) {
+       console.error("Form submission error", error);
+       setFormStatus('error');
+    }
   };
 
   return (
@@ -123,6 +146,22 @@ const Contact: React.FC = () => {
                     Nog een bericht sturen
                   </button>
                 </div>
+              ) : formStatus === 'error' ? (
+                <div className="h-[500px] flex flex-col items-center justify-center text-center animate-in fade-in zoom-in duration-500">
+                  <div className="w-20 h-20 bg-red-100 dark:bg-red-500/20 rounded-full flex items-center justify-center text-red-600 dark:text-red-400 mb-6">
+                    <CheckCircle2 size={40} className="rotate-45" />
+                  </div>
+                  <h3 className="text-2xl font-heading font-bold text-neutral-900 dark:text-white mb-2">Er ging iets mis</h3>
+                  <p className="text-neutral-600 dark:text-neutral-300 max-w-sm mx-auto mb-8">
+                    Het versturen is niet gelukt. Probeer het later opnieuw of stuur direct een mail naar contact@ellasdiensten.nl.
+                  </p>
+                  <button 
+                    onClick={() => setFormStatus('idle')}
+                    className="px-6 py-2 rounded-full border border-neutral-200 dark:border-white/20 text-neutral-600 dark:text-neutral-400 text-sm font-medium hover:bg-neutral-50 dark:hover:bg-white/10 transition-colors"
+                  >
+                    Opnieuw proberen
+                  </button>
+                </div>
               ) : (
                 <>
                   <div className="relative z-10 mb-8">
@@ -131,32 +170,35 @@ const Contact: React.FC = () => {
                   </div>
                   
                   <form className="space-y-6 relative z-10" onSubmit={handleSubmit}>
+                    {/* Hidden input for honeypot spam protection if supported, but FormSubmit handles this. 
+                        We keep structure simple. */}
+                    
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <label htmlFor="name" className="text-xs font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider ml-1">Naam *</label>
-                        <input required type="text" id="name" className="w-full px-4 py-3 bg-neutral-50 dark:bg-black/20 rounded-xl border border-neutral-200 dark:border-white/10 focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 outline-none transition-all text-neutral-900 dark:text-white placeholder-neutral-400 dark:placeholder-neutral-600" placeholder="Uw naam" />
+                        <input required type="text" id="name" name="name" className="w-full px-4 py-3 bg-neutral-50 dark:bg-black/20 rounded-xl border border-neutral-200 dark:border-white/10 focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 outline-none transition-all text-neutral-900 dark:text-white placeholder-neutral-400 dark:placeholder-neutral-600" placeholder="Uw naam" />
                       </div>
                       <div className="space-y-2">
                         <label htmlFor="company" className="text-xs font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider ml-1">Bedrijf</label>
-                        <input type="text" id="company" className="w-full px-4 py-3 bg-neutral-50 dark:bg-black/20 rounded-xl border border-neutral-200 dark:border-white/10 focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 outline-none transition-all text-neutral-900 dark:text-white placeholder-neutral-400 dark:placeholder-neutral-600" placeholder="Bedrijfsnaam (optioneel)" />
+                        <input type="text" id="company" name="company" className="w-full px-4 py-3 bg-neutral-50 dark:bg-black/20 rounded-xl border border-neutral-200 dark:border-white/10 focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 outline-none transition-all text-neutral-900 dark:text-white placeholder-neutral-400 dark:placeholder-neutral-600" placeholder="Bedrijfsnaam (optioneel)" />
                       </div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <label htmlFor="email" className="text-xs font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider ml-1">E-mail *</label>
-                        <input required type="email" id="email" className="w-full px-4 py-3 bg-neutral-50 dark:bg-black/20 rounded-xl border border-neutral-200 dark:border-white/10 focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 outline-none transition-all text-neutral-900 dark:text-white placeholder-neutral-400 dark:placeholder-neutral-600" placeholder="uw@email.nl" />
+                        <input required type="email" id="email" name="email" className="w-full px-4 py-3 bg-neutral-50 dark:bg-black/20 rounded-xl border border-neutral-200 dark:border-white/10 focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 outline-none transition-all text-neutral-900 dark:text-white placeholder-neutral-400 dark:placeholder-neutral-600" placeholder="uw@email.nl" />
                       </div>
                       <div className="space-y-2">
                         <label htmlFor="phone" className="text-xs font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider ml-1">Telefoon</label>
-                        <input type="tel" id="phone" className="w-full px-4 py-3 bg-neutral-50 dark:bg-black/20 rounded-xl border border-neutral-200 dark:border-white/10 focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 outline-none transition-all text-neutral-900 dark:text-white placeholder-neutral-400 dark:placeholder-neutral-600" placeholder="06 12345678" />
+                        <input type="tel" id="phone" name="phone" className="w-full px-4 py-3 bg-neutral-50 dark:bg-black/20 rounded-xl border border-neutral-200 dark:border-white/10 focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 outline-none transition-all text-neutral-900 dark:text-white placeholder-neutral-400 dark:placeholder-neutral-600" placeholder="06 12345678" />
                       </div>
                     </div>
 
                     <div className="space-y-2">
                       <label htmlFor="service" className="text-xs font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider ml-1">Dienst</label>
                       <div className="relative">
-                        <select id="service" className="w-full px-4 py-3 bg-neutral-50 dark:bg-black/20 rounded-xl border border-neutral-200 dark:border-white/10 focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 outline-none transition-all text-neutral-900 dark:text-white cursor-pointer appearance-none">
+                        <select id="service" name="service" className="w-full px-4 py-3 bg-neutral-50 dark:bg-black/20 rounded-xl border border-neutral-200 dark:border-white/10 focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 outline-none transition-all text-neutral-900 dark:text-white cursor-pointer appearance-none">
                           <option className="bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white">Data Entry & Mutaties</option>
                           <option className="bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white">Agendabeheer</option>
                           <option className="bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white">Rapportages</option>
@@ -171,7 +213,7 @@ const Contact: React.FC = () => {
 
                     <div className="space-y-2">
                       <label htmlFor="message" className="text-xs font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider ml-1">Uw bericht</label>
-                      <textarea id="message" rows={4} className="w-full px-4 py-3 bg-neutral-50 dark:bg-black/20 rounded-xl border border-neutral-200 dark:border-white/10 focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 outline-none transition-all text-neutral-900 dark:text-white placeholder-neutral-400 dark:placeholder-neutral-600 resize-none" placeholder="Waarmee kan ik u helpen?"></textarea>
+                      <textarea id="message" name="message" rows={4} className="w-full px-4 py-3 bg-neutral-50 dark:bg-black/20 rounded-xl border border-neutral-200 dark:border-white/10 focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 outline-none transition-all text-neutral-900 dark:text-white placeholder-neutral-400 dark:placeholder-neutral-600 resize-none" placeholder="Waarmee kan ik u helpen?"></textarea>
                     </div>
 
                     <button 

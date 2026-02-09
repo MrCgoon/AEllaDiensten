@@ -11,6 +11,7 @@ const Contact = lazy(() => import('./components/Contact'));
 const Footer = lazy(() => import('./components/Footer'));
 const WhatsAppButton = lazy(() => import('./components/WhatsAppButton'));
 const SocialProof = lazy(() => import('./components/SocialProof'));
+const PaymentStatus = lazy(() => import('./components/PaymentStatus'));
 
 const App: React.FC = () => {
   const [theme, setTheme] = useState<'light' | 'dark'>('dark');
@@ -71,6 +72,7 @@ const App: React.FC = () => {
           {/* Content Wrapper with Suspense for Lazy Loading */}
           <div className="space-y-px bg-transparent min-h-[50vh]">
             <Suspense fallback={<div className="py-20 flex justify-center"><div className="w-8 h-8 border-4 border-brand-500 border-t-transparent rounded-full animate-spin"></div></div>}>
+              <PaymentStatus />
               <About />
               <Services />
               <Process />

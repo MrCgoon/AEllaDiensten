@@ -6,36 +6,63 @@ interface NavbarProps {
   toggleTheme: () => void;
 }
 
+const navLinks = [
+  { name: 'Home', href: '#home' },
+  { name: 'Over mij', href: '#about' },
+  { name: 'Diensten', href: '#services' },
+  { name: 'Werkwijze', href: '#process' },
+  { name: 'Tarieven', href: '#pricing' },
+  { name: 'Contact', href: '#contact' },
+];
+
 const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
     const handleScroll = () => {
       // Trigger effect after scrolling down a bit (e.g. 50px)
       setIsScrolled(window.scrollY > 50);
+
+      // Determine active section
+      // Add offset (e.g. 100px) to determine "active" area, considering fixed navbar
+      const scrollPosition = window.scrollY + 100;
+
+      let currentSection = 'home';
+      
+      for (const link of navLinks) {
+        const sectionId = link.href.substring(1);
+        const element = document.getElementById(sectionId);
+        
+        if (element) {
+          const offsetTop = element.offsetTop;
+          const offsetHeight = element.offsetHeight;
+          const offsetBottom = offsetTop + offsetHeight;
+
+          if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
+            currentSection = sectionId;
+          }
+        }
+      }
+      
+      // If we are at the very bottom, highlight the last one (Contact)
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+         currentSection = 'contact';
+      }
+
+      setActiveSection(currentSection);
     };
+
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'Over mij', href: '#about' },
-    { name: 'Diensten', href: '#services' },
-    { name: 'Werkwijze', href: '#process' },
-    { name: 'Tarieven', href: '#pricing' },
-    { name: 'Contact', href: '#contact' },
-  ];
 
   // Dynamic styles
   const isDark = theme === 'dark';
   
   // Navbar Container Styles
-  // - Fixed position to stick to top
-  // - Transition for smooth height/color change
-  // - Conditional background (transparent vs glass)
-  // - Conditional padding (shrink effect)
   const navClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out border-b ${
     isScrolled 
       ? 'bg-white/90 dark:bg-neutral-900/90 backdrop-blur-md shadow-sm py-3 border-neutral-200 dark:border-white/10' 
@@ -43,13 +70,6 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
   }`;
 
   // Text Color Logic
-  // At top (transparent): 
-  // - Dark Mode: Text White (on dark hero)
-  // - Light Mode: Text Dark (on light hero)
-  // Scrolled (Glass):
-  // - Dark Mode: Text Light (on dark bar)
-  // - Light Mode: Text Dark (on light bar)
-  
   const textColor = isScrolled || !isDark
     ? 'text-neutral-700 dark:text-neutral-200' 
     : 'text-white';
@@ -75,15 +95,18 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
           
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8 items-center">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className={`${textColor} ${hoverColor} font-medium text-sm uppercase tracking-wide transition-colors relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-brand-600 after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left`}
-              >
-                {link.name}
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.href.substring(1);
+              return (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className={`${isActive ? 'text-brand-600 dark:text-brand-400' : textColor} ${!isActive ? hoverColor : ''} font-medium text-sm uppercase tracking-wide transition-colors relative after:content-[''] after:absolute after:w-full after:h-0.5 after:bottom-0 after:left-0 after:bg-brand-600 after:transition-transform after:duration-300 ${isActive ? 'after:scale-x-100 after:origin-bottom-left' : 'after:scale-x-0 after:origin-bottom-right hover:after:scale-x-100 hover:after:origin-bottom-left'}`}
+                >
+                  {link.name}
+                </a>
+              );
+            })}
             
             <button
               onClick={toggleTheme}
@@ -124,16 +147,19 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
       {isOpen && (
         <div className="md:hidden bg-white/95 dark:bg-neutral-900/95 backdrop-blur-xl shadow-2xl absolute w-full left-0 top-full border-t border-neutral-100 dark:border-neutral-800 animate-in slide-in-from-top-5 duration-300">
           <div className="px-4 pt-2 pb-6 space-y-2">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="block px-3 py-4 text-base font-medium text-neutral-800 dark:text-neutral-200 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-neutral-50 dark:hover:bg-neutral-800 rounded-lg transition-colors border-b border-neutral-50 dark:border-neutral-800 last:border-0"
-              >
-                {link.name}
-              </a>
-            ))}
+            {navLinks.map((link) => {
+               const isActive = activeSection === link.href.substring(1);
+               return (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className={`block px-3 py-4 text-base font-medium rounded-lg transition-colors border-b border-neutral-50 dark:border-neutral-800 last:border-0 ${isActive ? 'text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-900/20' : 'text-neutral-800 dark:text-neutral-200 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-neutral-50 dark:hover:bg-neutral-800'}`}
+                >
+                  {link.name}
+                </a>
+              );
+            })}
             <a 
               href="#contact"
               onClick={() => setIsOpen(false)}

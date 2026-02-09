@@ -139,9 +139,12 @@ const Footer: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
           
           <div className="text-center md:text-left">
-            <span className="text-xl font-heading font-extrabold text-white tracking-tight">
+            <span className="text-xl font-heading font-extrabold text-white tracking-tight block">
               Ellas<span className="text-neutral-400 dark:text-neutral-500 font-light">Diensten</span>
             </span>
+             <a href="mailto:contact@ellasdiensten.nl" className="text-sm font-medium text-neutral-500 hover:text-white transition-colors mt-1 inline-block">
+                contact@ellasdiensten.nl
+             </a>
           </div>
 
           <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 text-sm">
