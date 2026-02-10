@@ -43,13 +43,13 @@ const Hero: React.FC = () => {
           {/* Left Content */}
           <div className="text-center lg:text-left relative z-20 pt-8 lg:pt-0">
             
-            {/* Premium Glass Badge */}
+            {/* Premium Glass Badge - SEO Keyword optimized */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 rounded-full bg-white/60 dark:bg-white/5 border border-brand-100 dark:border-white/10 text-brand-600 dark:text-brand-300 text-[10px] sm:text-xs font-bold tracking-wider uppercase mb-6 sm:mb-8 shadow-sm dark:shadow-[0_0_20px_rgba(244,63,94,0.15)] backdrop-blur-md cursor-default">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
               </span>
-              Remote Secretariële Support
+              Remote Virtual Assistant & Data Specialist
             </div>
             
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-heading font-extrabold text-neutral-900 dark:text-white leading-[1.15] lg:leading-[1.1] mb-6 tracking-tight drop-shadow-sm dark:drop-shadow-lg transition-colors">
@@ -61,7 +61,7 @@ const Hero: React.FC = () => {
             </h1>
             
             <p className="text-base sm:text-lg md:text-xl text-neutral-600 dark:text-neutral-300 leading-relaxed mb-8 sm:mb-10 max-w-2xl mx-auto lg:mx-0 font-light transition-colors">
-              Ik ondersteun u met data entry, mutaties, rapportages en secretariële support – <span className="text-neutral-900 dark:text-white font-medium">nauwkeurig, gestructureerd en op tijd.</span>
+              Als uw <span className="font-medium text-neutral-800 dark:text-neutral-100">Virtual Assistant</span> ondersteun ik u met data entry, mutaties, rapportages en secretariële support – <span className="text-neutral-900 dark:text-white font-medium">nauwkeurig, gestructureerd en op tijd.</span>
             </p>
             
             {/* Action Buttons */}
