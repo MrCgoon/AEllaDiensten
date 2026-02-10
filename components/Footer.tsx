@@ -141,12 +141,19 @@ const Footer: React.FC = () => {
           <div className="text-center lg:text-left">
             <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
                 <div className="text-white">
-                     {/* Custom 'ED' Power Button Logo */}
-                     <svg viewBox="0 0 100 100" className="h-10 w-10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M62 16 A 36 36 0 1 1 38 16" stroke="currentColor" strokeWidth="8" strokeLinecap="round" />
-                        <line x1="50" y1="6" x2="50" y2="36" stroke="#e11d48" strokeWidth="9" strokeLinecap="round" />
-                        <text x="50" y="74" textAnchor="middle" fill="currentColor" fontSize="38" fontWeight="900" fontFamily="'Montserrat', sans-serif">ED</text>
-                        <text x="50" y="89" textAnchor="middle" fill="currentColor" fontSize="8.5" fontWeight="700" fontFamily="'Montserrat', sans-serif" letterSpacing="0.2">ELLA&apos;S DIENSTEN</text>
+                     {/* Custom 'ED' Power Button Logo - 1:1 Ratio, Text inside */}
+                     <svg viewBox="0 0 100 100" className="h-10 w-10 sm:h-12 sm:w-12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                          <path id="footerTextCircle" d="M 23 58 A 30 30 0 0 0 77 58" />
+                        </defs>
+                        <path d="M62 18 A 36 36 0 1 1 38 18" stroke="currentColor" strokeWidth="6" strokeLinecap="round" />
+                        <line x1="50" y1="8" x2="50" y2="34" stroke="#e11d48" strokeWidth="8" strokeLinecap="round" />
+                        <text x="50" y="60" textAnchor="middle" fill="currentColor" fontSize="32" fontWeight="900" fontFamily="'Montserrat', sans-serif">ED</text>
+                        <text fill="currentColor" fontSize="6.5" fontWeight="700" fontFamily="'Montserrat', sans-serif" letterSpacing="1.2">
+                          <textPath href="#footerTextCircle" startOffset="50%" textAnchor="middle">
+                            ELLA&apos;S DIENSTEN
+                          </textPath>
+                        </text>
                      </svg>
                 </div>
                 <span className="text-xl font-heading font-extrabold text-white tracking-tight">

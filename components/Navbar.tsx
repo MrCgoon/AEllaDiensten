@@ -93,16 +93,28 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
           <div className={`flex-shrink-0 flex items-center group cursor-pointer transition-transform duration-300 ${isScrolled ? 'scale-95' : 'scale-100'}`}>
             <a href="#home" className={`flex items-center gap-3 group-hover:opacity-90 transition-opacity`}>
               <div className={`${logoText}`}>
-                {/* Custom 'ED' Power Button Logo */}
-                <svg viewBox="0 0 100 100" className="h-8 w-8 sm:h-9 sm:w-9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                   {/* Circle with gap at top - Adjusted for better symmetry */}
-                   <path d="M62 16 A 36 36 0 1 1 38 16" stroke="currentColor" strokeWidth="8" strokeLinecap="round" />
-                   {/* Red Power Bar */}
-                   <line x1="50" y1="6" x2="50" y2="36" stroke="#e11d48" strokeWidth="9" strokeLinecap="round" />
-                   {/* Letters ED */}
-                   <text x="50" y="74" textAnchor="middle" fill="currentColor" fontSize="38" fontWeight="900" fontFamily="'Montserrat', sans-serif">ED</text>
-                   {/* Bottom Text */}
-                   <text x="50" y="89" textAnchor="middle" fill="currentColor" fontSize="8.5" fontWeight="700" fontFamily="'Montserrat', sans-serif" letterSpacing="0.2">ELLA&apos;S DIENSTEN</text>
+                {/* Custom 'ED' Power Button Logo - 1:1 Ratio, Text inside */}
+                <svg viewBox="0 0 100 100" className="h-10 w-10 sm:h-12 sm:w-12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                   <defs>
+                     {/* Circular path for text to follow */}
+                     <path id="navTextCircle" d="M 23 58 A 30 30 0 0 0 77 58" />
+                   </defs>
+                   
+                   {/* Main Outer Ring (Open at top) */}
+                   <path d="M62 18 A 36 36 0 1 1 38 18" stroke="currentColor" strokeWidth="6" strokeLinecap="round" />
+                   
+                   {/* Red Power Line */}
+                   <line x1="50" y1="8" x2="50" y2="34" stroke="#e11d48" strokeWidth="8" strokeLinecap="round" />
+                   
+                   {/* Letters ED Centered */}
+                   <text x="50" y="60" textAnchor="middle" fill="currentColor" fontSize="32" fontWeight="900" fontFamily="'Montserrat', sans-serif">ED</text>
+                   
+                   {/* Curved Text inside the circle */}
+                   <text fill="currentColor" fontSize="6.5" fontWeight="700" fontFamily="'Montserrat', sans-serif" letterSpacing="1.2">
+                     <textPath href="#navTextCircle" startOffset="50%" textAnchor="middle">
+                       ELLA&apos;S DIENSTEN
+                     </textPath>
+                   </text>
                 </svg>
               </div>
               <span className={`text-xl sm:text-2xl font-heading font-bold tracking-tight ${logoText}`}>

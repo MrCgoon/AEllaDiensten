@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import SectionLoader from './components/SectionLoader';
 
 // Lazy load non-critical components to improve initial page load speed
 const About = lazy(() => import('./components/About'));
@@ -69,23 +70,51 @@ const App: React.FC = () => {
           {/* Aesthetic Top Highlight */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-[2px] bg-gradient-to-r from-transparent via-white/50 dark:via-white/20 to-transparent"></div>
           
-          {/* Content Wrapper with Suspense for Lazy Loading */}
+          {/* Content Wrapper */}
           <div className="space-y-px bg-transparent min-h-[50vh]">
-            <Suspense fallback={<div className="py-20 flex justify-center"><div className="w-8 h-8 border-4 border-brand-500 border-t-transparent rounded-full animate-spin"></div></div>}>
+            
+            {/* Payment Status checks URL params, so load immediately inside standard Suspense */}
+            <Suspense fallback={null}>
               <PaymentStatus />
-              <About />
-              <Services />
-              <Process />
-              <Pricing />
-              <SocialProof />
-              <Contact />
             </Suspense>
+
+            {/* Lazy load sections based on scroll position */}
+            {/* Using minHeight to prevent massive layout shifts during loading */}
+            
+            <SectionLoader id="about-wrapper" minHeight="80vh">
+              <About />
+            </SectionLoader>
+
+            <SectionLoader id="services-wrapper" minHeight="80vh">
+              <Services />
+            </SectionLoader>
+
+            <SectionLoader id="process-wrapper" minHeight="50vh">
+              <Process />
+            </SectionLoader>
+
+            <SectionLoader id="pricing-wrapper" minHeight="90vh">
+              <Pricing />
+            </SectionLoader>
+
+            <SectionLoader id="social-proof-wrapper" minHeight="40vh">
+              <SocialProof />
+            </SectionLoader>
+
+            <SectionLoader id="contact-wrapper" minHeight="70vh">
+              <Contact />
+            </SectionLoader>
+            
           </div>
         </div>
       </main>
       
-      <Suspense fallback={null}>
+      {/* Footer is generally always at bottom, can be lazy loaded or just suspense */}
+      <SectionLoader id="footer-wrapper" minHeight="200px" threshold={0}>
         <Footer />
+      </SectionLoader>
+      
+      <Suspense fallback={null}>
         <WhatsAppButton />
       </Suspense>
     </div>
