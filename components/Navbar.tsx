@@ -93,7 +93,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
           <div className={`flex-shrink-0 flex items-center group cursor-pointer transition-transform duration-300 ${isScrolled ? 'scale-95' : 'scale-100'}`}>
             <a href="#home" className={`flex items-center gap-3 group-hover:opacity-90 transition-opacity`}>
               <div className={`${logoText}`}>
-                {/* Custom 'ED' Power Button Logo - Optimized SVG */}
+                {/* Custom 'ED' Power Button Logo - Optimized SVG for Readability */}
                 <svg viewBox="0 0 100 100" className="h-10 w-10 sm:h-12 sm:w-12" fill="none" xmlns="http://www.w3.org/2000/svg">
                    {/* Main Outer Ring (Open at top) */}
                    <path d="M62 18 A 36 36 0 1 1 38 18" stroke="currentColor" strokeWidth="7" strokeLinecap="round" />
@@ -101,11 +101,11 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
                    {/* Red Power Line */}
                    <line x1="50" y1="8" x2="50" y2="30" stroke="#e11d48" strokeWidth="8" strokeLinecap="round" />
                    
-                   {/* Letters ED Centered */}
-                   <text x="50" y="56" textAnchor="middle" fill="currentColor" fontSize="30" fontWeight="900" fontFamily="'Montserrat', sans-serif">ED</text>
+                   {/* Letters ED Centered - Moved slightly up (y=53) and smaller (28) to make room */}
+                   <text x="50" y="53" textAnchor="middle" fill="currentColor" fontSize="28" fontWeight="900" fontFamily="'Montserrat', sans-serif">ED</text>
                    
-                   {/* Horizontal Text inside the circle - 8.5pt, Extra Thin (300) */}
-                   <text x="50" y="78" textAnchor="middle" fill="currentColor" fontSize="8.5" fontWeight="300" fontFamily="'Montserrat', sans-serif" letterSpacing="1">ELLA&apos;S DIENSTEN</text>
+                   {/* Horizontal Text inside the circle - Readable Bold, Centered below ED */}
+                   <text x="50" y="75" textAnchor="middle" fill="currentColor" fontSize="7" fontWeight="bold" fontFamily="'Montserrat', sans-serif" letterSpacing="0.2">ELLA&apos;S DIENSTEN</text>
                 </svg>
               </div>
               <span className={`text-xl sm:text-2xl font-heading font-bold tracking-tight ${logoText}`}>
