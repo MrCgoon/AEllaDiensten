@@ -101,11 +101,11 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
                    {/* Red Power Line */}
                    <line x1="50" y1="8" x2="50" y2="30" stroke="#e11d48" strokeWidth="8" strokeLinecap="round" />
                    
-                   {/* Letters ED Centered - Moved up slightly for balance */}
+                   {/* Letters ED Centered */}
                    <text x="50" y="56" textAnchor="middle" fill="currentColor" fontSize="30" fontWeight="900" fontFamily="'Montserrat', sans-serif">ED</text>
                    
-                   {/* Horizontal Text inside the circle - Increased size for readability */}
-                   <text x="50" y="75" textAnchor="middle" fill="currentColor" fontSize="7.5" fontWeight="800" fontFamily="'Montserrat', sans-serif" letterSpacing="0.2">ELLA&apos;S DIENSTEN</text>
+                   {/* Horizontal Text inside the circle - Larger (8.5) and Thinner (300) */}
+                   <text x="50" y="78" textAnchor="middle" fill="currentColor" fontSize="8.5" fontWeight="300" fontFamily="'Montserrat', sans-serif" letterSpacing="0.5">ELLA&apos;S DIENSTEN</text>
                 </svg>
               </div>
               <span className={`text-xl sm:text-2xl font-heading font-bold tracking-tight ${logoText}`}>
