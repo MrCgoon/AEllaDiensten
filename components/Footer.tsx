@@ -139,9 +139,14 @@ const Footer: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row justify-between items-center gap-6">
           
           <div className="text-center lg:text-left">
-            <span className="text-xl font-heading font-extrabold text-white tracking-tight block">
-              Ellas<span className="text-neutral-400 dark:text-neutral-500 font-bold">Diensten</span>
-            </span>
+            <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
+                <div className="bg-white p-1.5 rounded-xl">
+                     <img src="/logo.png" alt="Ellas Diensten" className="h-10 w-10 object-contain" />
+                </div>
+                <span className="text-xl font-heading font-extrabold text-white tracking-tight">
+                    Ellas<span className="text-neutral-400 dark:text-neutral-500 font-bold">Diensten</span>
+                </span>
+            </div>
              <a href="mailto:contact@ellasdiensten.nl" className="text-sm font-medium text-neutral-500 hover:text-white transition-colors mt-1 inline-block">
                 contact@ellasdiensten.nl
              </a>
