@@ -22,32 +22,23 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Trigger effect after scrolling down a bit (e.g. 50px)
       setIsScrolled(window.scrollY > 50);
 
-      // Add offset (e.g. 100px) to determine "active" area, considering fixed navbar
-      // This offset ensures the active state changes slightly before the section hits the top
       const scrollOffset = 150;
       const scrollPosition = window.scrollY + scrollOffset;
 
       let currentSection = '';
-
-      // Check if we are at the bottom of the page
       const scrolledToBottom = 
         window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50;
 
       if (scrolledToBottom) {
         currentSection = 'contact';
       } else {
-        // Iterate through sections to find the current one
         for (const link of navLinks) {
           const sectionId = link.href.substring(1);
           const element = document.getElementById(sectionId);
           
           if (element) {
-            // Using getBoundingClientRect() provides the position relative to the viewport.
-            // Adding window.scrollY gives us the absolute position in the document,
-            // which works correctly even if the element is inside a relative container.
             const rect = element.getBoundingClientRect();
             const elementTop = rect.top + window.scrollY;
             const elementBottom = elementTop + rect.height;
@@ -58,7 +49,6 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
           }
         }
         
-        // Fallback for top of page
         if (window.scrollY < 100 && currentSection !== 'home') {
           currentSection = 'home';
         }
@@ -70,23 +60,19 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
     };
 
     window.addEventListener('scroll', handleScroll);
-    // Call once on mount to set initial active state
     handleScroll();
     
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Dynamic styles
   const isDark = theme === 'dark';
   
-  // Navbar Container Styles
   const navClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out border-b ${
     isScrolled 
       ? 'bg-white/90 dark:bg-neutral-900/90 backdrop-blur-md shadow-sm py-3 border-neutral-200 dark:border-white/10' 
       : 'bg-transparent py-6 border-transparent'
   }`;
 
-  // Text Color Logic
   const textColor = isScrolled || !isDark
     ? 'text-neutral-700 dark:text-neutral-200' 
     : 'text-white';
@@ -103,23 +89,20 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           
-          {/* Logo with scale transition for shrink effect */}
+          {/* Logo Container */}
           <div className={`flex-shrink-0 flex items-center group cursor-pointer transition-transform duration-300 ${isScrolled ? 'scale-95' : 'scale-100'}`}>
             <a href="#home" className={`flex items-center gap-3 group-hover:opacity-90 transition-opacity`}>
-              <div className="bg-white p-1.5 rounded-lg shadow-sm border border-neutral-100">
-                {/* Custom SVG Logo: Document with Checkmark */}
-                <svg 
-                  className="h-7 w-7 sm:h-8 sm:w-8 text-brand-600" 
-                  viewBox="0 0 24 24" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  strokeWidth="2.5" 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round"
-                >
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                  <polyline points="14 2 14 8 20 8" />
-                  <path d="M9 15l2 2 4-4" />
+              <div className="bg-white p-1 rounded-lg shadow-sm border border-neutral-100">
+                {/* Custom 'ED' Power Button Logo */}
+                <svg viewBox="0 0 100 100" className="h-8 w-8 sm:h-9 sm:w-9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                   {/* Circle with gap at top */}
+                   <path d="M58 12 A 38 38 0 1 1 42 12" stroke="#171717" strokeWidth="8" strokeLinecap="round" />
+                   {/* Red Power Bar */}
+                   <line x1="50" y1="8" x2="50" y2="35" stroke="#e11d48" strokeWidth="10" strokeLinecap="round" />
+                   {/* Letters ED */}
+                   <text x="50" y="72" textAnchor="middle" fill="#171717" fontSize="42" fontWeight="bold" fontFamily="sans-serif">ED</text>
+                   {/* Bottom Text */}
+                   <text x="50" y="88" textAnchor="middle" fill="#171717" fontSize="9" fontWeight="bold" fontFamily="serif" letterSpacing="0.5">ELLA&apos;S DIENSTEN</text>
                 </svg>
               </div>
               <span className={`text-xl sm:text-2xl font-heading font-bold tracking-tight ${logoText}`}>
