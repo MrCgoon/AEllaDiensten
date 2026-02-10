@@ -141,12 +141,12 @@ const Footer: React.FC = () => {
           <div className="text-center lg:text-left">
             <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
                 <div className="text-white">
-                     {/* Custom 'ED' Power Button Logo - 1:1 Ratio, Text Horizontal */}
+                     {/* Custom 'ED' Power Button Logo - Optimized SVG */}
                      <svg viewBox="0 0 100 100" className="h-10 w-10 sm:h-12 sm:w-12" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M62 18 A 36 36 0 1 1 38 18" stroke="currentColor" strokeWidth="7" strokeLinecap="round" />
                         <line x1="50" y1="8" x2="50" y2="30" stroke="#e11d48" strokeWidth="8" strokeLinecap="round" />
                         <text x="50" y="56" textAnchor="middle" fill="currentColor" fontSize="30" fontWeight="900" fontFamily="'Montserrat', sans-serif">ED</text>
-                        <text x="50" y="78" textAnchor="middle" fill="currentColor" fontSize="8.5" fontWeight="300" fontFamily="'Montserrat', sans-serif" letterSpacing="0.5">ELLA&apos;S DIENSTEN</text>
+                        <text x="50" y="78" textAnchor="middle" fill="currentColor" fontSize="8.5" fontWeight="300" fontFamily="'Montserrat', sans-serif" letterSpacing="1">ELLA&apos;S DIENSTEN</text>
                      </svg>
                 </div>
                 <span className="text-xl font-heading font-extrabold text-white tracking-tight">
