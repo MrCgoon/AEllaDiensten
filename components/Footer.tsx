@@ -166,7 +166,7 @@ const Footer: React.FC = () => {
                           fill="currentColor" 
                           fontFamily="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
                           fontWeight="700" 
-                          fontSize="170"
+                          fontSize="165"
                         >ED</text>
                         <text 
                           x="50%" 
@@ -175,7 +175,7 @@ const Footer: React.FC = () => {
                           fill="currentColor" 
                           fontFamily="Georgia, 'Times New Roman', Times, serif" 
                           fontWeight="700" 
-                          fontSize="23"
+                          fontSize="20"
                         >ELLA&apos;S DIENSTEN</text>
                      </svg>
                 </div>

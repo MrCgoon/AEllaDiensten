@@ -44,11 +44,11 @@ const Logo: React.FC<LogoProps> = ({ className = "", size = "100%" }) => {
         fill="currentColor" 
         fontFamily="Montserrat, system-ui, sans-serif" 
         fontWeight="800" 
-        fontSize="170"
+        fontSize="165"
         letterSpacing="-0.02em"
       >ED</text>
       
-      {/* Brand Subtitle - Ella's Diensten 23pt */}
+      {/* Brand Subtitle - Ella's Diensten 20pt */}
       <text 
         x="50%" 
         y="340" 
@@ -56,7 +56,7 @@ const Logo: React.FC<LogoProps> = ({ className = "", size = "100%" }) => {
         fill="currentColor" 
         fontFamily="Montserrat, system-ui, sans-serif" 
         fontWeight="700" 
-        fontSize="23"
+        fontSize="20"
         letterSpacing="0.25em"
       >ELLA'S DIENSTEN</text>
     </svg>
