@@ -108,7 +108,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
             <a href="#home" className={`flex items-center gap-3 group-hover:opacity-90 transition-opacity`}>
               <div className="bg-white p-1 rounded-lg shadow-sm border border-neutral-100">
                 <img 
-                  src="/logo.png" 
+                  src="/logo.jpg" 
                   alt="Ellas Diensten Logo" 
                   width={36}
                   height={36}

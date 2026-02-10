@@ -142,7 +142,7 @@ const Footer: React.FC = () => {
             <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
                 <div className="bg-white p-1.5 rounded-xl">
                      <img 
-                       src="/logo.png" 
+                       src="/logo.jpg" 
                        alt="Ellas Diensten" 
                        width={40}
                        height={40}
