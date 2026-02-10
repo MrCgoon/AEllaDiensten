@@ -51,7 +51,7 @@ const App: React.FC = () => {
 
       {/* Dark Mode Global Fixed Background (Nano Banana Aesthetic) - Responsive Images */}
       <div 
-        className="fixed inset-0 z-[-1] bg-[url('https://images.unsplash.com/photo-1614850523060-8da1d56ae167?q=60&w=640&auto=format&fit=crop')] md:bg-[url('https://images.unsplash.com/photo-1614850523060-8da1d56ae167?q=75&w=1920&auto=format&fit=crop')] bg-cover bg-center bg-no-repeat bg-fixed hidden dark:block transition-opacity duration-500"
+        className="fixed inset-0 z-[-1] bg-[url('https://images.unsplash.com/photo-1614850523060-8da1d56ae167?q=50&w=640&auto=format&fit=crop')] md:bg-[url('https://images.unsplash.com/photo-1614850523060-8da1d56ae167?q=60&w=1920&auto=format&fit=crop')] bg-cover bg-center bg-no-repeat bg-fixed hidden dark:block transition-opacity duration-500"
         aria-hidden="true"
       ></div>
       

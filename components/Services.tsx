@@ -186,7 +186,7 @@ const Services: React.FC = () => {
           <div>
             <div className="flex items-center gap-4 mb-6 md:mb-8 pb-6 border-b border-neutral-100 dark:border-white/5">
                 <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-brand-50 dark:bg-brand-500/10 flex items-center justify-center text-brand-600 dark:text-brand-400 shadow-sm border border-brand-100 dark:border-brand-500/20 flex-shrink-0">
-                    {React.cloneElement(selectedService.icon as React.ReactElement, { className: "w-7 h-7 md:w-8 md:h-8" })}
+                    {React.cloneElement(selectedService.icon as React.ReactElement<any>, { className: "w-7 h-7 md:w-8 md:h-8" })}
                 </div>
                 <div>
                     <h4 className="text-base md:text-lg font-bold text-neutral-900 dark:text-white">Service details</h4>

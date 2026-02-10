@@ -111,7 +111,7 @@ const Hero: React.FC = () => {
                 {/* 4K Abstract Visual - Optimized Size and Quality */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-cover bg-no-repeat bg-center opacity-80 dark:opacity-60 pointer-events-none mix-blend-multiply dark:mix-blend-lighten transition-all duration-500"
                      style={{ 
-                       backgroundImage: 'url("https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=60&w=1200&auto=format&fit=crop")',
+                       backgroundImage: 'url("https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=50&w=1200&auto=format&fit=crop")',
                        maskImage: 'radial-gradient(circle, black 30%, transparent 70%)',
                        WebkitMaskImage: 'radial-gradient(circle, black 30%, transparent 70%)'
                      }}>

@@ -1,14 +1,120 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Your Title Here</title>
-    <link rel="icon" type="image/jpeg" href="/logo.jpg" />
-    <link rel="apple-touch-icon" href="/logo.jpg" />
+<html lang="nl" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#e11d48" />
+    
+    <!-- Primary Meta Tags -->
+    <title>Ellas Diensten | Virtual Assistant, Data Entry & Administratie</title>
+    <meta name="title" content="Ellas Diensten | Virtual Assistant, Data Entry & Administratie" />
+    <meta name="description" content="Besteed uw administratie uit aan Ellas Diensten. Professionele ondersteuning bij data entry, mutaties, e-mailbeheer en secretariële taken. Accuraat, flexibel en betrouwbaar. Gevestigd in Eindhoven, remote beschikbaar." />
+    <meta name="keywords" content="Ellas Diensten, Virtual Assistant, Data Entry, Mutaties, Administratie, Secretaresse, Eindhoven, Remote Support, Office Management, CRM beheer, Excel rapportages, Agendabeheer, ZZP ondersteuning" />
+    <meta name="author" content="Ellas Diensten" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ellasdiensten.nl/" />
+    <meta property="og:title" content="Ellas Diensten | Virtual Assistant, Data Entry & Administratie" />
+    <meta property="og:description" content="Professionele administratieve ondersteuning. Gespecialiseerd in data entry, mutaties, rapportages en secretariële support. Accuraat en resultaatgericht." />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=75&w=1200&auto=format&fit=crop" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://ellasdiensten.nl/" />
+    <meta property="twitter:title" content="Ellas Diensten | Virtual Assistant, Data Entry & Administratie" />
+    <meta property="twitter:description" content="Professionele administratieve ondersteuning. Gespecialiseerd in data entry, mutaties, rapportages en secretariële support." />
+    <meta property="twitter:image" content="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=75&w=1200&auto=format&fit=crop" />
+    
+    <!-- PWA & Mobile -->
+    <link rel="manifest" href="/manifest.json" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Open Sans', 'sans-serif'],
+              heading: ['Montserrat', 'sans-serif'],
+            },
+            colors: {
+              brand: {
+                50: '#fff1f2',
+                100: '#ffe4e6',
+                500: '#f43f5e', // Rose-Red
+                600: '#e11d48',
+                700: '#be123c',
+                900: '#881337',
+              }
+            },
+            animation: {
+              'float': 'float 6s ease-in-out infinite',
+              'float-delayed': 'float 6s ease-in-out 3s infinite',
+              'float-subtle': 'float-subtle 8s ease-in-out infinite',
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'shine': 'shine 3s linear infinite',
+              'aurora': 'aurora 10s ease infinite',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-20px)' },
+              },
+              'float-subtle': {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-8px)' },
+              },
+              shine: {
+                '0%': { backgroundPosition: '200% center' },
+                '100%': { backgroundPosition: '-200% center' },
+              },
+              aurora: {
+                '0%, 100%': { transform: 'translate(0, 0) scale(1)' },
+                '50%': { transform: 'translate(20px, -20px) scale(1.1)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      .glass {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+      }
+      .glass-dark {
+        background: rgba(10, 10, 10, 0.6);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .text-gradient-shine {
+        background: linear-gradient(to right, #f43f5e 20%, #fda4af 40%, #f43f5e 60%, #f43f5e 80%);
+        background-size: 200% auto;
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/"
+  }
+}
+</script>
 </head>
-<body>
-    <h1>Welcome to AEllaDiensten</h1>
-    <p>This is the main content of your page.</p>
-</body>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
 </html>

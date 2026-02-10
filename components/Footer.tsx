@@ -141,7 +141,14 @@ const Footer: React.FC = () => {
           <div className="text-center lg:text-left">
             <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
                 <div className="bg-white p-1.5 rounded-xl">
-                     <img src="/logo.png" alt="Ellas Diensten" className="h-10 w-10 object-contain" />
+                     <img 
+                       src="/logo.png" 
+                       alt="Ellas Diensten" 
+                       width={40}
+                       height={40}
+                       loading="lazy"
+                       className="h-10 w-10 object-contain" 
+                     />
                 </div>
                 <span className="text-xl font-heading font-extrabold text-white tracking-tight">
                     Ellas<span className="text-neutral-400 dark:text-neutral-500 font-bold">Diensten</span>

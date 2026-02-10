@@ -107,7 +107,13 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
           <div className={`flex-shrink-0 flex items-center group cursor-pointer transition-transform duration-300 ${isScrolled ? 'scale-95' : 'scale-100'}`}>
             <a href="#home" className={`flex items-center gap-3 group-hover:opacity-90 transition-opacity`}>
               <div className="bg-white p-1 rounded-lg shadow-sm border border-neutral-100">
-                <img src="/logo.png" alt="Ellas Diensten Logo" className="h-8 w-8 sm:h-9 sm:w-9 object-contain" />
+                <img 
+                  src="/logo.png" 
+                  alt="Ellas Diensten Logo" 
+                  width={36}
+                  height={36}
+                  className="h-8 w-8 sm:h-9 sm:w-9 object-contain" 
+                />
               </div>
               <span className={`text-xl sm:text-2xl font-heading font-bold tracking-tight ${logoText}`}>
                 Ellas<span className={logoAccent}>Diensten</span>
