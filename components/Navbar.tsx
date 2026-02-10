@@ -25,37 +25,54 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
       // Trigger effect after scrolling down a bit (e.g. 50px)
       setIsScrolled(window.scrollY > 50);
 
-      // Determine active section
       // Add offset (e.g. 100px) to determine "active" area, considering fixed navbar
-      const scrollPosition = window.scrollY + 100;
+      // This offset ensures the active state changes slightly before the section hits the top
+      const scrollOffset = 150;
+      const scrollPosition = window.scrollY + scrollOffset;
 
-      let currentSection = 'home';
-      
-      for (const link of navLinks) {
-        const sectionId = link.href.substring(1);
-        const element = document.getElementById(sectionId);
-        
-        if (element) {
-          const offsetTop = element.offsetTop;
-          const offsetHeight = element.offsetHeight;
-          const offsetBottom = offsetTop + offsetHeight;
+      let currentSection = '';
 
-          if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
-            currentSection = sectionId;
+      // Check if we are at the bottom of the page
+      const scrolledToBottom = 
+        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50;
+
+      if (scrolledToBottom) {
+        currentSection = 'contact';
+      } else {
+        // Iterate through sections to find the current one
+        for (const link of navLinks) {
+          const sectionId = link.href.substring(1);
+          const element = document.getElementById(sectionId);
+          
+          if (element) {
+            // Using getBoundingClientRect() provides the position relative to the viewport.
+            // Adding window.scrollY gives us the absolute position in the document,
+            // which works correctly even if the element is inside a relative container.
+            const rect = element.getBoundingClientRect();
+            const elementTop = rect.top + window.scrollY;
+            const elementBottom = elementTop + rect.height;
+
+            if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
+              currentSection = sectionId;
+            }
           }
         }
-      }
-      
-      // If we are at the very bottom, highlight the last one (Contact)
-      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
-         currentSection = 'contact';
+        
+        // Fallback for top of page
+        if (window.scrollY < 100 && currentSection !== 'home') {
+          currentSection = 'home';
+        }
       }
 
-      setActiveSection(currentSection);
+      if (currentSection) {
+        setActiveSection(currentSection);
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial check
+    // Call once on mount to set initial active state
+    handleScroll();
+    
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -101,7 +118,14 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
                 <a
                   key={link.name}
                   href={link.href}
-                  className={`${isActive ? 'text-brand-600 dark:text-brand-400' : textColor} ${!isActive ? hoverColor : ''} font-medium text-sm uppercase tracking-wide transition-colors relative after:content-[''] after:absolute after:w-full after:h-0.5 after:bottom-0 after:left-0 after:bg-brand-600 after:transition-transform after:duration-300 ${isActive ? 'after:scale-x-100 after:origin-bottom-left' : 'after:scale-x-0 after:origin-bottom-right hover:after:scale-x-100 hover:after:origin-bottom-left'}`}
+                  className={`
+                    ${isActive ? 'text-brand-600 dark:text-brand-400 font-bold' : `${textColor} font-medium`} 
+                    ${!isActive ? hoverColor : ''} 
+                    text-sm uppercase tracking-wide transition-all duration-300 relative 
+                    after:content-[''] after:absolute after:w-full after:h-0.5 after:bottom-0 after:left-0 
+                    after:bg-brand-600 dark:after:bg-brand-400 after:transition-transform after:duration-300 
+                    ${isActive ? 'after:scale-x-100 after:origin-bottom-left' : 'after:scale-x-0 after:origin-bottom-right hover:after:scale-x-100 hover:after:origin-bottom-left'}
+                  `}
                 >
                   {link.name}
                 </a>
