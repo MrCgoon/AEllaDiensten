@@ -41,7 +41,7 @@ const Footer: React.FC = () => {
 
             <section>
               <h4 className="text-lg font-bold text-neutral-900 dark:text-white mb-2">6. Wijzigingen en meerwerk</h4>
-              <p>Wijzigingen in de opdracht kunnen gevolgen hebben voor planning en kosten. Meerwerk wordt uitgevoerd na overleg en apart in rekening gebracht tegen het afgesproken tarief.</p>
+              <p>Wijzigingen in de opdracht kunnen gevolgen hebben voor planning en kosten. Meerwerk wordt uitgevoerd after overleg en apart in rekening gebracht tegen het afgesproken tarief.</p>
             </section>
 
             <section>
@@ -140,13 +140,43 @@ const Footer: React.FC = () => {
           
           <div className="text-center lg:text-left">
             <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
-                <div className="text-white">
-                     {/* Custom 'ED' Power Button Logo - Optimized SVG */}
-                     <svg viewBox="0 0 100 100" className="h-10 w-10 sm:h-12 sm:w-12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M62 18 A 36 36 0 1 1 38 18" stroke="currentColor" strokeWidth="7" strokeLinecap="round" />
-                        <line x1="50" y1="8" x2="50" y2="30" stroke="#e11d48" strokeWidth="8" strokeLinecap="round" />
-                        <text x="50" y="53" textAnchor="middle" fill="currentColor" fontSize="28" fontWeight="900" fontFamily="'Montserrat', sans-serif">ED</text>
-                        <text x="50" y="75" textAnchor="middle" fill="currentColor" fontSize="7" fontWeight="bold" fontFamily="'Montserrat', sans-serif" letterSpacing="0.2">ELLA&apos;S DIENSTEN</text>
+                <div className="flex items-center justify-center text-white">
+                     {/* Theme Responsive High-Fidelity Logo */}
+                     <svg width="48" height="48" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path 
+                          d="M 368 82 A 205 205 0 1 1 132 82" 
+                          stroke="currentColor" 
+                          strokeWidth="32" 
+                          strokeLinecap="round" 
+                          fill="none"
+                        />
+                        <rect 
+                          x="234" 
+                          y="20" 
+                          width="32" 
+                          height="115" 
+                          rx="16" 
+                          fill="#E00000" 
+                        />
+                        <text 
+                          x="50%" 
+                          y="255" 
+                          textAnchor="middle" 
+                          dominantBaseline="middle" 
+                          fill="currentColor" 
+                          fontFamily="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
+                          fontWeight="700" 
+                          fontSize="170"
+                        >ED</text>
+                        <text 
+                          x="50%" 
+                          y="340" 
+                          textAnchor="middle" 
+                          fill="currentColor" 
+                          fontFamily="Georgia, 'Times New Roman', Times, serif" 
+                          fontWeight="700" 
+                          fontSize="23"
+                        >ELLA&apos;S DIENSTEN</text>
                      </svg>
                 </div>
                 <span className="text-xl font-heading font-extrabold text-white tracking-tight">

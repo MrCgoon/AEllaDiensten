@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Sun, Moon } from 'lucide-react';
+import Logo from './Logo';
 
 interface NavbarProps {
   theme: 'light' | 'dark';
@@ -23,176 +24,100 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+      const scrollPosition = window.scrollY + 150;
 
-      const scrollOffset = 150;
-      const scrollPosition = window.scrollY + scrollOffset;
-
-      let currentSection = '';
-      const scrolledToBottom = 
-        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50;
-
-      if (scrolledToBottom) {
-        currentSection = 'contact';
-      } else {
-        for (const link of navLinks) {
-          const sectionId = link.href.substring(1);
-          const element = document.getElementById(sectionId);
-          
-          if (element) {
-            const rect = element.getBoundingClientRect();
-            const elementTop = rect.top + window.scrollY;
-            const elementBottom = elementTop + rect.height;
-
-            if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
-              currentSection = sectionId;
-            }
+      let currentSection = 'home';
+      for (const link of navLinks) {
+        const sectionId = link.href.substring(1);
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const top = element.offsetTop;
+          const height = element.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            currentSection = sectionId;
           }
         }
-        
-        if (window.scrollY < 100 && currentSection !== 'home') {
-          currentSection = 'home';
-        }
       }
-
-      if (currentSection) {
-        setActiveSection(currentSection);
-      }
+      setActiveSection(currentSection);
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll();
-    
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const isDark = theme === 'dark';
   
-  const navClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out border-b ${
-    isScrolled 
-      ? 'bg-white/90 dark:bg-neutral-900/90 backdrop-blur-md shadow-sm py-3 border-neutral-200 dark:border-white/10' 
-      : 'bg-transparent py-6 border-transparent'
-  }`;
-
-  const textColor = isScrolled || !isDark
-    ? 'text-neutral-700 dark:text-neutral-200' 
-    : 'text-white';
-
-  const hoverColor = 'hover:text-brand-600 dark:hover:text-brand-400';
-  
-  const logoText = isScrolled || !isDark ? 'text-neutral-900 dark:text-white' : 'text-white';
-  const logoAccent = 'text-brand-600';
-
-  const buttonStyles = 'bg-brand-600 text-white hover:bg-brand-500 shadow-lg shadow-brand-500/30';
-
   return (
-    <nav className={navClasses}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
+      isScrolled 
+        ? 'bg-white/90 dark:bg-neutral-900/90 backdrop-blur-md shadow-sm py-2 sm:py-3 border-neutral-200 dark:border-white/10' 
+        : 'bg-transparent py-4 sm:py-6 border-transparent'
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           
-          {/* Logo Container */}
-          <div className={`flex-shrink-0 flex items-center group cursor-pointer transition-transform duration-300 ${isScrolled ? 'scale-95' : 'scale-100'}`}>
-            <a href="#home" className={`flex items-center gap-3 group-hover:opacity-90 transition-opacity`}>
-              <div className={`${logoText}`}>
-                {/* Custom 'ED' Power Button Logo - Optimized SVG for Readability */}
-                <svg viewBox="0 0 100 100" className="h-10 w-10 sm:h-12 sm:w-12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                   {/* Main Outer Ring (Open at top) */}
-                   <path d="M62 18 A 36 36 0 1 1 38 18" stroke="currentColor" strokeWidth="7" strokeLinecap="round" />
-                   
-                   {/* Red Power Line */}
-                   <line x1="50" y1="8" x2="50" y2="30" stroke="#e11d48" strokeWidth="8" strokeLinecap="round" />
-                   
-                   {/* Letters ED Centered - Moved slightly up (y=53) and smaller (28) to make room */}
-                   <text x="50" y="53" textAnchor="middle" fill="currentColor" fontSize="28" fontWeight="900" fontFamily="'Montserrat', sans-serif">ED</text>
-                   
-                   {/* Horizontal Text inside the circle - Readable Bold, Centered below ED */}
-                   <text x="50" y="75" textAnchor="middle" fill="currentColor" fontSize="7" fontWeight="bold" fontFamily="'Montserrat', sans-serif" letterSpacing="0.2">ELLA&apos;S DIENSTEN</text>
-                </svg>
-              </div>
-              <span className={`text-xl sm:text-2xl font-heading font-bold tracking-tight ${logoText}`}>
-                Ellas<span className={logoAccent}>Diensten</span>
-              </span>
-            </a>
-          </div>
+          {/* Logo Area */}
+          <a href="#home" className="flex items-center gap-2 group shrink-0">
+            <div className={`transition-colors duration-300 ${isScrolled || !isDark ? 'text-neutral-900' : 'text-white'}`}>
+              <Logo size={36} className="sm:w-[44px] sm:h-[44px]" />
+            </div>
+            <span className={`text-lg sm:text-2xl font-heading font-bold tracking-tight ${isScrolled || !isDark ? 'text-neutral-900 dark:text-white' : 'text-white'}`}>
+              Ellas<span className="text-brand-600">Diensten</span>
+            </span>
+          </a>
           
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-8 items-center">
-            {navLinks.map((link) => {
-              const isActive = activeSection === link.href.substring(1);
-              return (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className={`
-                    ${isActive ? 'text-brand-600 dark:text-brand-400 font-bold' : `${textColor} font-medium`} 
-                    ${!isActive ? hoverColor : ''} 
-                    text-sm uppercase tracking-wide transition-all duration-300 relative 
-                    after:content-[''] after:absolute after:w-full after:h-0.5 after:bottom-0 after:left-0 
-                    after:bg-brand-600 dark:after:bg-brand-400 after:transition-transform after:duration-300 
-                    ${isActive ? 'after:scale-x-100 after:origin-bottom-left' : 'after:scale-x-0 after:origin-bottom-right hover:after:scale-x-100 hover:after:origin-bottom-left'}
-                  `}
-                >
-                  {link.name}
-                </a>
-              );
-            })}
+          <div className="hidden md:flex space-x-6 lg:space-x-8 items-center">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className={`text-sm uppercase tracking-wide font-medium transition-colors ${
+                  activeSection === link.href.substring(1)
+                    ? 'text-brand-600'
+                    : (isScrolled || !isDark ? 'text-neutral-600 hover:text-brand-600 dark:text-neutral-300' : 'text-white/80 hover:text-white')
+                }`}
+              >
+                {link.name}
+              </a>
+            ))}
             
-            <button
-              onClick={toggleTheme}
-              className={`p-2 rounded-full transition-colors ${isScrolled || !isDark ? 'text-neutral-600 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800' : 'text-white/80 hover:bg-white/10'}`}
-              aria-label="Toggle theme"
-            >
-              {isDark ? <Sun size={20} /> : <Moon size={20} />}
+            <button onClick={toggleTheme} className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
+              {isDark ? <Sun size={18} className="text-white" /> : <Moon size={18} className="text-neutral-600" />}
             </button>
 
-            <a 
-              href="#contact" 
-              className={`ml-4 px-5 rounded-full font-medium text-sm transition-all flex items-center justify-center ${buttonStyles} ${isScrolled ? 'py-2' : 'py-2.5'}`}
-            >
-              Offerte aanvragen
+            <a href="#contact" className="px-5 py-2 bg-brand-600 text-white rounded-full font-bold text-sm hover:bg-brand-500 transition-all shadow-lg shadow-brand-500/20">
+              Offerte
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center gap-4">
-             <button
-              onClick={toggleTheme}
-              className={`p-2 rounded-full transition-colors ${isScrolled || !isDark ? 'text-neutral-600 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800' : 'text-white/80 hover:bg-white/10'}`}
-            >
+          {/* Mobile UI */}
+          <div className="md:hidden flex items-center gap-2 sm:gap-4">
+            <button onClick={toggleTheme} className="p-2 text-neutral-600 dark:text-white/80">
               {isDark ? <Sun size={20} /> : <Moon size={20} />}
             </button>
-            
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className={`${isScrolled || !isDark ? 'text-neutral-800 dark:text-white' : 'text-white'} hover:text-brand-600 focus:outline-none p-2 transition-colors`}
-            >
-              {isOpen ? <X size={28} /> : <Menu size={28} />}
+            <button onClick={() => setIsOpen(!isOpen)} className="p-2 text-neutral-800 dark:text-white">
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile Dropdown */}
       {isOpen && (
-        <div className="md:hidden bg-white/95 dark:bg-neutral-900/95 backdrop-blur-xl shadow-2xl absolute w-full left-0 top-full border-t border-neutral-100 dark:border-neutral-800 animate-in slide-in-from-top-5 duration-300">
-          <div className="px-4 pt-2 pb-6 space-y-2">
-            {navLinks.map((link) => {
-               const isActive = activeSection === link.href.substring(1);
-               return (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className={`block px-3 py-4 text-base font-medium rounded-lg transition-colors border-b border-neutral-50 dark:border-neutral-800 last:border-0 ${isActive ? 'text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-900/20' : 'text-neutral-800 dark:text-neutral-200 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-neutral-50 dark:hover:bg-neutral-800'}`}
-                >
-                  {link.name}
-                </a>
-              );
-            })}
-            <a 
-              href="#contact"
-              onClick={() => setIsOpen(false)}
-              className="block mt-4 px-3 py-4 text-center text-base font-bold text-white bg-brand-600 rounded-lg shadow-md hover:bg-brand-500"
-            >
+        <div className="md:hidden bg-white/95 dark:bg-neutral-900/95 backdrop-blur-xl absolute w-full border-t border-neutral-100 dark:border-neutral-800 shadow-2xl">
+          <div className="px-4 py-6 space-y-1">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className="block px-3 py-4 text-base font-bold text-neutral-800 dark:text-white hover:text-brand-600 border-b border-neutral-50 dark:border-neutral-800 last:border-0"
+              >
+                {link.name}
+              </a>
+            ))}
+            <a href="#contact" onClick={() => setIsOpen(false)} className="block mt-4 w-full py-4 text-center bg-brand-600 text-white rounded-xl font-bold">
               Offerte aanvragen
             </a>
           </div>

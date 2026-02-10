@@ -17,7 +17,7 @@ const About: React.FC = () => {
                         https://images.unsplash.com/photo-1573164713988-8665fc963095?q=65&w=800&auto=format&fit=crop 800w,
                         https://images.unsplash.com/photo-1573164713988-8665fc963095?q=65&w=1200&auto=format&fit=crop 1200w"
                 sizes="(min-width: 1024px) 450px, (min-width: 768px) 50vw, 100vw"
-                alt="Ella - Virtual Assistant & Data Entry Specialist" 
+                alt="Ella - Modern Professional" 
                 loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-100 dark:opacity-90 dark:hover:opacity-100"
               />
@@ -26,7 +26,7 @@ const About: React.FC = () => {
                 <div className="px-3 py-1 bg-brand-600/90 backdrop-blur-md text-xs font-bold uppercase tracking-widest inline-block rounded-md mb-2 shadow-lg">
                   Ella
                 </div>
-                <p className="text-xl font-heading font-bold drop-shadow-md">Uw remote Virtual Assistant</p>
+                <p className="text-xl font-heading font-bold drop-shadow-md">Uw remote secretaresse</p>
               </div>
             </div>
             {/* Decoration */}
@@ -41,13 +41,13 @@ const About: React.FC = () => {
             
             <div className="prose prose-lg text-neutral-600 dark:text-neutral-300 mb-10 leading-relaxed font-light transition-colors">
               <p className="mb-6">
-                Aangenaam, ik ben Ella. Als ervaren <strong>Virtual Assistant</strong> en <strong>Data Entry Specialist</strong> weet ik als geen ander hoe belangrijk een strakke organisatie is voor een groeiend bedrijf. 
+                Aangenaam, ik ben Ella. Met jarenlange ervaring in administratieve en secretariële functies, weet ik als geen ander hoe belangrijk een strakke organisatie is voor een groeiend bedrijf. 
               </p>
               <p className="mb-6">
-                Ik ben iemand die rust vindt in structuur, overzicht en het halen van deadlines. Hoewel ik als freelancer op afstand werk (vanuit Eindhoven door heel Nederland), voel ik me snel onderdeel van uw team. 
+                Ik ben iemand die rust vindt in structuur, overzicht en het halen van deadlines. Hoewel ik als virtual assistant op afstand werk, voel ik me snel onderdeel van uw team. 
               </p>
               <p className="mb-8">
-                U kunt rekenen op een echte aanpakker. Accuraat, direct in de communicatie en met een gezonde dosis Brabantse nuchterheid. Ik zorg dat uw administratieve zaken geregeld worden.
+                U kunt rekenen op een echte aanpakker. Accuraat, direct in de communicatie en met een gezonde dosis Brabantse nuchterheid. Ik zorg dat het geregeld wordt.
               </p>
 
               <div className="bg-neutral-50 dark:bg-white/5 p-8 rounded-2xl border border-neutral-200 dark:border-white/10">
@@ -56,8 +56,8 @@ const About: React.FC = () => {
                   Mijn dienstverlening is geschikt voor organisaties die behoefte hebben aan betrouwbare, flexibele ondersteuning op administratief en secretarieel vlak, zoals:
                 </p>
                 <ul className="list-none space-y-2 mb-4 text-base">
-                  <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-brand-500"></div> MKB en ondernemers</li>
-                  <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-brand-500"></div> Zorginstellingen (EPD mutaties)</li>
+                  <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-brand-500"></div> MKB en grotere organisaties</li>
+                  <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-brand-500"></div> Zorginstellingen</li>
                   <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-brand-500"></div> Onderwijsorganisaties</li>
                   <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-brand-500"></div> Overheid en semi-overheid</li>
                   <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-brand-500"></div> Zakelijke dienstverleners</li>
