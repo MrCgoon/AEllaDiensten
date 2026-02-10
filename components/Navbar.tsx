@@ -106,14 +106,21 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
           {/* Logo with scale transition for shrink effect */}
           <div className={`flex-shrink-0 flex items-center group cursor-pointer transition-transform duration-300 ${isScrolled ? 'scale-95' : 'scale-100'}`}>
             <a href="#home" className={`flex items-center gap-3 group-hover:opacity-90 transition-opacity`}>
-              <div className="bg-white p-1 rounded-lg shadow-sm border border-neutral-100">
-                <img 
-                  src="/logo.jpg" 
-                  alt="Ellas Diensten Logo" 
-                  width={36}
-                  height={36}
-                  className="h-8 w-8 sm:h-9 sm:w-9 object-contain" 
-                />
+              <div className="bg-white p-1.5 rounded-lg shadow-sm border border-neutral-100">
+                {/* Custom SVG Logo: Document with Checkmark */}
+                <svg 
+                  className="h-7 w-7 sm:h-8 sm:w-8 text-brand-600" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="2.5" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                >
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                  <path d="M9 15l2 2 4-4" />
+                </svg>
               </div>
               <span className={`text-xl sm:text-2xl font-heading font-bold tracking-tight ${logoText}`}>
                 Ellas<span className={logoAccent}>Diensten</span>

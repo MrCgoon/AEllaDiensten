@@ -141,14 +141,20 @@ const Footer: React.FC = () => {
           <div className="text-center lg:text-left">
             <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
                 <div className="bg-white p-1.5 rounded-xl">
-                     <img 
-                       src="/logo.jpg" 
-                       alt="Ellas Diensten" 
-                       width={40}
-                       height={40}
-                       loading="lazy"
-                       className="h-10 w-10 object-contain" 
-                     />
+                     {/* Custom SVG Logo */}
+                     <svg 
+                       className="h-10 w-10 text-brand-600" 
+                       viewBox="0 0 24 24" 
+                       fill="none" 
+                       stroke="currentColor" 
+                       strokeWidth="2.5" 
+                       strokeLinecap="round" 
+                       strokeLinejoin="round"
+                     >
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                        <path d="M9 15l2 2 4-4" />
+                     </svg>
                 </div>
                 <span className="text-xl font-heading font-extrabold text-white tracking-tight">
                     Ellas<span className="text-neutral-400 dark:text-neutral-500 font-bold">Diensten</span>
