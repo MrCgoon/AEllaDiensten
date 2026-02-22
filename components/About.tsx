@@ -17,7 +17,7 @@ const About: React.FC = () => {
                         https://images.unsplash.com/photo-1573164713988-8665fc963095?q=65&w=800&auto=format&fit=crop 800w,
                         https://images.unsplash.com/photo-1573164713988-8665fc963095?q=65&w=1200&auto=format&fit=crop 1200w"
                 sizes="(min-width: 1024px) 450px, (min-width: 768px) 50vw, 100vw"
-                alt="Ella - Modern Professional" 
+                alt="Ella - Virtual Assistant en Data Specialist" 
                 loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-100 dark:opacity-90 dark:hover:opacity-100"
               />

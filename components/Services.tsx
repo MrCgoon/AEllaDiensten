@@ -86,7 +86,7 @@ const Services: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-12 lg:mb-16">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-neutral-900 dark:text-white mb-4 transition-colors">
-            Wat kan Ella voor u betekenen?
+            Mijn Diensten: Data Entry, Rapportages & Support
           </h2>
           <p className="text-base sm:text-lg text-neutral-600 dark:text-neutral-400">
             Van data-entry tot volledig secretarieel beheer: ik ontzorg u op afstand.

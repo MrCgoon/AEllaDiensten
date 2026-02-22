@@ -14,8 +14,10 @@ const Logo: React.FC<LogoProps> = ({ className = "", size = "100%" }) => {
       fill="none" 
       xmlns="http://www.w3.org/2000/svg"
       className={className}
-      aria-hidden="true"
+      role="img"
+      aria-labelledby="logoTitle"
     >
+      <title id="logoTitle">Ella's Diensten - Virtual Assistant & Data Entry</title>
       {/* Refined Geometric Arc */}
       <path 
         d="M 370 100 A 190 190 0 1 1 130 100" 

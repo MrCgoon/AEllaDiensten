@@ -50,9 +50,9 @@ const Hero: React.FC = () => {
             </div>
             
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-extrabold text-neutral-900 dark:text-white leading-[1.1] mb-6 tracking-tight drop-shadow-sm transition-all duration-500">
-              Uw administratie <br className="hidden sm:block"/>
-              <span className="text-gradient-shine animate-shine">strak geregeld</span>, <br className="hidden sm:block"/>
-              <span className="text-neutral-700 dark:text-neutral-400">terwijl u doorgaat.</span>
+              Virtual Assistant <br className="hidden sm:block"/>
+              <span className="text-gradient-shine animate-shine">Data Entry</span> <br className="hidden sm:block"/>
+              <span className="text-neutral-700 dark:text-neutral-400">& Administratie</span>
             </h1>
             
             <p className="text-base sm:text-lg lg:text-xl text-neutral-600 dark:text-neutral-300 leading-relaxed mb-8 sm:mb-10 max-w-xl mx-auto lg:mx-0 font-light transition-colors">
