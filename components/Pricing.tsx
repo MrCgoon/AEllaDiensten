@@ -24,7 +24,7 @@ const PRICING_TIERS = [
     icon: Sparkles,
     highlight: false,
     badge: "Instapmodel",
-    stripeLink: "", // Optioneel: vul hier de Stripe betaallink in
+    stripeLink: "/checkout/basis", // Ella kan hier later de echte Stripe checkout URL invullen
     theme: {
       bg: "bg-white dark:bg-neutral-900/40",
       border: "border-neutral-200 dark:border-white/5",
@@ -50,7 +50,7 @@ const PRICING_TIERS = [
     icon: Zap,
     highlight: true, // Dit maakt de kaart groter/opvallender
     badge: "Populairste Keuze",
-    stripeLink: "",
+    stripeLink: "/checkout/standaard",
     theme: {
       bg: "bg-neutral-900 dark:bg-neutral-950",
       border: "border-neutral-800 dark:border-brand-500/30",
@@ -76,7 +76,7 @@ const PRICING_TIERS = [
     icon: BarChart3,
     highlight: false,
     badge: "Beste Waarde",
-    stripeLink: "",
+    stripeLink: "/checkout/intensief",
     theme: {
       bg: "bg-white dark:bg-neutral-900/40",
       border: "border-neutral-200 dark:border-white/5",
@@ -92,8 +92,14 @@ const PRICING_TIERS = [
 
 const Pricing: React.FC = () => {
 
-  const handlePurchase = (link: string) => {
-    if (link && link.length > 0) {
+  const handlePurchase = (link: string, tierName: string) => {
+    // We voegen een bron toe aan de URL als het een interne link is, 
+    // of we kunnen dit loggen als Ella een analytics tool gebruikt.
+    if (link && link.startsWith('/checkout')) {
+      // In een echte app zou dit naar de Stripe Checkout gaan
+      console.log(`Aankoop gestart voor: ${tierName}`);
+      window.location.href = link;
+    } else if (link) {
       window.location.href = link;
     } else {
       document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
@@ -170,7 +176,7 @@ const Pricing: React.FC = () => {
                   </div>
                   <h3 className={`text-2xl font-heading font-bold ${tier.theme.text}`}>{tier.name}</h3>
                 </div>
-                <p className={`text-sm leading-relaxed min-h-[60px] ${tier.highlight ? 'text-neutral-400' : 'text-neutral-500 dark:text-neutral-400'}`}>
+                <p className={`text-sm leading-relaxed min-h-[60px] ${tier.highlight ? 'text-neutral-300' : 'text-neutral-500 dark:text-neutral-400'}`}>
                   {tier.description}
                 </p>
               </div>
@@ -181,7 +187,7 @@ const Pricing: React.FC = () => {
                 <div className="relative z-10">
                   <div className="flex items-baseline gap-1">
                     <span className={`text-4xl font-extrabold ${tier.theme.text}`}>€ {tier.price}</span>
-                    <span className={`${tier.highlight ? 'text-neutral-400' : 'text-neutral-500 dark:text-neutral-400'} font-medium`}>/ uur</span>
+                    <span className={`${tier.highlight ? 'text-neutral-300' : 'text-neutral-500 dark:text-neutral-400'} font-medium`}>/ uur</span>
                   </div>
                   <div className={`mt-2 text-xs font-bold uppercase tracking-wider ${tier.highlight ? 'text-brand-400' : 'text-brand-600 dark:text-brand-400'}`}>
                     {tier.minHours}
@@ -202,13 +208,13 @@ const Pricing: React.FC = () => {
               </ul>
               
               <button 
-                onClick={() => handlePurchase(tier.stripeLink)}
+                onClick={() => handlePurchase(tier.stripeLink, tier.name)}
                 className={`w-full py-4 px-6 font-bold rounded-2xl transition-all shadow-lg active:scale-95 flex items-center justify-center gap-2 ${tier.theme.btn} ${tier.highlight ? 'relative z-10' : ''}`}
               >
                 {tier.highlight ? (
-                  <>Kies {tier.name} <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" /></>
+                  <>Direct bestellen <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" /></>
                 ) : (
-                  `Start met ${tier.name}`
+                  `Bestel ${tier.name}`
                 )}
               </button>
             </div>
@@ -225,27 +231,27 @@ const Pricing: React.FC = () => {
               <div className="flex-grow text-center md:text-left relative z-10">
                 <div className="flex items-center justify-center md:justify-start gap-2 mb-2">
                   <CreditCard className="text-brand-500" size={20} />
-                  <span className="text-sm font-bold text-brand-600 dark:text-brand-400 uppercase tracking-widest">Incidentele Hulp</span>
+                  <span className="text-sm font-bold text-brand-600 dark:text-brand-400 uppercase tracking-widest">INCIDENTELE HULP</span>
                 </div>
                 <h4 className="text-xl font-heading font-bold text-neutral-900 dark:text-white mb-2">Liever geen pakket?</h4>
                 <p className="text-neutral-500 dark:text-neutral-400 text-sm max-w-md">
-                  Voor eenmalige opdrachten of kortdurende projecten hanteer ik een flexibel tarief van <span className="font-bold text-neutral-900 dark:text-white">€ {HOURLY_RATE_INCIDENTAL},- per uur</span> (excl. btw).
+                  Voor eenmalige opdrachten of kortdurende projecten hanteer ik een flexibel tarief van <span className="font-bold text-neutral-900 dark:text-white">€ 60,- per uur</span> (excl. btw).
                 </p>
               </div>
 
               <div className="flex-shrink-0 relative z-10">
-                <a 
-                  href="#contact" 
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-white dark:bg-white/5 border border-neutral-200 dark:border-white/10 rounded-2xl text-neutral-900 dark:text-white font-bold hover:bg-neutral-50 dark:hover:bg-white/10 transition-all shadow-sm hover:shadow-md hover:scale-105"
+                <button 
+                  onClick={() => handlePurchase("/checkout/incidenteel", "Incidentele hulp")}
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-brand-600 text-white rounded-2xl font-bold hover:bg-brand-500 transition-all shadow-lg shadow-brand-600/20 hover:scale-105 active:scale-95"
                 >
-                  Bespreek uw klus
+                  Boek incidentele hulp
                   <ArrowRight size={18} />
-                </a>
+                </button>
               </div>
            </div>
            
            <p className="mt-8 text-center text-neutral-400 dark:text-neutral-500 text-xs font-medium max-w-2xl mx-auto">
-            * Alle genoemde tarieven zijn exclusief 21% BTW. Facturatie vindt maandelijks vooraf plaats voor pakketten. Maatwerk op basis van specifieke SLA-eisen is op aanvraag mogelijk.
+            * Alle genoemde tarieven en pakketprijzen zijn exclusief 21% btw en u betaalt deze vooraf. Maatwerk op basis van specifieke SLA-eisen is op aanvraag mogelijk.
           </p>
         </div>
       </div>

@@ -12,6 +12,7 @@ const Footer: React.FC = () => {
             <div className="p-4 bg-neutral-50 dark:bg-white/5 rounded-lg border border-neutral-200 dark:border-white/10 text-xs font-mono">
               <p><strong>Ella Diensten</strong></p>
               <p>KvK: 89249429</p>
+              <p>BTW: NL004709961B06</p>
             </div>
             
             <section>

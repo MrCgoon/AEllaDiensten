@@ -44,11 +44,11 @@ const Services: React.FC = () => {
     },
     {
       title: "Secretariële Support",
-      short: "Ondersteuning die zorgt voor structuur en continuïteit. Ik neem administratieve taken uit handen.",
+      short: "Ik neem uw secretariële taken uit handen, zodat u zich volledig kunt focussen op uw kernactiviteiten.",
       long: (
         <div className="space-y-6 text-lg leading-loose text-neutral-600 dark:text-neutral-300">
           <p className="font-medium text-neutral-900 dark:text-white text-xl">
-            Ik neem secretariële taken uit handen, zodat u tijd houdt voor uw kernactiviteiten.
+            Ik neem uw secretariële taken uit handen, zodat u zich volledig kunt focussen op uw kernactiviteiten.
           </p>
           <ul className="list-disc pl-6 space-y-3 marker:text-brand-500">
             <li>Uitschrijven van notulen</li>

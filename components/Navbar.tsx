@@ -50,18 +50,18 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
       isScrolled 
-        ? 'bg-white/90 dark:bg-neutral-900/90 backdrop-blur-md shadow-sm py-2 sm:py-3 border-neutral-200 dark:border-white/10' 
-        : 'bg-transparent py-4 sm:py-6 border-transparent'
+        ? 'bg-white/90 dark:bg-neutral-900/90 backdrop-blur-md shadow-sm py-3 sm:py-4 border-neutral-200 dark:border-white/10' 
+        : 'bg-transparent py-5 sm:py-7 border-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           
           {/* Logo Area */}
-          <a href="#home" className="flex items-center gap-2 group shrink-0">
+          <a href="#home" className="flex items-center gap-3 group shrink-0">
             <div className={`transition-colors duration-300 ${isScrolled || !isDark ? 'text-neutral-900' : 'text-white'}`}>
-              <Logo size={36} className="sm:w-[44px] sm:h-[44px]" />
+              <Logo size={44} className="sm:w-[52px] sm:h-[52px]" />
             </div>
-            <span className={`text-lg sm:text-2xl font-heading font-bold tracking-tight ${isScrolled || !isDark ? 'text-neutral-900 dark:text-white' : 'text-white'}`}>
+            <span className={`text-xl sm:text-2xl font-heading font-bold tracking-tight ${isScrolled || !isDark ? 'text-neutral-900 dark:text-white' : 'text-white'}`}>
               Ellas<span className="text-brand-600">Diensten</span>
             </span>
           </a>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ArrowRight, CheckCircle2, Send, Database, FileSpreadsheet, Zap } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Send, Database, FileSpreadsheet, Zap, Loader2 } from 'lucide-react';
 
 const Hero: React.FC = () => {
   const [offset, setOffset] = useState(0);
@@ -149,6 +149,7 @@ const HeroWidget: React.FC = () => {
   const [service, setService] = useState('Data Entry & Mutaties');
   const [hours, setHours] = useState<number | ''>('');
   const [email, setEmail] = useState('');
+  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
   const rates: Record<string, number> = {
     'Data Entry & Mutaties': 45,
@@ -157,6 +158,60 @@ const HeroWidget: React.FC = () => {
   };
 
   const result = hours && typeof hours === 'number' ? hours * (rates[service] || 50) : null;
+
+  const handleCalculate = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!hours || !email) return;
+
+    setFormStatus('submitting');
+    
+    const formData = new FormData();
+    formData.append("Dienst", service);
+    formData.append("Uren per maand", hours.toString());
+    formData.append("Email", email);
+    formData.append("Geschatte investering", result ? `€${result.toLocaleString('nl-NL')}` : 'N/A');
+    formData.append("bron", "Snel indicatie formulier (Hero)");
+    formData.append("_subject", `Nieuwe prijsindicatie aanvraag: ${service}`);
+    formData.append("_captcha", "false");
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/contact@ellasdiensten.nl", {
+        method: "POST",
+        body: formData,
+        headers: { 
+            'Accept': 'application/json'
+        }
+      });
+      
+      if (response.ok) {
+        setFormStatus('success');
+      } else {
+        setFormStatus('error');
+      }
+    } catch (error) {
+       setFormStatus('error');
+    }
+  };
+
+  if (formStatus === 'success') {
+    return (
+      <div className="bg-white dark:bg-neutral-900/90 backdrop-blur-md rounded-3xl shadow-2xl border border-neutral-200/50 dark:border-white/10 p-6 sm:p-8 animate-in fade-in zoom-in duration-500 text-center">
+        <div className="w-16 h-16 bg-green-100 dark:bg-green-500/20 rounded-full flex items-center justify-center text-green-600 dark:text-green-400 mx-auto mb-4">
+          <CheckCircle2 size={32} />
+        </div>
+        <h3 className="font-heading font-bold text-neutral-900 dark:text-white text-lg mb-2">Bedankt!</h3>
+        <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-6">
+          Uw aanvraag is verzonden. U ontvangt binnen 1–2 werkdagen een reactie.
+        </p>
+        <button 
+          onClick={() => setFormStatus('idle')}
+          className="text-xs font-bold text-brand-600 hover:text-brand-500 transition-colors"
+        >
+          Nog een berekening maken
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-white dark:bg-neutral-900/90 backdrop-blur-md rounded-3xl shadow-2xl border border-neutral-200/50 dark:border-white/10 p-6 sm:p-8 animate-float-subtle relative overflow-hidden text-left transition-all duration-300">
@@ -172,7 +227,7 @@ const HeroWidget: React.FC = () => {
         </div>
       </div>
       
-      <div className="space-y-4">
+      <form onSubmit={handleCalculate} className="space-y-4">
         <div>
           <label className="block text-[10px] font-bold text-neutral-500 mb-1.5 uppercase tracking-wider">Hulp nodig bij</label>
           <select 
@@ -188,23 +243,25 @@ const HeroWidget: React.FC = () => {
         
         <div className="grid grid-cols-2 gap-3">
            <div>
-              <label className="block text-[10px] font-bold text-neutral-500 mb-1.5 uppercase tracking-wider">Uren p/m</label>
+              <label className="block text-[10px] font-bold text-neutral-500 mb-1.5 uppercase tracking-wider">Uren p/m *</label>
               <input 
                 type="number" 
                 min="1"
                 placeholder="8" 
                 value={hours}
                 onChange={(e) => setHours(e.target.valueAsNumber || '')}
+                required
                 className="w-full p-2.5 bg-neutral-50 dark:bg-black/40 border border-neutral-200 dark:border-white/10 rounded-xl text-xs font-semibold text-neutral-800 dark:text-white outline-none focus:ring-2 focus:ring-brand-500/20" 
               />
            </div>
            <div>
-              <label className="block text-[10px] font-bold text-neutral-500 mb-1.5 uppercase tracking-wider">E-mail (optioneel)</label>
+              <label className="block text-[10px] font-bold text-neutral-500 mb-1.5 uppercase tracking-wider">E-mail *</label>
               <input 
                 type="email" 
                 placeholder="uw@email.nl" 
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                required
                 className="w-full p-2.5 bg-neutral-50 dark:bg-black/40 border border-neutral-200 dark:border-white/10 rounded-xl text-xs font-semibold text-neutral-800 dark:text-white outline-none focus:ring-2 focus:ring-brand-500/20" 
               />
            </div>
@@ -222,14 +279,24 @@ const HeroWidget: React.FC = () => {
           </div>
         </div>
 
-        <a 
-          href="#contact"
-          className="w-full py-3.5 bg-neutral-900 dark:bg-brand-600 text-white rounded-xl font-bold text-xs hover:bg-brand-600 dark:hover:bg-brand-500 transition-all flex items-center justify-center gap-2 mt-2 shadow-lg active:scale-95"
+        <button 
+          type="submit"
+          disabled={formStatus === 'submitting' || !hours || !email}
+          className="w-full py-3.5 bg-neutral-900 dark:bg-brand-600 text-white rounded-xl font-bold text-xs hover:bg-brand-600 dark:hover:bg-brand-500 transition-all flex items-center justify-center gap-2 mt-2 shadow-lg active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed"
         >
-          Offerte aanvragen
-          <ArrowRight size={14} />
-        </a>
-      </div>
+          {formStatus === 'submitting' ? (
+            <Loader2 size={14} className="animate-spin" />
+          ) : (
+            <>
+              Offerte aanvragen
+              <ArrowRight size={14} />
+            </>
+          )}
+        </button>
+        {formStatus === 'error' && (
+          <p className="text-[10px] text-red-500 text-center mt-2">Er ging iets mis. Probeer het later opnieuw.</p>
+        )}
+      </form>
     </div>
   );
 };

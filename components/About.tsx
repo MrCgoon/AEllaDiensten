@@ -9,7 +9,14 @@ const About: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
           {/* Visual Column */}
-          <div className="lg:col-span-5 relative order-2 lg:order-1 sticky top-32">
+            <div className="lg:col-span-5 relative order-2 lg:order-1 sticky top-32">
+            {/* 
+                INSTRUCTIES VOOR ELLA (FOTO):
+                - Formaat: Staand/Portret (3:4 of 4:5)
+                - Resolutie: Minimaal 1500px breed
+                - Stijl: Helder, professioneel, geen zware filters
+                - Vervangen: Pas de 'src' en 'srcSet' hieronder aan naar de nieuwe URL.
+            */}
             <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-neutral-200/50 dark:shadow-black/50 border border-white/20 dark:border-white/10 aspect-[4/5] group">
               <img 
                 src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=65&w=800&auto=format&fit=crop"
@@ -17,7 +24,7 @@ const About: React.FC = () => {
                         https://images.unsplash.com/photo-1573164713988-8665fc963095?q=65&w=800&auto=format&fit=crop 800w,
                         https://images.unsplash.com/photo-1573164713988-8665fc963095?q=65&w=1200&auto=format&fit=crop 1200w"
                 sizes="(min-width: 1024px) 450px, (min-width: 768px) 50vw, 100vw"
-                alt="Ella - Virtual Assistant en Data Specialist" 
+                alt="Ella achter haar laptop in een moderne werkruimte – uw remote secretaresse" 
                 loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-100 dark:opacity-90 dark:hover:opacity-100"
               />
@@ -61,6 +68,7 @@ const About: React.FC = () => {
                   <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-brand-500"></div> Onderwijsorganisaties</li>
                   <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-brand-500"></div> Overheid en semi-overheid</li>
                   <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-brand-500"></div> Zakelijke dienstverleners</li>
+                  <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-brand-500"></div> Collega VA’s (virtueel assistenten)</li>
                 </ul>
                 <p className="text-base font-medium text-neutral-800 dark:text-neutral-200">
                   Of het nu gaat om tijdelijke ondersteuning tijdens drukke periodes of om structurele uitbesteding van taken: samen kijken we wat het beste past bij uw organisatie.

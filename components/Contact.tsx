@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import { Mail, Phone, Clock, Send, MapPin, CheckCircle2, Loader2, ArrowRight } from 'lucide-react';
+import { Mail, Phone, Clock, Send, Globe, CheckCircle2, Loader2, ArrowRight } from 'lucide-react';
+
+// ==========================================
+// 📞 CONTACT CONFIGURATIE
+// ==========================================
+const WHATSAPP_NUMBER = "31612345678"; // Ella kan dit nummer hier aanpassen
+const CONTACT_EMAIL = "contact@ellasdiensten.nl";
+// ==========================================
 
 const Contact: React.FC = () => {
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
@@ -14,9 +21,10 @@ const Contact: React.FC = () => {
     formData.append("_subject", `Nieuwe aanvraag via website: ${formData.get('name')}`);
     formData.append("_template", "table");
     formData.append("_captcha", "false");
+    formData.append("bron", "Algemeen contactformulier");
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/contact@ellasdiensten.nl", {
+      const response = await fetch("https://formsubmit.co/ajax/" + CONTACT_EMAIL, {
         method: "POST",
         body: formData,
         headers: { 
@@ -63,7 +71,7 @@ const Contact: React.FC = () => {
 
             <div className="space-y-6">
               {/* Email Card */}
-              <a href="mailto:contact@ellasdiensten.nl" className="flex items-start p-4 rounded-2xl bg-neutral-50 dark:bg-white/5 border border-neutral-200 dark:border-white/10 hover:bg-white dark:hover:bg-white/10 hover:border-brand-300 dark:hover:border-brand-500/50 transition-all duration-300 group">
+              <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-start p-4 rounded-2xl bg-neutral-50 dark:bg-white/5 border border-neutral-200 dark:border-white/10 hover:bg-white dark:hover:bg-white/10 hover:border-brand-300 dark:hover:border-brand-500/50 transition-all duration-300 group">
                 <div className="flex-shrink-0">
                   <div className="w-12 h-12 rounded-xl bg-white dark:bg-neutral-900/80 border border-neutral-100 dark:border-white/10 flex items-center justify-center text-brand-600 dark:text-brand-500 group-hover:scale-110 transition-transform shadow-sm">
                     <Mail size={22} />
@@ -71,12 +79,12 @@ const Contact: React.FC = () => {
                 </div>
                 <div className="ml-4">
                   <h3 className="text-sm font-bold text-neutral-900 dark:text-white uppercase tracking-wide mb-1">E-mail</h3>
-                  <p className="text-base text-neutral-600 dark:text-neutral-400 group-hover:text-brand-600 dark:group-hover:text-brand-300 transition-colors">contact@ellasdiensten.nl</p>
+                  <p className="text-base text-neutral-600 dark:text-neutral-400 group-hover:text-brand-600 dark:group-hover:text-brand-300 transition-colors">{CONTACT_EMAIL}</p>
                 </div>
               </a>
 
               {/* Phone Card */}
-              <a href="tel:+31403098094" className="flex items-start p-4 rounded-2xl bg-neutral-50 dark:bg-white/5 border border-neutral-200 dark:border-white/10 hover:bg-white dark:hover:bg-white/10 hover:border-brand-300 dark:hover:border-brand-500/50 transition-all duration-300 group">
+              <a href={`https://wa.me/${WHATSAPP_NUMBER}`} className="flex items-start p-4 rounded-2xl bg-neutral-50 dark:bg-white/5 border border-neutral-200 dark:border-white/10 hover:bg-white dark:hover:bg-white/10 hover:border-brand-300 dark:hover:border-brand-500/50 transition-all duration-300 group">
                 <div className="flex-shrink-0">
                   <div className="w-12 h-12 rounded-xl bg-white dark:bg-neutral-900/80 border border-neutral-100 dark:border-white/10 flex items-center justify-center text-brand-600 dark:text-brand-500 group-hover:scale-110 transition-transform shadow-sm">
                     <Phone size={22} />
@@ -84,7 +92,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div className="ml-4">
                   <h3 className="text-sm font-bold text-neutral-900 dark:text-white uppercase tracking-wide mb-1">Telefoon / WhatsApp</h3>
-                  <p className="text-base text-neutral-600 dark:text-neutral-400 group-hover:text-brand-600 dark:group-hover:text-brand-300 transition-colors">040-309 8094</p>
+                  <p className="text-base text-neutral-600 dark:text-neutral-400 group-hover:text-brand-600 dark:group-hover:text-brand-300 transition-colors">+31 (0)6 12 34 56 78</p>
                 </div>
               </a>
 
@@ -92,12 +100,13 @@ const Contact: React.FC = () => {
               <div className="flex items-start p-4 rounded-2xl bg-neutral-50 dark:bg-white/5 border border-neutral-200 dark:border-white/10 transition-all duration-300 group">
                 <div className="flex-shrink-0">
                   <div className="w-12 h-12 rounded-xl bg-white dark:bg-neutral-900/80 border border-neutral-100 dark:border-white/10 flex items-center justify-center text-brand-600 dark:text-brand-500 shadow-sm">
-                    <MapPin size={22} />
+                    <Globe size={22} />
                   </div>
                 </div>
                 <div className="ml-4">
                   <h3 className="text-sm font-bold text-neutral-900 dark:text-white uppercase tracking-wide mb-1">Locatie</h3>
-                  <p className="text-base text-neutral-600 dark:text-neutral-400">Eindhoven & Omgeving<br/><span className="text-xs opacity-75">(Remote beschikbaar in heel NL)</span></p>
+                  <p className="text-base text-neutral-600 dark:text-neutral-400">Online beschikbaar in heel Nederland</p>
+                  <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-1">Ik werk volledig online en ben beschikbaar voor klanten in heel Nederland.</p>
                 </div>
               </div>
 
@@ -110,15 +119,16 @@ const Contact: React.FC = () => {
                 </div>
                 <div className="ml-4">
                   <h3 className="text-sm font-bold text-neutral-900 dark:text-white uppercase tracking-wide mb-1">Werktijden</h3>
-                  <p className="text-sm text-neutral-600 dark:text-neutral-400">Ma - Do: 09:00 – 17:00</p>
-                  <p className="text-sm text-neutral-600 dark:text-neutral-400">Vr: 09:00 – 12:00</p>
+                  <p className="text-sm text-neutral-600 dark:text-neutral-400">Maandag t/m vrijdag 09:00 – 17:00</p>
                 </div>
               </div>
             </div>
 
-            <div className="mt-8 pl-4 flex items-center gap-4 text-xs font-medium text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">
+            <div className="mt-8 pl-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-[10px] sm:text-xs font-medium text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">
                <span>KvK: 89249429</span>
                <span className="w-1 h-1 rounded-full bg-brand-500"></span>
+               <span>BTW: NL004709961B06</span>
+               <span className="hidden sm:inline w-1 h-1 rounded-full bg-brand-500"></span>
                <span>NL</span>
             </div>
           </div>
