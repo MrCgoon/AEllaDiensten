@@ -146,8 +146,20 @@ const Hero: React.FC = () => {
 
 // Subcomponent for the conversion widget to reuse on mobile/desktop
 const HeroWidget: React.FC = () => {
+  const [service, setService] = useState('Data Entry & Mutaties');
+  const [hours, setHours] = useState<number | ''>('');
+  const [email, setEmail] = useState('');
+
+  const rates: Record<string, number> = {
+    'Data Entry & Mutaties': 45,
+    'Administratie': 50,
+    'Agendabeheer': 55
+  };
+
+  const result = hours && typeof hours === 'number' ? hours * (rates[service] || 50) : null;
+
   return (
-    <div className="bg-white dark:bg-neutral-900/90 backdrop-blur-md rounded-3xl shadow-2xl border border-neutral-200/50 dark:border-white/10 p-6 sm:p-8 animate-float-subtle relative overflow-hidden text-left">
+    <div className="bg-white dark:bg-neutral-900/90 backdrop-blur-md rounded-3xl shadow-2xl border border-neutral-200/50 dark:border-white/10 p-6 sm:p-8 animate-float-subtle relative overflow-hidden text-left transition-all duration-300">
       <div className="absolute top-0 left-0 w-full h-1 bg-brand-600"></div>
       
       <div className="flex items-center gap-4 mb-6">
@@ -156,14 +168,18 @@ const HeroWidget: React.FC = () => {
         </div>
         <div>
           <h3 className="font-heading font-bold text-neutral-900 dark:text-white text-base">Snel indicatie?</h3>
-          <p className="text-[10px] text-neutral-500 font-medium">Berekening op maat</p>
+          <p className="text-[10px] text-neutral-500 font-medium">Bereken uw maandelijkse investering</p>
         </div>
       </div>
       
       <div className="space-y-4">
         <div>
           <label className="block text-[10px] font-bold text-neutral-500 mb-1.5 uppercase tracking-wider">Hulp nodig bij</label>
-          <select className="w-full p-2.5 bg-neutral-50 dark:bg-black/40 border border-neutral-200 dark:border-white/10 rounded-xl text-xs font-semibold focus:ring-2 focus:ring-brand-500/20 text-neutral-800 dark:text-white outline-none appearance-none cursor-pointer">
+          <select 
+            value={service}
+            onChange={(e) => setService(e.target.value)}
+            className="w-full p-2.5 bg-neutral-50 dark:bg-black/40 border border-neutral-200 dark:border-white/10 rounded-xl text-xs font-semibold focus:ring-2 focus:ring-brand-500/20 text-neutral-800 dark:text-white outline-none appearance-none cursor-pointer"
+          >
             <option>Data Entry & Mutaties</option>
             <option>Administratie</option>
             <option>Agendabeheer</option>
@@ -173,18 +189,46 @@ const HeroWidget: React.FC = () => {
         <div className="grid grid-cols-2 gap-3">
            <div>
               <label className="block text-[10px] font-bold text-neutral-500 mb-1.5 uppercase tracking-wider">Uren p/m</label>
-              <input type="number" placeholder="8" className="w-full p-2.5 bg-neutral-50 dark:bg-black/40 border border-neutral-200 dark:border-white/10 rounded-xl text-xs font-semibold text-neutral-800 dark:text-white outline-none" />
+              <input 
+                type="number" 
+                min="1"
+                placeholder="8" 
+                value={hours}
+                onChange={(e) => setHours(e.target.valueAsNumber || '')}
+                className="w-full p-2.5 bg-neutral-50 dark:bg-black/40 border border-neutral-200 dark:border-white/10 rounded-xl text-xs font-semibold text-neutral-800 dark:text-white outline-none focus:ring-2 focus:ring-brand-500/20" 
+              />
            </div>
            <div>
-              <label className="block text-[10px] font-bold text-neutral-500 mb-1.5 uppercase tracking-wider">Mail</label>
-              <input type="email" placeholder="uw@email.nl" className="w-full p-2.5 bg-neutral-50 dark:bg-black/40 border border-neutral-200 dark:border-white/10 rounded-xl text-xs font-semibold text-neutral-800 dark:text-white outline-none" />
+              <label className="block text-[10px] font-bold text-neutral-500 mb-1.5 uppercase tracking-wider">E-mail (optioneel)</label>
+              <input 
+                type="email" 
+                placeholder="uw@email.nl" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full p-2.5 bg-neutral-50 dark:bg-black/40 border border-neutral-200 dark:border-white/10 rounded-xl text-xs font-semibold text-neutral-800 dark:text-white outline-none focus:ring-2 focus:ring-brand-500/20" 
+              />
            </div>
         </div>
 
-        <button className="w-full py-3.5 bg-neutral-900 dark:bg-brand-600 text-white rounded-xl font-bold text-xs hover:bg-brand-600 dark:hover:bg-brand-500 transition-all flex items-center justify-center gap-2 mt-2 shadow-lg active:scale-95">
-          Bereken voor mij
-          <Send size={14} />
-        </button>
+        {/* Result Area - Always visible but placeholder if no result */}
+        <div className={`transition-all duration-500 overflow-hidden ${result ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}>
+          <div className="text-center p-4 bg-brand-50 dark:bg-brand-900/20 rounded-2xl border border-brand-100 dark:border-brand-500/20 mt-2">
+            <p className="text-xs text-neutral-500 dark:text-neutral-400 mb-1">Geschatte investering</p>
+            <p className="text-3xl font-heading font-bold text-brand-600 dark:text-brand-400">
+              €{result?.toLocaleString('nl-NL', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+              <span className="text-sm text-neutral-400 font-normal ml-1">/mnd</span>
+            </p>
+            <p className="text-[10px] text-neutral-400 mt-2">Excl. BTW • Op basis van {hours} uur</p>
+          </div>
+        </div>
+
+        <a 
+          href="#contact"
+          className="w-full py-3.5 bg-neutral-900 dark:bg-brand-600 text-white rounded-xl font-bold text-xs hover:bg-brand-600 dark:hover:bg-brand-500 transition-all flex items-center justify-center gap-2 mt-2 shadow-lg active:scale-95"
+        >
+          Offerte aanvragen
+          <ArrowRight size={14} />
+        </a>
       </div>
     </div>
   );
