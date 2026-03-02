@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Mail, Phone, Clock, Send, Globe, CheckCircle2, Loader2, ArrowRight } from 'lucide-react';
 
 // ==========================================
@@ -14,6 +14,13 @@ interface ContactProps {
 
 const Contact: React.FC<ContactProps> = ({ contactSource }) => {
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [subject, setSubject] = useState(contactSource || '');
+
+  useEffect(() => {
+    if (contactSource) {
+      setSubject(contactSource);
+    }
+  }, [contactSource]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -33,7 +40,7 @@ const Contact: React.FC<ContactProps> = ({ contactSource }) => {
         body: JSON.stringify({
           ...data,
           _subject: `Nieuwe aanvraag via website: ${data.name}`,
-          bron: contactSource || "Algemeen contactformulier"
+          bron: data.lead_source || "Algemeen contactformulier"
         })
       });
       
@@ -181,11 +188,6 @@ const Contact: React.FC<ContactProps> = ({ contactSource }) => {
                 <>
                   <div className="relative z-10 mb-8">
                     <h3 className="text-2xl font-bold text-neutral-900 dark:text-white mb-2">Stuur een bericht</h3>
-                    {contactSource && (
-                      <div className="inline-block mb-4 px-3 py-1 rounded-full bg-brand-50 dark:bg-brand-900/20 text-brand-600 dark:text-brand-400 text-xs font-bold border border-brand-100 dark:border-brand-500/20">
-                        Betreft: {contactSource}
-                      </div>
-                    )}
                     <p className="text-neutral-500 dark:text-neutral-400 text-sm">Velden met een * zijn verplicht.</p>
                   </div>
                   
@@ -229,6 +231,19 @@ const Contact: React.FC<ContactProps> = ({ contactSource }) => {
                            <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" fillRule="evenodd"></path></svg>
                         </div>
                       </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <label htmlFor="lead_source" className="text-xs font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider ml-1">Onderwerp / Interesse</label>
+                      <input 
+                        type="text" 
+                        id="lead_source" 
+                        name="lead_source" 
+                        value={subject}
+                        onChange={(e) => setSubject(e.target.value)}
+                        className="w-full px-4 py-3 bg-neutral-50 dark:bg-black/20 rounded-xl border border-neutral-200 dark:border-white/10 focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 outline-none transition-all text-neutral-900 dark:text-white placeholder-neutral-400 dark:placeholder-neutral-600" 
+                        placeholder="Waarmee kan ik u helpen?" 
+                      />
                     </div>
 
                     <div className="space-y-2">

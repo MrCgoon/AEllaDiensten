@@ -96,9 +96,9 @@ interface PricingProps {
 
 const Pricing: React.FC<PricingProps> = ({ setContactSource }) => {
 
-  const handlePurchase = (link: string, tierName: string) => {
-    console.log(`Interesse in pakket: ${tierName}`);
-    setContactSource(`Pakket: ${tierName}`);
+  const handlePurchase = (link: string, source: string) => {
+    console.log(`Interesse in: ${source}`);
+    setContactSource(source);
     
     if (link.startsWith('#')) {
       const element = document.querySelector(link);
@@ -212,7 +212,7 @@ const Pricing: React.FC<PricingProps> = ({ setContactSource }) => {
               </ul>
               
               <button 
-                onClick={() => handlePurchase(tier.stripeLink, tier.name)}
+                onClick={() => handlePurchase(tier.stripeLink, `Pakket: ${tier.name}`)}
                 className={`w-full py-4 px-6 font-bold rounded-2xl transition-all shadow-lg active:scale-95 flex items-center justify-center gap-2 ${tier.theme.btn} ${tier.highlight ? 'relative z-10' : ''}`}
               >
                 {tier.highlight ? (
@@ -245,7 +245,7 @@ const Pricing: React.FC<PricingProps> = ({ setContactSource }) => {
 
               <div className="flex-shrink-0 relative z-10">
                 <button 
-                  onClick={() => handlePurchase("/checkout/incidenteel", "Incidentele hulp")}
+                  onClick={() => handlePurchase("#contact", "Incidentele hulp")}
                   className="inline-flex items-center gap-2 px-8 py-4 bg-brand-600 text-white rounded-2xl font-bold hover:bg-brand-500 transition-all shadow-lg shadow-brand-600/20 hover:scale-105 active:scale-95"
                 >
                   Boek incidentele hulp
