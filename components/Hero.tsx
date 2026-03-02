@@ -41,7 +41,7 @@ const Hero: React.FC = () => {
           <div className="text-center lg:text-left relative z-20">
             
             {/* Premium Glass Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/60 dark:bg-white/5 border border-brand-100 dark:border-white/10 text-brand-600 dark:text-brand-300 text-[10px] sm:text-xs font-bold tracking-wider uppercase mb-6 shadow-sm backdrop-blur-md">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/60 dark:bg-white/5 border border-brand-100 dark:border-white/10 text-brand-600 dark:text-brand-300 text-xs font-bold tracking-wider uppercase mb-6 shadow-sm backdrop-blur-md">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
@@ -82,7 +82,7 @@ const Hero: React.FC = () => {
             </div>
 
             {/* Trust Indicators */}
-            <div className="mt-8 lg:mt-12 flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-3 text-xs sm:text-sm font-medium text-neutral-500 dark:text-neutral-400">
+            <div className="mt-8 lg:mt-12 flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-3 text-sm font-medium text-neutral-600 dark:text-neutral-300">
               {['Accuraat', 'Flexibel', 'Betrouwbaar'].map((text) => (
                 <div key={text} className="flex items-center gap-2 group">
                   <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-brand-500 transition-transform group-hover:scale-110" />
@@ -111,7 +111,7 @@ const Hero: React.FC = () => {
                      <div className="p-2 bg-blue-50 dark:bg-neutral-900 rounded-lg text-blue-500">
                         <Database size={18} />
                      </div>
-                     <span className="text-xs font-bold text-neutral-800 dark:text-neutral-100 uppercase tracking-tight">Data Entry</span>
+                     <span className="text-sm font-bold text-neutral-800 dark:text-neutral-100 uppercase tracking-tight">Data Entry</span>
                    </div>
                    <div className="h-1.5 w-full bg-neutral-100 dark:bg-neutral-800 rounded-full overflow-hidden">
                       <div className="h-full bg-blue-500 w-[85%] rounded-full animate-pulse"></div>
@@ -124,9 +124,9 @@ const Hero: React.FC = () => {
                      <div className="p-2 bg-emerald-50 dark:bg-neutral-900 rounded-lg text-emerald-500">
                         <FileSpreadsheet size={18} />
                      </div>
-                     <span className="text-xs font-bold text-neutral-800 dark:text-neutral-100 uppercase tracking-tight">Mutaties</span>
+                     <span className="text-sm font-bold text-neutral-800 dark:text-neutral-100 uppercase tracking-tight">Mutaties</span>
                    </div>
-                   <p className="text-[10px] text-neutral-500 dark:text-neutral-400">Rapportage genereren...</p>
+                   <p className="text-xs text-neutral-600 dark:text-neutral-300">Rapportage genereren...</p>
                 </div>
              </div>
 
@@ -213,13 +213,13 @@ const HeroWidget: React.FC = () => {
         <div className="w-16 h-16 bg-green-100 dark:bg-green-500/20 rounded-full flex items-center justify-center text-green-600 dark:text-green-400 mx-auto mb-4">
           <CheckCircle2 size={32} />
         </div>
-        <h3 className="font-heading font-bold text-neutral-900 dark:text-white text-lg mb-2">Bedankt!</h3>
-        <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-6">
+        <h3 className="font-heading font-bold text-neutral-900 dark:text-white text-xl mb-2">Bedankt!</h3>
+        <p className="text-base text-neutral-600 dark:text-neutral-300 mb-6">
           Uw aanvraag is verzonden. U ontvangt binnen 1–2 werkdagen een reactie.
         </p>
         <button 
           onClick={handleReset}
-          className="text-xs font-bold text-brand-600 hover:text-brand-500 transition-colors"
+          className="text-sm font-bold text-brand-600 hover:text-brand-500 transition-colors"
         >
           Nog een berekening maken
         </button>
@@ -236,18 +236,18 @@ const HeroWidget: React.FC = () => {
           <Zap size={20} className="fill-brand-600" />
         </div>
         <div>
-          <h3 className="font-heading font-bold text-neutral-900 dark:text-white text-base">Snel indicatie?</h3>
-          <p className="text-[10px] text-neutral-500 font-medium">Bereken uw maandelijkse investering</p>
+          <h3 className="font-heading font-bold text-neutral-900 dark:text-white text-lg">Snel indicatie?</h3>
+          <p className="text-xs text-neutral-600 dark:text-neutral-400 font-medium">Bereken uw maandelijkse investering</p>
         </div>
       </div>
       
-      <form onSubmit={handleCalculate} className="space-y-4">
+      <form onSubmit={handleCalculate} className="space-y-5">
         <div>
-          <label className="block text-[10px] font-bold text-neutral-500 mb-1.5 uppercase tracking-wider">Hulp nodig bij</label>
+          <label className="block text-xs font-bold text-neutral-700 dark:text-neutral-300 mb-2 uppercase tracking-wider">Hulp nodig bij</label>
           <select 
             value={service}
             onChange={(e) => setService(e.target.value)}
-            className="w-full p-2.5 bg-neutral-50 dark:bg-black/40 border border-neutral-200 dark:border-white/10 rounded-xl text-xs font-semibold focus:ring-2 focus:ring-brand-500/20 text-neutral-800 dark:text-white outline-none appearance-none cursor-pointer"
+            className="w-full p-3 bg-neutral-50 dark:bg-black/40 border border-neutral-200 dark:border-white/10 rounded-xl text-sm font-semibold focus:ring-2 focus:ring-brand-500/20 text-neutral-900 dark:text-white outline-none appearance-none cursor-pointer"
           >
             <option>Data Entry & Mutaties</option>
             <option>Administratie</option>
@@ -255,9 +255,9 @@ const HeroWidget: React.FC = () => {
           </select>
         </div>
         
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-4">
            <div>
-              <label className="block text-[10px] font-bold text-neutral-500 mb-1.5 uppercase tracking-wider">Uren p/m *</label>
+              <label className="block text-xs font-bold text-neutral-700 dark:text-neutral-300 mb-2 uppercase tracking-wider">Uren p/m *</label>
               <input 
                 type="number" 
                 min="1"
@@ -265,18 +265,18 @@ const HeroWidget: React.FC = () => {
                 value={hours}
                 onChange={(e) => setHours(e.target.valueAsNumber || '')}
                 required
-                className="w-full p-2.5 bg-neutral-50 dark:bg-black/40 border border-neutral-200 dark:border-white/10 rounded-xl text-xs font-semibold text-neutral-800 dark:text-white outline-none focus:ring-2 focus:ring-brand-500/20" 
+                className="w-full p-3 bg-neutral-50 dark:bg-black/40 border border-neutral-200 dark:border-white/10 rounded-xl text-sm font-semibold text-neutral-900 dark:text-white outline-none focus:ring-2 focus:ring-brand-500/20" 
               />
            </div>
            <div>
-              <label className="block text-[10px] font-bold text-neutral-500 mb-1.5 uppercase tracking-wider">E-mail *</label>
+              <label className="block text-xs font-bold text-neutral-700 dark:text-neutral-300 mb-2 uppercase tracking-wider">E-mail *</label>
               <input 
                 type="email" 
                 placeholder="uw@email.nl" 
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full p-2.5 bg-neutral-50 dark:bg-black/40 border border-neutral-200 dark:border-white/10 rounded-xl text-xs font-semibold text-neutral-800 dark:text-white outline-none focus:ring-2 focus:ring-brand-500/20" 
+                className="w-full p-3 bg-neutral-50 dark:bg-black/40 border border-neutral-200 dark:border-white/10 rounded-xl text-sm font-semibold text-neutral-900 dark:text-white outline-none focus:ring-2 focus:ring-brand-500/20" 
               />
            </div>
         </div>
@@ -284,19 +284,19 @@ const HeroWidget: React.FC = () => {
         {/* Result Area - Always visible but placeholder if no result */}
         <div className={`transition-all duration-500 overflow-hidden ${result ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}>
           <div className="text-center p-4 bg-brand-50 dark:bg-brand-900/20 rounded-2xl border border-brand-100 dark:border-brand-500/20 mt-2">
-            <p className="text-xs text-neutral-500 dark:text-neutral-400 mb-1">Geschatte investering</p>
+            <p className="text-sm text-neutral-600 dark:text-neutral-300 mb-1">Geschatte investering</p>
             <p className="text-3xl font-heading font-bold text-brand-600 dark:text-brand-400">
               €{result?.toLocaleString('nl-NL', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-              <span className="text-sm text-neutral-400 font-normal ml-1">/mnd</span>
+              <span className="text-sm text-neutral-500 dark:text-neutral-400 font-normal ml-1">/mnd</span>
             </p>
-            <p className="text-[10px] text-neutral-400 mt-2">Excl. BTW • Op basis van {hours} uur</p>
+            <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-2">Excl. BTW • Op basis van {hours} uur</p>
           </div>
         </div>
 
         <button 
           type="submit"
           disabled={formStatus === 'submitting' || !hours || !email}
-          className="w-full py-3.5 bg-neutral-900 dark:bg-brand-600 text-white rounded-xl font-bold text-xs hover:bg-brand-600 dark:hover:bg-brand-500 transition-all flex items-center justify-center gap-2 mt-2 shadow-lg active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed"
+          className="w-full py-4 bg-neutral-900 dark:bg-brand-600 text-white rounded-xl font-bold text-sm hover:bg-brand-600 dark:hover:bg-brand-500 transition-all flex items-center justify-center gap-2 mt-2 shadow-lg active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed"
         >
           {formStatus === 'submitting' ? (
             <Loader2 size={14} className="animate-spin" />
