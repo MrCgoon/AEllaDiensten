@@ -17,7 +17,9 @@ async function startServer() {
   // API Route for Contact Form
   app.post("/api/contact", async (req, res) => {
     const formData = req.body;
-    const CONTACT_EMAIL = "contact@ellasdiensten.nl";
+    // VOOR TESTEN: Gebruik het e-mailadres van de gebruiker
+    const CONTACT_EMAIL = "cblogisticsandtransportation@gmail.com"; 
+    // const CONTACT_EMAIL = "contact@ellasdiensten.nl";
 
     try {
       // We use FormSubmit as a reliable backend delivery engine
