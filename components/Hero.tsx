@@ -98,8 +98,12 @@ const Hero: React.FC = () => {
                style={{ transform: `translateY(${offset * 0.15}px)` }}
              >
                 {/* Visual Accent */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-cover bg-center opacity-60 pointer-events-none mix-blend-overlay dark:mix-blend-lighten"
-                     style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=40&w=1200&auto=format&fit=crop")' }}>
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] overflow-hidden rounded-3xl opacity-60 pointer-events-none mix-blend-overlay dark:mix-blend-lighten">
+                  <img 
+                    src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=40&w=1200&auto=format&fit=crop" 
+                    alt="Abstract data visualization" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
 
                 {/* Floating Card 1 */}

@@ -217,19 +217,25 @@ const Contact: React.FC<ContactProps> = ({ contactSource }) => {
                       </div>
                     </div>
 
-                    <div className="space-y-2">
-                      <label htmlFor="service" className="text-xs font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider ml-1">Dienst</label>
-                      <div className="relative">
-                        <select id="service" name="service" className="w-full px-4 py-3 bg-neutral-50 dark:bg-black/20 rounded-xl border border-neutral-200 dark:border-white/10 focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 outline-none transition-all text-neutral-900 dark:text-white cursor-pointer appearance-none">
-                          <option className="bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white">Data Entry & Mutaties</option>
-                          <option className="bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white">Agendabeheer</option>
-                          <option className="bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white">Rapportages</option>
-                          <option className="bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white">Secretariële Ondersteuning</option>
-                          <option className="bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white">Anders</option>
-                        </select>
-                        <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-neutral-500">
-                           <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" fillRule="evenodd"></path></svg>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <label htmlFor="service" className="text-xs font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider ml-1">Dienst</label>
+                        <div className="relative">
+                          <select id="service" name="service" className="w-full px-4 py-3 bg-neutral-50 dark:bg-black/20 rounded-xl border border-neutral-200 dark:border-white/10 focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 outline-none transition-all text-neutral-900 dark:text-white cursor-pointer appearance-none">
+                            <option className="bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white">Data Entry & Mutaties</option>
+                            <option className="bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white">Agendabeheer</option>
+                            <option className="bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white">Rapportages</option>
+                            <option className="bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white">Secretariële Ondersteuning</option>
+                            <option className="bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white">Anders</option>
+                          </select>
+                          <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-neutral-500">
+                             <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" fillRule="evenodd"></path></svg>
+                          </div>
                         </div>
+                      </div>
+                      <div className="space-y-2">
+                        <label htmlFor="hours" className="text-xs font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider ml-1">Uren indicatie (optioneel)</label>
+                        <input type="number" id="hours" name="hours" min="1" className="w-full px-4 py-3 bg-neutral-50 dark:bg-black/20 rounded-xl border border-neutral-200 dark:border-white/10 focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 outline-none transition-all text-neutral-900 dark:text-white placeholder-neutral-400 dark:placeholder-neutral-600" placeholder="Bijv. 8 uur p/m" />
                       </div>
                     </div>
 
