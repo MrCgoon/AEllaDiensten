@@ -28,10 +28,7 @@ const Hero: React.FC = () => {
         className="absolute inset-0 z-0 pointer-events-none will-change-transform"
         style={{ transform: `translateY(${offset * 0.4}px)` }}
       >
-        <div className="hidden dark:block absolute top-[-10%] right-[-5%] w-[400px] lg:w-[1000px] h-[400px] lg:h-[1000px] bg-brand-900/20 rounded-full blur-[100px] lg:blur-[150px] animate-aurora mix-blend-screen"></div>
-        <div className="hidden dark:block absolute bottom-[10%] left-[-5%] w-[300px] lg:w-[800px] h-[300px] lg:h-[800px] bg-indigo-900/20 rounded-full blur-[80px] lg:blur-[120px] mix-blend-screen"></div>
-
-        <div className="dark:hidden absolute top-[-5%] right-[-5%] w-[400px] lg:w-[800px] h-[400px] lg:h-[800px] bg-brand-100/50 rounded-full blur-[80px] lg:blur-[100px] animate-aurora mix-blend-multiply"></div>
+        {/* Background blobs removed as requested */}
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
@@ -41,7 +38,7 @@ const Hero: React.FC = () => {
           <div className="text-center lg:text-left relative z-20">
             
             {/* Premium Glass Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/60 dark:bg-white/5 border border-brand-100 dark:border-white/10 text-brand-600 dark:text-brand-300 text-xs font-bold tracking-wider uppercase mb-6 shadow-sm backdrop-blur-md">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white dark:bg-neutral-900 border border-brand-100 dark:border-white/10 text-brand-600 dark:text-brand-300 text-xs font-bold tracking-wider uppercase mb-6 shadow-sm">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
@@ -106,12 +103,12 @@ const Hero: React.FC = () => {
                 </div>
 
                 {/* Floating Card 1 */}
-                <div className="absolute top-10 left-[-10px] bg-white/90 dark:glass-dark p-4 rounded-2xl animate-float-delayed w-56 border border-neutral-200 dark:border-white/10 shadow-xl backdrop-blur-xl">
+                <div className="absolute top-10 left-[-10px] bg-white dark:bg-neutral-900 p-4 rounded-2xl animate-float-delayed w-56 border border-neutral-200 dark:border-white/10 shadow-xl">
                    <div className="flex items-center gap-3 mb-3">
-                     <div className="p-2 bg-blue-50 dark:bg-neutral-900 rounded-lg text-blue-500">
+                     <div className="p-2 bg-blue-50 dark:bg-neutral-800 rounded-lg text-blue-600 dark:text-blue-400">
                         <Database size={18} />
                      </div>
-                     <span className="text-sm font-bold text-neutral-800 dark:text-neutral-100 uppercase tracking-tight">Data Entry</span>
+                     <span className="text-sm font-bold text-neutral-900 dark:text-white uppercase tracking-tight">Data Entry</span>
                    </div>
                    <div className="h-1.5 w-full bg-neutral-100 dark:bg-neutral-800 rounded-full overflow-hidden">
                       <div className="h-full bg-blue-500 w-[85%] rounded-full animate-pulse"></div>
@@ -119,14 +116,14 @@ const Hero: React.FC = () => {
                 </div>
 
                 {/* Floating Card 2 */}
-                <div className="absolute bottom-20 right-[-10px] bg-white/90 dark:glass-dark p-4 rounded-2xl animate-float w-56 border border-neutral-200 dark:border-white/10 shadow-xl backdrop-blur-xl">
+                <div className="absolute bottom-20 right-[-10px] bg-white dark:bg-neutral-900 p-4 rounded-2xl animate-float w-56 border border-neutral-200 dark:border-white/10 shadow-xl">
                    <div className="flex items-center gap-3 mb-2">
-                     <div className="p-2 bg-emerald-50 dark:bg-neutral-900 rounded-lg text-emerald-500">
+                     <div className="p-2 bg-emerald-50 dark:bg-neutral-800 rounded-lg text-emerald-600 dark:text-emerald-400">
                         <FileSpreadsheet size={18} />
                      </div>
-                     <span className="text-sm font-bold text-neutral-800 dark:text-neutral-100 uppercase tracking-tight">Mutaties</span>
+                     <span className="text-sm font-bold text-neutral-900 dark:text-white uppercase tracking-tight">Mutaties</span>
                    </div>
-                   <p className="text-xs text-neutral-600 dark:text-neutral-300">Rapportage genereren...</p>
+                   <p className="text-xs text-neutral-600 dark:text-neutral-400 font-medium">Rapportage genereren...</p>
                 </div>
              </div>
 
