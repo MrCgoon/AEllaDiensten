@@ -187,7 +187,7 @@ const Pricing: React.FC = () => {
                     <span className={`text-4xl font-extrabold ${tier.theme.text}`}>€ {tier.price}</span>
                     <span className={`${tier.highlight ? 'text-neutral-300' : 'text-neutral-500 dark:text-neutral-400'} font-medium`}>/ uur</span>
                   </div>
-                  <div className={`mt-2 text-xs font-bold uppercase tracking-wider ${tier.minHours.includes('10 uur') ? 'text-red-500 dark:text-red-400' : (tier.highlight ? 'text-brand-400' : 'text-brand-600 dark:text-brand-400')}`}>
+                  <div className="mt-2 text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">
                     {tier.minHours}
                   </div>
                 </div>
