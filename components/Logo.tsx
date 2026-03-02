@@ -13,7 +13,7 @@ const Logo: React.FC<LogoProps> = ({ className = "", size = "100%" }) => {
       viewBox="0 0 500 500" 
       fill="none" 
       xmlns="http://www.w3.org/2000/svg"
-      className={className}
+      className={`transition-transform duration-500 ease-out group-hover:scale-110 group-hover:rotate-3 hover:scale-110 hover:rotate-3 ${className}`}
       role="img"
       aria-labelledby="logoTitle"
     >

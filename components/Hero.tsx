@@ -175,12 +175,20 @@ const HeroWidget: React.FC = () => {
     formData.append("_captcha", "false");
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/contact@ellasdiensten.nl", {
+      const response = await fetch("/api/contact", {
         method: "POST",
-        body: formData,
         headers: { 
+            'Content-Type': 'application/json',
             'Accept': 'application/json'
-        }
+        },
+        body: JSON.stringify({
+          Dienst: service,
+          Uren_per_maand: hours.toString(),
+          Email: email,
+          Geschatte_investering: result ? `€${result.toLocaleString('nl-NL')}` : 'N/A',
+          bron: "Snel indicatie formulier (Hero)",
+          _subject: `Nieuwe prijsindicatie aanvraag: ${service}`
+        })
       });
       
       if (response.ok) {

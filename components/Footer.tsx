@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import LegalModal from './LegalModal';
+import Logo from './Logo';
 
 const Footer: React.FC = () => {
   const [activeDoc, setActiveDoc] = useState<'terms' | 'privacy' | 'cookies' | null>(null);
@@ -142,43 +143,7 @@ const Footer: React.FC = () => {
           <div className="text-center lg:text-left">
             <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
                 <div className="flex items-center justify-center text-white">
-                     {/* Theme Responsive High-Fidelity Logo */}
-                     <svg width="48" height="48" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path 
-                          d="M 368 82 A 205 205 0 1 1 132 82" 
-                          stroke="currentColor" 
-                          strokeWidth="32" 
-                          strokeLinecap="round" 
-                          fill="none"
-                        />
-                        <rect 
-                          x="234" 
-                          y="20" 
-                          width="32" 
-                          height="115" 
-                          rx="16" 
-                          fill="#E00000" 
-                        />
-                        <text 
-                          x="50%" 
-                          y="255" 
-                          textAnchor="middle" 
-                          dominantBaseline="middle" 
-                          fill="currentColor" 
-                          fontFamily="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" 
-                          fontWeight="700" 
-                          fontSize="165"
-                        >ED</text>
-                        <text 
-                          x="50%" 
-                          y="340" 
-                          textAnchor="middle" 
-                          fill="currentColor" 
-                          fontFamily="Georgia, 'Times New Roman', Times, serif" 
-                          fontWeight="700" 
-                          fontSize="20"
-                        >ELLA&apos;S DIENSTEN</text>
-                     </svg>
+                     <Logo size={48} />
                 </div>
                 <span className="text-xl font-heading font-extrabold text-white tracking-tight">
                     Ellas<span className="text-neutral-400 dark:text-neutral-500 font-bold">Diensten</span>
@@ -216,7 +181,7 @@ const Footer: React.FC = () => {
             <div className="flex flex-col lg:flex-row items-center gap-2 lg:gap-4 text-center lg:text-right text-neutral-500">
                <span>&copy; {new Date().getFullYear()} Ellas Diensten.</span>
                <span className="hidden lg:block text-neutral-700">•</span>
-               <span className="opacity-70 hover:opacity-100 transition-opacity">Made & Design by A3 Automation Agency</span>
+               <span className="opacity-70 hover:opacity-100 transition-opacity">Ontwerp & Realisatie door A3 Automation Agency</span>
             </div>
           </div>
         </div>

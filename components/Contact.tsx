@@ -17,19 +17,20 @@ const Contact: React.FC = () => {
     
     const formData = new FormData(e.target as HTMLFormElement);
     
-    // Add configuration for FormSubmit
-    formData.append("_subject", `Nieuwe aanvraag via website: ${formData.get('name')}`);
-    formData.append("_template", "table");
-    formData.append("_captcha", "false");
-    formData.append("bron", "Algemeen contactformulier");
-
+    const data = Object.fromEntries(formData.entries());
+    
     try {
-      const response = await fetch("https://formsubmit.co/ajax/" + CONTACT_EMAIL, {
+      const response = await fetch("/api/contact", {
         method: "POST",
-        body: formData,
         headers: { 
+            'Content-Type': 'application/json',
             'Accept': 'application/json'
-        }
+        },
+        body: JSON.stringify({
+          ...data,
+          _subject: `Nieuwe aanvraag via website: ${data.name}`,
+          bron: "Algemeen contactformulier"
+        })
       });
       
       if (response.ok) {

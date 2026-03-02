@@ -48,9 +48,9 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
   const isDark = theme === 'dark';
   
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out border-b ${
       isScrolled 
-        ? 'bg-white/90 dark:bg-neutral-900/90 backdrop-blur-md shadow-sm py-3 sm:py-4 border-neutral-200 dark:border-white/10' 
+        ? 'bg-white/80 dark:bg-neutral-900/80 backdrop-blur-lg shadow-md py-3 sm:py-4 border-neutral-200/50 dark:border-white/5' 
         : 'bg-transparent py-5 sm:py-7 border-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -58,10 +58,12 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
           
           {/* Logo Area */}
           <a href="#home" className="flex items-center gap-3 group shrink-0">
-            <div className={`transition-colors duration-300 ${isScrolled || !isDark ? 'text-neutral-900' : 'text-white'}`}>
+            <div className={`transition-all duration-500 ease-in-out text-neutral-900 dark:text-white ${isScrolled ? 'scale-90' : 'scale-100'}`}>
               <Logo size={44} className="sm:w-[52px] sm:h-[52px]" />
             </div>
-            <span className={`text-xl sm:text-2xl font-heading font-bold tracking-tight ${isScrolled || !isDark ? 'text-neutral-900 dark:text-white' : 'text-white'}`}>
+            <span className={`font-heading font-bold tracking-tight text-neutral-900 dark:text-white transition-all duration-500 ease-in-out ${
+              isScrolled ? 'text-lg sm:text-xl' : 'text-xl sm:text-2xl'
+            }`}>
               Ellas<span className="text-brand-600">Diensten</span>
             </span>
           </a>
