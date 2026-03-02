@@ -62,7 +62,7 @@ const Hero: React.FC = () => {
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 mb-12 lg:mb-0">
               <a 
-                href="#contact" 
+                href="#pricing" 
                 className="group relative inline-flex items-center justify-center px-8 py-4 bg-brand-600 text-white font-bold rounded-xl transition-all duration-300 hover:bg-brand-500 hover:scale-[1.02] shadow-lg shadow-brand-500/30"
               >
                 Offerte aanvragen
@@ -165,15 +165,9 @@ const HeroWidget: React.FC = () => {
 
     setFormStatus('submitting');
     
-    const formData = new FormData();
-    formData.append("Dienst", service);
-    formData.append("Uren per maand", hours.toString());
-    formData.append("Email", email);
-    formData.append("Geschatte investering", result ? `€${result.toLocaleString('nl-NL')}` : 'N/A');
-    formData.append("bron", "Snel indicatie formulier (Hero)");
-    formData.append("_subject", `Nieuwe prijsindicatie aanvraag: ${service}`);
-    formData.append("_captcha", "false");
-
+    // Calculate result again to be sure
+    const currentResult = hours && typeof hours === 'number' ? hours * (rates[service] || 50) : 0;
+    
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
@@ -185,7 +179,7 @@ const HeroWidget: React.FC = () => {
           Dienst: service,
           Uren_per_maand: hours.toString(),
           Email: email,
-          Geschatte_investering: result ? `€${result.toLocaleString('nl-NL')}` : 'N/A',
+          Geschatte_investering: currentResult ? `€${currentResult.toLocaleString('nl-NL')}` : 'N/A',
           bron: "Snel indicatie formulier (Hero)",
           _subject: `Nieuwe prijsindicatie aanvraag: ${service}`
         })
@@ -193,12 +187,24 @@ const HeroWidget: React.FC = () => {
       
       if (response.ok) {
         setFormStatus('success');
+        // Optional: Clear fields here if you want them cleared immediately
+        // setHours('');
+        // setEmail('');
       } else {
+        console.error("Form submission failed:", response.status, response.statusText);
         setFormStatus('error');
       }
     } catch (error) {
+       console.error("Form submission error:", error);
        setFormStatus('error');
     }
+  };
+
+  const handleReset = () => {
+    setFormStatus('idle');
+    setHours('');
+    setEmail('');
+    setService('Data Entry & Mutaties');
   };
 
   if (formStatus === 'success') {
@@ -212,7 +218,7 @@ const HeroWidget: React.FC = () => {
           Uw aanvraag is verzonden. U ontvangt binnen 1–2 werkdagen een reactie.
         </p>
         <button 
-          onClick={() => setFormStatus('idle')}
+          onClick={handleReset}
           className="text-xs font-bold text-brand-600 hover:text-brand-500 transition-colors"
         >
           Nog een berekening maken

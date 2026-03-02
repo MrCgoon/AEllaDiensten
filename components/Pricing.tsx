@@ -95,11 +95,9 @@ const Pricing: React.FC = () => {
   const handlePurchase = (link: string, tierName: string) => {
     // We voegen een bron toe aan de URL als het een interne link is, 
     // of we kunnen dit loggen als Ella een analytics tool gebruikt.
-    if (link && link.startsWith('/checkout')) {
-      // In een echte app zou dit naar de Stripe Checkout gaan
+    if (link) {
+      // Dit werkt voor zowel interne links (/checkout/...) als externe Stripe URLs
       console.log(`Aankoop gestart voor: ${tierName}`);
-      window.location.href = link;
-    } else if (link) {
       window.location.href = link;
     } else {
       document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
@@ -189,7 +187,7 @@ const Pricing: React.FC = () => {
                     <span className={`text-4xl font-extrabold ${tier.theme.text}`}>€ {tier.price}</span>
                     <span className={`${tier.highlight ? 'text-neutral-300' : 'text-neutral-500 dark:text-neutral-400'} font-medium`}>/ uur</span>
                   </div>
-                  <div className={`mt-2 text-xs font-bold uppercase tracking-wider ${tier.highlight ? 'text-brand-400' : 'text-brand-600 dark:text-brand-400'}`}>
+                  <div className={`mt-2 text-xs font-bold uppercase tracking-wider ${tier.minHours.includes('10 uur') ? 'text-red-500 dark:text-red-400' : (tier.highlight ? 'text-brand-400' : 'text-brand-600 dark:text-brand-400')}`}>
                     {tier.minHours}
                   </div>
                 </div>

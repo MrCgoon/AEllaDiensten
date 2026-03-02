@@ -41,7 +41,7 @@ const Process: React.FC = () => {
               Ik ben een teamplayer op afstand. Ik verlies het doel en de deadline nooit uit het oog. 
               U weet dat uw klus in goede handen is, zodat u zich op uw core business kunt focussen.
             </p>
-            <a href="#contact" className="text-brand-600 dark:text-brand-400 font-bold hover:text-brand-500 dark:hover:text-brand-300 transition-colors flex items-center group">
+            <a href="#pricing" className="text-brand-600 dark:text-brand-400 font-bold hover:text-brand-500 dark:hover:text-brand-300 transition-colors flex items-center group">
               Start vandaag nog een samenwerking 
               <span className="inline-block ml-2 transition-transform group-hover:translate-x-1">&rarr;</span>
             </a>

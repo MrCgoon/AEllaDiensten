@@ -4,7 +4,7 @@ import { Mail, Phone, Clock, Send, Globe, CheckCircle2, Loader2, ArrowRight } fr
 // ==========================================
 // 📞 CONTACT CONFIGURATIE
 // ==========================================
-const WHATSAPP_NUMBER = "31612345678"; // Ella kan dit nummer hier aanpassen
+const WHATSAPP_NUMBER = "31403098093"; // Ella kan dit nummer hier aanpassen
 const CONTACT_EMAIL = "contact@ellasdiensten.nl";
 // ==========================================
 
@@ -93,7 +93,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div className="ml-4">
                   <h3 className="text-sm font-bold text-neutral-900 dark:text-white uppercase tracking-wide mb-1">Telefoon / WhatsApp</h3>
-                  <p className="text-base text-neutral-600 dark:text-neutral-400 group-hover:text-brand-600 dark:group-hover:text-brand-300 transition-colors">+31 (0)6 12 34 56 78</p>
+                  <p className="text-base text-neutral-600 dark:text-neutral-400 group-hover:text-brand-600 dark:group-hover:text-brand-300 transition-colors">+31 (0)40 309 80 93</p>
                 </div>
               </a>
 
@@ -202,7 +202,7 @@ const Contact: React.FC = () => {
                       </div>
                       <div className="space-y-2">
                         <label htmlFor="phone" className="text-xs font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider ml-1">Telefoon</label>
-                        <input type="tel" id="phone" name="phone" className="w-full px-4 py-3 bg-neutral-50 dark:bg-black/20 rounded-xl border border-neutral-200 dark:border-white/10 focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 outline-none transition-all text-neutral-900 dark:text-white placeholder-neutral-400 dark:placeholder-neutral-600" placeholder="06 12345678" />
+                        <input type="tel" id="phone" name="phone" className="w-full px-4 py-3 bg-neutral-50 dark:bg-black/20 rounded-xl border border-neutral-200 dark:border-white/10 focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 outline-none transition-all text-neutral-900 dark:text-white placeholder-neutral-400 dark:placeholder-neutral-600" placeholder="040 309 80 93" />
                       </div>
                     </div>
 
