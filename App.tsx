@@ -15,6 +15,7 @@ const PaymentStatus = lazy(() => import('./components/PaymentStatus'));
 
 const App: React.FC = () => {
   const [theme, setTheme] = useState<'light' | 'dark'>('dark');
+  const [contactSource, setContactSource] = useState<string>('');
 
   // Initialize theme from localStorage or system preference
   useEffect(() => {
@@ -65,11 +66,11 @@ const App: React.FC = () => {
             <Suspense fallback={<div className="py-20 flex justify-center"><div className="w-8 h-8 border-4 border-brand-500 border-t-transparent rounded-full animate-spin"></div></div>}>
               <PaymentStatus />
               <About />
-              <Services />
+              <Services setContactSource={setContactSource} />
               <Process />
-              <Pricing />
+              <Pricing setContactSource={setContactSource} />
               <SocialProof />
-              <Contact />
+              <Contact contactSource={contactSource} />
             </Suspense>
           </div>
         </div>

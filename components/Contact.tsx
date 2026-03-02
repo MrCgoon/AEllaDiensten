@@ -8,7 +8,11 @@ const WHATSAPP_NUMBER = "31403098093"; // Ella kan dit nummer hier aanpassen
 const CONTACT_EMAIL = "contact@ellasdiensten.nl";
 // ==========================================
 
-const Contact: React.FC = () => {
+interface ContactProps {
+  contactSource?: string;
+}
+
+const Contact: React.FC<ContactProps> = ({ contactSource }) => {
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -29,7 +33,7 @@ const Contact: React.FC = () => {
         body: JSON.stringify({
           ...data,
           _subject: `Nieuwe aanvraag via website: ${data.name}`,
-          bron: "Algemeen contactformulier"
+          bron: contactSource || "Algemeen contactformulier"
         })
       });
       
@@ -177,6 +181,11 @@ const Contact: React.FC = () => {
                 <>
                   <div className="relative z-10 mb-8">
                     <h3 className="text-2xl font-bold text-neutral-900 dark:text-white mb-2">Stuur een bericht</h3>
+                    {contactSource && (
+                      <div className="inline-block mb-4 px-3 py-1 rounded-full bg-brand-50 dark:bg-brand-900/20 text-brand-600 dark:text-brand-400 text-xs font-bold border border-brand-100 dark:border-brand-500/20">
+                        Betreft: {contactSource}
+                      </div>
+                    )}
                     <p className="text-neutral-500 dark:text-neutral-400 text-sm">Velden met een * zijn verplicht.</p>
                   </div>
                   

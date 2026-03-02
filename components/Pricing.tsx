@@ -24,7 +24,7 @@ const PRICING_TIERS = [
     icon: Sparkles,
     highlight: false,
     badge: "Instapmodel",
-    stripeLink: "/checkout/basis", // Ella kan hier later de echte Stripe checkout URL invullen
+    stripeLink: "#contact", // Voorlopig naar contactformulier totdat Stripe live is
     theme: {
       bg: "bg-white dark:bg-neutral-900/40",
       border: "border-neutral-200 dark:border-white/5",
@@ -50,7 +50,7 @@ const PRICING_TIERS = [
     icon: Zap,
     highlight: true, // Dit maakt de kaart groter/opvallender
     badge: "Populairste Keuze",
-    stripeLink: "/checkout/standaard",
+    stripeLink: "#contact",
     theme: {
       bg: "bg-neutral-900 dark:bg-neutral-950",
       border: "border-neutral-800 dark:border-brand-500/30",
@@ -76,7 +76,7 @@ const PRICING_TIERS = [
     icon: BarChart3,
     highlight: false,
     badge: "Beste Waarde",
-    stripeLink: "/checkout/intensief",
+    stripeLink: "#contact",
     theme: {
       bg: "bg-white dark:bg-neutral-900/40",
       border: "border-neutral-200 dark:border-white/5",
@@ -90,17 +90,23 @@ const PRICING_TIERS = [
 
 // ==========================================
 
-const Pricing: React.FC = () => {
+interface PricingProps {
+  setContactSource: (source: string) => void;
+}
+
+const Pricing: React.FC<PricingProps> = ({ setContactSource }) => {
 
   const handlePurchase = (link: string, tierName: string) => {
-    // We voegen een bron toe aan de URL als het een interne link is, 
-    // of we kunnen dit loggen als Ella een analytics tool gebruikt.
-    if (link) {
-      // Dit werkt voor zowel interne links (/checkout/...) als externe Stripe URLs
-      console.log(`Aankoop gestart voor: ${tierName}`);
-      window.location.href = link;
+    console.log(`Interesse in pakket: ${tierName}`);
+    setContactSource(`Pakket: ${tierName}`);
+    
+    if (link.startsWith('#')) {
+      const element = document.querySelector(link);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     } else {
-      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+      window.location.href = link;
     }
   };
 

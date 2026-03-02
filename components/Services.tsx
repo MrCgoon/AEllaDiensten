@@ -2,8 +2,18 @@ import React, { useState } from 'react';
 import { Database, Mail, FileBarChart, Keyboard, ArrowUpRight } from 'lucide-react';
 import LegalModal from './LegalModal';
 
-const Services: React.FC = () => {
+interface ServicesProps {
+  setContactSource: (source: string) => void;
+}
+
+const Services: React.FC<ServicesProps> = ({ setContactSource }) => {
   const [selectedServiceIndex, setSelectedServiceIndex] = useState<number | null>(null);
+
+  const handleContactClick = (serviceTitle: string) => {
+    setContactSource(`Dienst: ${serviceTitle}`);
+    setSelectedServiceIndex(null);
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   const services = [
     {
@@ -142,6 +152,14 @@ const Services: React.FC = () => {
                 <h4 className="text-lg font-bold text-neutral-900 dark:text-white">Dienst omschrijving</h4>
             </div>
             {selectedService.long}
+            <div className="mt-8 pt-6 border-t border-neutral-100 dark:border-white/5">
+              <button
+                onClick={() => handleContactClick(selectedService.title)}
+                className="w-full sm:w-auto px-6 py-3 bg-brand-600 text-white font-bold rounded-xl hover:bg-brand-500 transition-colors shadow-lg shadow-brand-500/20 flex items-center justify-center gap-2"
+              >
+                Neem contact op over deze dienst <ArrowUpRight className="w-4 h-4" />
+              </button>
+            </div>
           </div>
         ) : null}
       />
