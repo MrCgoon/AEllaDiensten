@@ -12,6 +12,7 @@ const Footer = lazy(() => import('./components/Footer'));
 const WhatsAppButton = lazy(() => import('./components/WhatsAppButton'));
 const SocialProof = lazy(() => import('./components/SocialProof'));
 const PaymentStatus = lazy(() => import('./components/PaymentStatus'));
+const ScrollToTop = lazy(() => import('./components/ScrollToTop'));
 
 const App: React.FC = () => {
   const [theme, setTheme] = useState<'light' | 'dark'>('dark');
@@ -79,6 +80,7 @@ const App: React.FC = () => {
       <Suspense fallback={null}>
         <Footer />
         <WhatsAppButton />
+        <ScrollToTop />
       </Suspense>
     </div>
   );
