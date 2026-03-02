@@ -26,7 +26,7 @@ const Process: React.FC = () => {
   ];
 
   return (
-    <section id="process" className="py-24 bg-white dark:bg-black/20 backdrop-blur-sm border-t border-neutral-200 dark:border-white/5 relative transition-colors duration-500">
+    <section id="werkwijze" className="py-24 bg-white dark:bg-black/20 backdrop-blur-sm border-t border-neutral-200 dark:border-white/5 relative transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
@@ -41,7 +41,7 @@ const Process: React.FC = () => {
               Ik ben een teamplayer op afstand. Ik verlies het doel en de deadline nooit uit het oog. 
               U weet dat uw klus in goede handen is, zodat u zich op uw core business kunt focussen.
             </p>
-            <a href="#pricing" className="text-brand-600 dark:text-brand-400 font-bold hover:text-brand-500 dark:hover:text-brand-300 transition-colors flex items-center group">
+            <a href="#tarieven" className="text-brand-600 dark:text-brand-400 font-bold hover:text-brand-500 dark:hover:text-brand-300 transition-colors flex items-center group">
               Start vandaag nog een samenwerking 
               <span className="inline-block ml-2 transition-transform group-hover:translate-x-1">&rarr;</span>
             </a>

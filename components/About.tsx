@@ -3,7 +3,7 @@ import { User, Target, Heart } from 'lucide-react';
 
 const About: React.FC = () => {
   return (
-    <section id="about" className="py-24 relative overflow-hidden bg-white dark:bg-black/20 backdrop-blur-sm border-t border-neutral-100 dark:border-white/5 transition-colors duration-500">
+    <section id="over-mij" className="py-24 relative overflow-hidden bg-white dark:bg-black/20 backdrop-blur-sm border-t border-neutral-100 dark:border-white/5 transition-colors duration-500">
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">

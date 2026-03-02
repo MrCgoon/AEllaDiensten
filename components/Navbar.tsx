@@ -9,10 +9,10 @@ interface NavbarProps {
 
 const navLinks = [
   { name: 'Home', href: '#home' },
-  { name: 'Over mij', href: '#about' },
-  { name: 'Diensten', href: '#services' },
-  { name: 'Werkwijze', href: '#process' },
-  { name: 'Tarieven', href: '#pricing' },
+  { name: 'Over mij', href: '#over-mij' },
+  { name: 'Diensten', href: '#diensten' },
+  { name: 'Werkwijze', href: '#werkwijze' },
+  { name: 'Tarieven', href: '#tarieven' },
   { name: 'Contact', href: '#contact' },
 ];
 
@@ -88,7 +88,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
               {isDark ? <Sun size={18} className="text-white" /> : <Moon size={18} className="text-neutral-600" />}
             </button>
 
-            <a href="#pricing" className="px-5 py-2 bg-brand-600 text-white rounded-full font-bold text-sm hover:bg-brand-500 transition-all shadow-lg shadow-brand-500/20">
+            <a href="#tarieven" className="px-5 py-2 bg-brand-600 text-white rounded-full font-bold text-sm hover:bg-brand-500 transition-all shadow-lg shadow-brand-500/20">
               Offerte
             </a>
           </div>
@@ -119,7 +119,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
                 {link.name}
               </a>
             ))}
-            <a href="#pricing" onClick={() => setIsOpen(false)} className="block mt-4 w-full py-4 text-center bg-brand-600 text-white rounded-xl font-bold">
+            <a href="#tarieven" onClick={() => setIsOpen(false)} className="block mt-4 w-full py-4 text-center bg-brand-600 text-white rounded-xl font-bold">
               Offerte aanvragen
             </a>
           </div>

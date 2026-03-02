@@ -82,7 +82,7 @@ const Services: React.FC = () => {
   const selectedService = selectedServiceIndex !== null ? services[selectedServiceIndex] : null;
 
   return (
-    <section id="services" className="py-20 lg:py-24 bg-neutral-50 dark:bg-black/40 backdrop-blur-md border-t border-neutral-200 dark:border-white/5 transition-colors duration-500">
+    <section id="diensten" className="py-20 lg:py-24 bg-neutral-50 dark:bg-black/40 backdrop-blur-md border-t border-neutral-200 dark:border-white/5 transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-12 lg:mb-16">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-neutral-900 dark:text-white mb-4 transition-colors">

@@ -105,7 +105,7 @@ const Pricing: React.FC = () => {
   };
 
   return (
-    <section id="pricing" className="py-24 bg-neutral-50 dark:bg-black/40 backdrop-blur-md border-t border-neutral-200 dark:border-white/5 relative overflow-hidden transition-colors duration-500">
+    <section id="tarieven" className="py-24 bg-neutral-50 dark:bg-black/40 backdrop-blur-md border-t border-neutral-200 dark:border-white/5 relative overflow-hidden transition-colors duration-500">
       
       {/* Dynamic Background Accents */}
       <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-brand-500/5 rounded-full blur-[120px] pointer-events-none animate-pulse-slow"></div>

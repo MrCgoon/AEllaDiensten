@@ -62,14 +62,14 @@ const Hero: React.FC = () => {
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 mb-12 lg:mb-0">
               <a 
-                href="#pricing" 
+                href="#tarieven" 
                 className="group relative inline-flex items-center justify-center px-8 py-4 bg-brand-600 text-white font-bold rounded-xl transition-all duration-300 hover:bg-brand-500 hover:scale-[1.02] shadow-lg shadow-brand-500/30"
               >
                 Offerte aanvragen
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </a>
               <a 
-                href="#process" 
+                href="#werkwijze" 
                 className="inline-flex items-center justify-center px-8 py-4 bg-white/60 dark:bg-white/5 text-neutral-700 dark:text-white font-semibold rounded-xl border border-neutral-200 dark:border-white/10 hover:bg-white dark:hover:bg-white/10 transition-all backdrop-blur-sm"
               >
                 Werkwijze
